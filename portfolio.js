@@ -1053,44 +1053,331 @@ function initializeStarsAnimation() {
  
 
 // ===============================================================
-// **. MOUSE TRAIL ANIMATION
+// **MOUSE TRAIL ANIMATION
 // ===============================================================
 function initializeMouseTrail() {
   const body = document.body;
-  const colors = ['#ff69b4','#ff1493','#ff0066','#ff007f','#ff0040'];
-  let lastTime = 15;
-  const minInterval = 150; // Increase this value to reduce frequency (in milliseconds)
+  
+  // More vibrant color palette
+  const colors = [
+    '#ff00ff', // Magenta
+    '#00ffff', // Cyan
+    '#ffff00', // Yellow
+    '#ff0000', // Red
+    '#00ff00', // Green
+    '#0000ff', // Blue
+    '#ff7f00', // Orange
+    '#8a2be2'  // BlueViolet
+  ];
+  
+  let lastTime = 0;
+  const minInterval = 4; // Slightly faster trail creation
+  
+  const style = document.createElement('style');
+  style.textContent = `
+    .cursor-container {
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    
+    .neon-cursor {
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background-color: transparent;
+      transform: translate(-50%, -50%);
+      transition: transform 0.08s ease-out;
+      pointer-events: none;
+      filter: blur(0.5px);
+      z-index: 10000;
+    }
+    
+    .neon-cursor::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.9);
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 15px 4px var(--cursor-color);
+    }
+    
+    .neon-cursor::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: #ffffff;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 5px 2px #ffffff;
+    }
+    
+    .neon-trail {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.15);
+      border: 1px solid var(--cursor-color);
+      box-shadow: 0 0 10px 2px var(--cursor-color), inset 0 0 6px 1px var(--cursor-color);
+      transform: translate(-50%, -50%) scale(var(--scale, 1));
+      opacity: 0.6;
+      animation: trail-fade 0.8s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
+      filter: blur(0.5px);
+    }
+    
+    .neon-particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background-color: var(--cursor-color);
+      transform: translate(-50%, -50%);
+      opacity: 0.8;
+      box-shadow: 0 0 8px 2px var(--cursor-color);
+      animation: particle-fade 1s ease-out forwards;
+      filter: blur(0.5px);
+    }
+    
+    @keyframes trail-fade {
+      0% {
+        opacity: 0.6;
+        width: 12px;
+        height: 12px;
+        transform: translate(-50%, -50%) scale(0.8);
+      }
+      50% {
+        opacity: 0.4;
+        transform: translate(-50%, -50%) scale(1.2) rotate(var(--rotate, 0deg));
+      }
+      100% {
+        opacity: 0;
+        width: 20px;
+        height: 20px;
+        transform: translate(-50%, -50%) scale(1.5) rotate(var(--rotate, 0deg));
+      }
+    }
+    
+    @keyframes particle-fade {
+      0% {
+        opacity: 0.8;
+        transform: translate(-50%, -50%) translate(0, 0);
+      }
+      100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) translate(var(--dx), var(--dy));
+      }
+    }
+    
+    /* Custom cursor for the entire page */
+    html, body {
+      cursor: none !important;
+    }
+    
+    /* Make all elements use the custom cursor */
+    a, button, input, select, textarea, [role="button"] {
+      cursor: none !important;
+    }
+  `;
+  document.head.appendChild(style);
+
+  const cursorContainer = document.createElement('div');
+  cursorContainer.className = 'cursor-container';
+  body.appendChild(cursorContainer);
+
+  const cursor = document.createElement('div');
+  cursor.className = 'neon-cursor';
+  cursorContainer.appendChild(cursor);
+
+  // Store last positions for velocity calculation
+  let lastX = 0;
+  let lastY = 0;
+  let velocityX = 0;
+  let velocityY = 0;
+
+  // Color transitions
+  let currentColorIndex = 0;
+  let nextColorIndex = 1;
+  let colorTransition = 0;
+  
+  // Smoother color transitions
+  const colorInterval = setInterval(() => {
+    nextColorIndex = (currentColorIndex + 1) % colors.length;
+    colorTransition = 0;
+  }, 1500);
+  
+  // Animation frame for color blending
+  function updateColors() {
+    colorTransition += 0.01;
+    if (colorTransition > 1) {
+      currentColorIndex = nextColorIndex;
+      nextColorIndex = (currentColorIndex + 1) % colors.length;
+      colorTransition = 0;
+    }
+    
+    // Linear interpolation between colors
+    // Convert hex to RGB to interpolate
+    const startColor = hexToRgb(colors[currentColorIndex]);
+    const endColor = hexToRgb(colors[nextColorIndex]);
+    
+    const r = Math.floor(startColor.r + colorTransition * (endColor.r - startColor.r));
+    const g = Math.floor(startColor.g + colorTransition * (endColor.g - startColor.g));
+    const b = Math.floor(startColor.b + colorTransition * (endColor.b - startColor.b));
+    
+    const blendedColor = `rgb(${r}, ${g}, ${b})`;
+    cursor.style.setProperty('--cursor-color', blendedColor);
+    
+    requestAnimationFrame(updateColors);
+  }
+  
+  updateColors();
+  
+  // Helper function to convert hex to RGB
+  function hexToRgb(hex) {
+    // Remove # if present
+    hex = hex.replace('#', '');
+    
+    // Parse the hex values
+    const r = parseInt(hex.substring(0, 2), 16);
+    const g = parseInt(hex.substring(2, 4), 16);
+    const b = parseInt(hex.substring(4, 6), 16);
+    
+    return { r, g, b };
+  }
 
   body.addEventListener('mousemove', e => {
+    // Calculate velocity for dynamic trail effects
+    velocityX = e.clientX - lastX;
+    velocityY = e.clientY - lastY;
+    const speed = Math.sqrt(velocityX * velocityX + velocityY * velocityY);
+    
+    // Update cursor position
+    cursor.style.left = `${e.clientX}px`;
+    cursor.style.top = `${e.clientY}px`;
+    
+    // Dynamic cursor size based on speed
+    const cursorSize = Math.min(24, 18 + speed * 0.2);
+    cursor.style.width = `${cursorSize}px`;
+    cursor.style.height = `${cursorSize}px`;
+    
+    // Trail creation with timing control
     const currentTime = Date.now();
-    if (currentTime - lastTime < minInterval) return; // Skip if not enough time has passed
-    lastTime = currentTime;
-
-    requestAnimationFrame(() => {
-      const heart = document.createElement('div');
-      heart.className = 'heart-particle';
-      heart.textContent = '❤';
+    if (currentTime - lastTime >= minInterval) {
+      lastTime = currentTime;
       
-      // position
-      heart.style.left = `${e.clientX - 8}px`;
-      heart.style.top  = `${e.clientY - 8}px`;
+      // Create main trail element
+      const trail = document.createElement('div');
+      trail.className = 'neon-trail';
+      trail.style.left = `${e.clientX}px`;
+      trail.style.top = `${e.clientY}px`;
+      trail.style.setProperty('--cursor-color', cursor.style.getPropertyValue('--cursor-color'));
       
-      // random color
-      heart.style.color = colors[(Math.random() * colors.length)|0];
+      // Random rotation for variety
+      const rotation = Math.random() * 180;
+      trail.style.setProperty('--rotate', `${rotation}deg`);
       
-      // random movement & rotation
-      const dx  = (Math.random() * 40 - 20) + 'px';
-      const dy  = (-(Math.random() * 50) - 20) + 'px';
-      const rot = (Math.random() * 30 - 15) + 'deg';
-      heart.style.setProperty('--dx', dx);
-      heart.style.setProperty('--dy', dy);
-      heart.style.setProperty('--rot', rot);
+      // Scale variation based on speed
+      const scale = 0.8 + Math.min(1, speed * 0.03);
+      trail.style.setProperty('--scale', scale);
       
-      // remove after animation
-      heart.addEventListener('animationend', () => heart.remove());
+      trail.addEventListener('animationend', () => trail.remove());
+      cursorContainer.appendChild(trail);
       
-      body.appendChild(heart);
-    });
+      // Create additional particles on faster movements
+      if (speed > 5) {
+        const particleCount = Math.min(3, Math.floor(speed / 10));
+        
+        for (let i = 0; i < particleCount; i++) {
+          const particle = document.createElement('div');
+          particle.className = 'neon-particle';
+          particle.style.left = `${e.clientX}px`;
+          particle.style.top = `${e.clientY}px`;
+          particle.style.setProperty('--cursor-color', cursor.style.getPropertyValue('--cursor-color'));
+          
+          // Random movement direction
+          const angle = Math.random() * Math.PI * 2;
+          const distance = Math.random() * 50 + 20;
+          const dx = Math.cos(angle) * distance;
+          const dy = Math.sin(angle) * distance;
+          
+          particle.style.setProperty('--dx', `${dx}px`);
+          particle.style.setProperty('--dy', `${dy}px`);
+          
+          particle.addEventListener('animationend', () => particle.remove());
+          cursorContainer.appendChild(particle);
+        }
+      }
+    }
+    
+    // Update last position
+    lastX = e.clientX;
+    lastY = e.clientY;
   });
+
+  // Handle mouse leaving window
+  document.addEventListener('mouseleave', () => {
+    cursor.style.opacity = '0';
+  });
+  
+  // Handle mouse entering window
+  document.addEventListener('mouseenter', () => {
+    cursor.style.opacity = '1';
+  });
+
+  // Handle click effect
+  document.addEventListener('mousedown', (e) => {
+    // Pulse effect on click
+    cursor.style.transform = 'translate(-50%, -50%) scale(0.8)';
+    
+    // Create click particles
+    for (let i = 0; i < 8; i++) {
+      const particle = document.createElement('div');
+      particle.className = 'neon-particle';
+      particle.style.left = `${e.clientX}px`;
+      particle.style.top = `${e.clientY}px`;
+      particle.style.setProperty('--cursor-color', cursor.style.getPropertyValue('--cursor-color'));
+      
+      // Circular pattern
+      const angle = (i / 8) * Math.PI * 2;
+      const distance = Math.random() * 40 + 20;
+      const dx = Math.cos(angle) * distance;
+      const dy = Math.sin(angle) * distance;
+      
+      particle.style.setProperty('--dx', `${dx}px`);
+      particle.style.setProperty('--dy', `${dy}px`);
+      
+      particle.addEventListener('animationend', () => particle.remove());
+      cursorContainer.appendChild(particle);
+    }
+  });
+  
+  // Reset scale on mouse up
+  document.addEventListener('mouseup', () => {
+    cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+  });
+
+  // Clean up function
+  return function cleanup() {
+    clearInterval(colorInterval);
+    cursorContainer.remove();
+    document.head.removeChild(style);
+  };
 }
+
+// Initialize the enhanced mouse trail
+initializeEnhancedMouseTrail();
+
+
 
