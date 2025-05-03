@@ -226,6 +226,43 @@ html {
 }
 
 
+.theme-fill {
+    fill: url(#sunGradient); /* Sun gradient for light mode */
+  }
+  
+  .dark-mode .theme-fill {
+    fill: url(#moonGradient); /* Moon gradient for dark mode */
+  }
+  
+  .sun-glow {
+    flood-color: #FFA500; /* Orange sun glow */
+    flood-opacity: 0.8;
+    animation: glowPulse 3s infinite alternate;
+  }
+  
+  .moon-glow {
+    flood-color: #6495ED; /* Cornflower blue moon glow */
+    flood-opacity: 0.7;
+    animation: glowPulse 4s infinite alternate;
+  }
+  
+  @keyframes glowPulse {
+    0% { flood-opacity: 0.5; }
+    100% { flood-opacity: 0.9; }
+  }
+  
+  /* Light mode vs dark mode styles */
+  @media (prefers-color-scheme: light) {
+    .svg-background {
+      fill:transparent; /* Light mode background */
+    }
+    
+    .dark-mode-element {
+      display: none;
+    }
+  }
+
+
 .body .header .lap-titles {
     width: 60%;
     display: flex;
@@ -1440,7 +1477,8 @@ border: 1px solid  #a09bbe2d;
     color: var(--font-primary-title-color);
     animation: fadeIn 0.8s ease-out forwards;
     background: rgba(51, 207, 255, 0.1);
-    padding: 15px;
+    text-align: center;
+    padding-top: 15px;
     border-radius: 50%;
     backdrop-filter: blur(5px);
     width: 120px;
@@ -1512,6 +1550,8 @@ border: 1px solid  #a09bbe2d;
       opacity: 1;
     }
   }
+
+   
 
 /* ===============================
 MEDIA QUERIES - SEPARATED
@@ -1803,5 +1843,11 @@ MEDIA QUERIES - SEPARATED
     margin-top:50px;
 }
 }
+
+
+
+
+  
+  
 
 

@@ -27,6 +27,8 @@
           <div class="logo">
               <div class="icon" onclick="showModal()">
                 <svg class="svgModal" viewBox="-15 -15 180 180" xmlns="http://www.w3.org/2000/svg">
+                  <!-- Background Rectangle -->
+                  <rect x="-15" y="-15" width="180" height="180" class="svg-background" /> 
                   <defs>
                     <linearGradient id="chromeStroke" x1="0" y1="0" x2="1" y2="1">
                       <stop offset="0%" stop-color="#DB4437"/>
@@ -34,13 +36,40 @@
                       <stop offset="66%" stop-color="#0F9D58"/>
                       <stop offset="100%" stop-color="#4285F4"/>
                     </linearGradient>
+                    
+                    <!-- Sun gradient -->
+                    <radialGradient id="sunGradient" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+                      <stop offset="0%" stop-color="#FFFFCC" />
+                      <stop offset="70%" stop-color="#FFD700" />
+                      <stop offset="100%" stop-color="#FF8C00" />
+                    </radialGradient>
+                    
+                    <!-- Moon gradient -->
+                    <radialGradient id="moonGradient" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+                      <stop offset="0%" stop-color="#F0F8FF" />
+                      <stop offset="70%" stop-color="#B0C4DE" />
+                      <stop offset="100%" stop-color="#4A5D7E" />
+                    </radialGradient>
+                    
+                    <!-- Glow filter for sun/moon with enhanced glow -->
+                    <filter id="elementGlow" x="-40%" y="-40%" width="180%" height="180%">
+                      <feGaussianBlur stdDeviation="5" result="blur" />
+                      <feFlood flood-color="#FFA500" flood-opacity="0.8" result="sunGlow" class="sun-glow" />
+                      <feFlood flood-color="#6495ED" flood-opacity="0.7" result="moonGlow" class="moon-glow" />
+                      <feComposite in="sunGlow" in2="blur" operator="in" result="sunColoredBlur" class="light-mode-element" />
+                      <feComposite in="moonGlow" in2="blur" operator="in" result="moonColoredBlur" class="dark-mode-element" />
+                      <feBlend in="SourceGraphic" in2="sunColoredBlur" mode="normal" class="light-mode-element" />
+                      <feBlend in="SourceGraphic" in2="moonColoredBlur" mode="normal" class="dark-mode-element" />
+                    </filter>
                   </defs>
                 
                   <circle cx="75" cy="75" r="72" fill="none" stroke="url(#chromeStroke)" stroke-width="20" stroke-linecap="round">
                     <animateTransform attributeName="transform" type="rotate" from="0 75 75" to="360 75 75" dur="5s" repeatCount="indefinite"/>
                   </circle>
                   
-                  <circle cx="75" cy="75" r="57" fill="#202124"/>
+                  <circle cx="75" cy="75" r="57" fill="url(#sunGradient)" class="theme-fill" filter="url(#elementGlow)">
+                    <animate attributeName="r" values="57;58;57;59;57" dur="5s" repeatCount="indefinite" />
+                  </circle>
                 
                   <text x="75" y="75" text-anchor="middle" dominant-baseline="middle" font-family="monospace" font-size="24" fill="#61DAFB" font-weight="bold">
                     &lt;/&gt;
@@ -53,37 +82,37 @@
                       <image href="angular.png" class="icon-img" x="-8" y="-8" width="20" height="20" />
                     </g>
                   
-                    <g  transform="translate(102, 41)" class="icon-wrapper">
+                    <g transform="translate(102, 41)" class="icon-wrapper">
                       <circle cx="1.9" cy="2" r="10" stroke="transparent" stroke-width="1" fill="transparent" class="icon-border" />
                       <image href="nodejs.png" class="icon-img" x="-8" y="-8" width="20" height="20" />
                     </g>
                     
-                    <g  transform="translate(117, 62)"  class="icon-wrapper">
+                    <g transform="translate(117, 62)" class="icon-wrapper">
                       <circle cx="1.9" cy="2" r="10" stroke="transparent" stroke-width="1" fill="transparent" class="icon-border" />
                       <image href="nestjs.png" class="icon-img" x="-8" y="-8" width="20" height="20" />
                     </g>
-
+                
                     <g transform="translate(117, 86)" class="icon-wrapper">
                       <circle cx="1.7" cy="2.2" r="9.4" stroke="transparent" stroke-width="1" fill="transparent" class="icon-border" />
                       <image href="js.png" class="icon-img" x="-8" y="-8" width="20" height="20" />
                     </g>
-
+                
                     <g transform="translate(102, 109)" class="icon-wrapper">
                       <circle cx="2" cy="2" r="9.5" stroke="transparent" stroke-width="1" fill="transparent" class="icon-border" />
                       <image href="sql.png" class="icon-img" x="-8" y="-8" width="20" height="20" />
                     </g>
-
+                
                     <g transform="translate(75, 120)" class="icon-wrapper">
                       <circle cx="1.7" cy="2.2" r="9.4" stroke="transparent" stroke-width="1" fill="transparent" class="icon-border" />
                       <image href="d3js.png" class="icon-img" x="-8" y="-8" width="20" height="20" />
                     </g>
                 
-                    <g  transform="translate(48, 110)" class="icon-wrapper">
+                    <g transform="translate(48, 110)" class="icon-wrapper">
                       <circle cx="2.2" cy="2.2" r="9.3" stroke="transparent" stroke-width="1" fill="transparent" class="icon-border" />
                       <image href="firebase.png" class="icon-img" x="-8" y="-8" width="20" height="20" />
                     </g>
                     
-                    <g  transform="translate(33, 86)" class="icon-wrapper">
+                    <g transform="translate(33, 86)" class="icon-wrapper">
                       <circle cx="2.5" cy="2.5" r="10" stroke="transparent" stroke-width="1" fill="transparent" class="icon-border" />
                       <image href="aws.png" class="icon-img" x="-8" y="-8" width="21" height="21" />
                     </g>
@@ -93,14 +122,12 @@
                       <image href="github.png" class="icon-img" x="-8" y="-8" width="21" height="21" />
                     </g>
                     
-                    <g  transform="translate(33, 62)" class="icon-wrapper">
+                    <g transform="translate(33, 62)" class="icon-wrapper">
                       <circle cx="1.9" cy="2" r="10" stroke="transparent" stroke-width="1" fill="transparent" class="icon-border" />
                       <image href="gitlab.png" class="icon-img" x="-8" y="-8" width="20" height="20" />
                     </g>
-
-                    
                   </g>
-                </svg> 
+                </svg>
               </div>
           </div>
           <div class="lap-titles">
@@ -518,7 +545,7 @@
               <div id="middle-text" class="circle-text" data-text="★ Bachelor's in CSE ★" data-radius="120"></div>
               <div class="center-label">
                 <div class="year">2022</div>
-                <div class="percent">70%</div>
+                <div class="percent">7.81%</div>
               </div>
             </div>
   
@@ -542,7 +569,7 @@
                 <div id="middle-text" class="circle-text" data-text="★ SSLC ★" data-radius="120">SSLC (10th)</div>
                 <div class="center-label">
                   <div class="year">2016</div>
-                  <div class="percent">73%</div>
+                  <div class="percent">75.4%</div>
                 </div>
               </div> 
           </div>
