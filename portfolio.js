@@ -1055,6 +1055,8 @@ function initializeStarsAnimation() {
 // ===============================================================
 // **MOUSE TRAIL ANIMATION
 // ===============================================================
+
+
 function initializeMouseTrail() {
   const body = document.body;
   
@@ -1181,15 +1183,13 @@ function initializeMouseTrail() {
       }
     }
     
-    /* Custom cursor for the entire page */
-    html, body {
-      cursor: none !important;
+    /* Only hide default cursor on the body */
+    body {
+      cursor: none;
     }
     
-    /* Make all elements use the custom cursor */
-    a, button, input, select, textarea, [role="button"] {
-      cursor: none !important;
-    }
+    /* Allow default cursor behavior on interactive elements */
+    /* We're removing this to preserve hover states */
   `;
   document.head.appendChild(style);
 
@@ -1200,6 +1200,9 @@ function initializeMouseTrail() {
   const cursor = document.createElement('div');
   cursor.className = 'neon-cursor';
   cursorContainer.appendChild(cursor);
+  
+  // Track when over interactive elements to adjust cursor appearance
+  let overInteractive = false;
 
   // Store last positions for velocity calculation
   let lastX = 0;
@@ -1258,6 +1261,19 @@ function initializeMouseTrail() {
   }
 
   body.addEventListener('mousemove', e => {
+    // Check if we're over an interactive element
+    const element = document.elementFromPoint(e.clientX, e.clientY);
+    overInteractive = element && (
+      element.tagName === 'A' || 
+      element.tagName === 'BUTTON' || 
+      element.tagName === 'INPUT' || 
+      element.tagName === 'SELECT' || 
+      element.tagName === 'TEXTAREA' ||
+      element.getAttribute('role') === 'button' ||
+      element.classList.contains('clickable') ||
+      getComputedStyle(element).cursor === 'pointer'
+    );
+    
     // Calculate velocity for dynamic trail effects
     velocityX = e.clientX - lastX;
     velocityY = e.clientY - lastY;
@@ -1266,6 +1282,15 @@ function initializeMouseTrail() {
     // Update cursor position
     cursor.style.left = `${e.clientX}px`;
     cursor.style.top = `${e.clientY}px`;
+    
+    // Modify cursor appearance when over interactive elements
+    if (overInteractive) {
+      cursor.style.transform = 'translate(-50%, -50%) scale(1.2)';
+      cursor.style.opacity = '0.7';
+    } else {
+      cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+      cursor.style.opacity = '1';
+    }
     
     // Dynamic cursor size based on speed
     const cursorSize = Math.min(24, 18 + speed * 0.2);
@@ -1365,7 +1390,14 @@ function initializeMouseTrail() {
   
   // Reset scale on mouse up
   document.addEventListener('mouseup', () => {
-    cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+    // Keep the hover state if we're over an interactive element
+    if (overInteractive) {
+      cursor.style.transform = 'translate(-50%, -50%) scale(1.2)';
+      cursor.style.opacity = '0.7';
+    } else {
+      cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+      cursor.style.opacity = '1';
+    }
   });
 
   // Clean up function
