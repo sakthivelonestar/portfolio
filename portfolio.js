@@ -1056,7 +1056,6 @@ function initializeStarsAnimation() {
 // **MOUSE TRAIL ANIMATION
 // ===============================================================
 
-
 function initializeMouseTrail() {
   const body = document.body;
   
@@ -1405,8 +1404,7 @@ function initializeMouseTrail() {
   };
 }
 
-// Initialize the enhanced mouse trail
-initializeEnhancedMouseTrail();
+
 
 
 
