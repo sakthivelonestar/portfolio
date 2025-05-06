@@ -1182,14 +1182,11 @@ function initializeMouseTrail() {
         transform: translate(-50%, -50%) translate(var(--dx), var(--dy));
       }
     }
-    
-    /* Only hide default cursor on the body */
-    body {
-      cursor: none;
+      @media (max-width: 768px) {
+      .cursor-container {
+          display:none;
+      }
     }
-    
-    /* Allow default cursor behavior on interactive elements */
-    /* We're removing this to preserve hover states */
   `;
   document.head.appendChild(style);
 

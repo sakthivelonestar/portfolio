@@ -1707,7 +1707,8 @@ MEDIA QUERIES - SEPARATED
     width: 100%;
     justify-content: center;
     align-items: center;
-    height: 100px;
+    height: 120px;
+    gap: 20px;
 }
 
 .point-wraper .left{
