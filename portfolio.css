@@ -224,7 +224,10 @@ html {
     border-radius: 8px;
     z-index: 3;
 }
-
+ .svg-background {
+      fill:transparent; /* Light mode background */
+      
+    }
 
 .theme-fill {
     fill: url(#sunGradient); /* Sun gradient for light mode */
