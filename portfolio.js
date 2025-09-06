@@ -63,16 +63,25 @@ document.addEventListener("DOMContentLoaded", function() {
       });
   });
   
-  // defalut dark mode
+  // defalut light mode
   const body = document.body;
   const icon = document.getElementById("darkIcon");
-  icon.classList.replace("fa-moon", "fa-sun");
-  icon.style.color = "orange";
-  body.classList.toggle("dark-mode");
+  icon.classList.replace("fa-sun", "fa-moon");
+  icon.style.color = "block"
 
-  radiobutton("stars");
+  // defalut dark mode
+  // const body = document.body;
+  // icon.style.color = "orange";
+  // icon.classList.replace("fa-moon", "fa-sun");
+  // body.classList.toggle("dark-mode");
+
+  radiobutton("bubbles");
   initializeMouseTrail();
-  startRepeatingTask()
+  initializeBubbleEffect();
+
+  // radiobutton("stars");
+  // initializeBubbleEffect();
+  // startRepeatingTask()
 });
 
 
@@ -306,6 +315,7 @@ function radiobutton(value) {
       // Default to constellation if no valid option provided
       fluid.style.display = 'block';
       initializeFluidSimulation();
+      
   }
 }
 
@@ -655,7 +665,7 @@ function initializeBubbleEffect() {
 }
 
 // ===============================================================
-// 4. FIRE EFFECT
+// 4. star conection blink
 // ===============================================================
 function initializeFireEffect() {
   tsParticles.load("fire-js", {
@@ -666,103 +676,198 @@ function initializeFireEffect() {
     background: {
       color: "transparent"
     },
-    fpsLimit: 60,
     particles: {
       number: {
-        value: 0 // We use emitters only
+        value: 30,
+        density: {
+          enable: true,
+          value_area: 800
+        }
       },
       color: {
-        value: ["#ff9900", "#ff5e00", "#ff1b00", "#ff3300"]
+        value: ["#ff69b4", "#ff1493", "#ff007f", "#ffb6c1", "#ffc0cb"]
       },
       shape: {
-        type: "circle"
+        type: ["circle", "star"],
+        options: {
+          star: {
+            sides: 5,
+            inset: 2
+          }
+        }
       },
       opacity: {
-        value: { min: 0.2, max: 0.6 },
+        value: 0.8,
+        random: true,
         animation: {
           enable: true,
-          speed: 1,
-          minimumValue: 0.1,
+          speed: 0.5,
+          minimumValue: 0.3,
           sync: false
         }
       },
       size: {
-        value: { min: 2, max: 7 },
+        value: 8,
+        random: {
+          enable: true,
+          minimumValue: 4
+        },
         animation: {
           enable: true,
           speed: 2,
-          minimumValue: 1,
+          minimumValue: 4,
+          sync: false
+        }
+      },
+      rotate: {
+        value: 0,
+        direction: "clockwise",
+        animation: {
+          enable: true,
+          speed: 5,
           sync: false
         }
       },
       move: {
         enable: true,
-        direction: "top",
-        speed: { min: 1, max: 2 },
+        speed: 2,
+        direction: "none",
         random: true,
         straight: false,
         outModes: {
-          default: "destroy"
-        }
-      },
-      life: {
-        count: 0, // ♾️ infinite life
-        duration: {
-          sync: false,
-          value: { min: 3, max: 5 }
+          default: "out"
+        },
+        attract: {
+          enable: true,
+          rotateX: 600,
+          rotateY: 1200
+        },
+        path: {
+          enable: true,
+          options: {
+            size: 20,
+            draw: false,
+            delay: 10
+          }
+        },
+        trail: {
+          enable: true,
+          length: 10,
+          fillColor: "#ff69b4"
         }
       }
     },
-    emitters: [
-      {
-        direction: "top",
-        rate: {
-          delay: 0.1,
-          quantity: 5
+    interactivity: {
+      detectsOn: "window",
+      events: {
+        onHover: {
+          enable: true,
+          mode: "grab"
         },
-        position: {
-          x: 50,
-          y: 100
+        onClick: {
+          enable: true,
+          mode: "push"
         },
-        size: {
-          width: 120,
-          height: 10
-        }
+        resize: true
       },
-      {
-        direction: "top",
-        rate: {
-          delay: 0.15,
-          quantity: 3
+      modes: {
+        grab: {
+          distance: 200,
+          links: {
+            opacity: 0.4
+          }
         },
-        position: {
-          x: 40,
-          y: 100
-        },
-        size: {
-          width: 80,
-          height: 10
-        }
-      },
-      {
-        direction: "top",
-        rate: {
-          delay: 0.12,
-          quantity: 4
-        },
-        position: {
-          x: 60,
-          y: 100
-        },
-        size: {
-          width: 80,
-          height: 10
+        push: {
+          quantity: 4,
+          particles: {
+            color: {
+              value: "#ff69b4"
+            },
+            size: {
+              value: 10
+            },
+            move: {
+              speed: 2,
+              trail: {
+                enable: true,
+                length: 5
+              }
+            }
+          }
         }
       }
-    ],
-    detectRetina: true
+    },
+    // emitters: [
+    //   // Center flower emitter
+    //   {
+    //     position: {
+    //       x: 50,
+    //       y: 50
+    //     },
+    //     rate: {
+    //       delay: 0.5,
+    //       quantity: 1
+    //     },
+    //     particles: {
+    //       color: {
+    //         value: ["#ff69b4", "#ff1493"]
+    //       },
+    //       size: {
+    //         value: 5
+    //       },
+    //       move: {
+    //         direction: "none",
+    //         speed: 1
+    //       }
+    //     }
+    //   },
+    //   // Falling petals
+    //   {
+    //     position: {
+    //       x: 0,
+    //       y: -5
+    //     },
+    //     rate: {
+    //       delay: 1,
+    //       quantity: 1
+    //     },
+    //     particles: {
+    //       shape: {
+    //         type: "flower"
+    //       },
+    //       color: {
+    //         value: "#ffc0cb"
+    //       },
+    //       move: {
+    //         direction: "bottom",
+    //         speed: 2
+    //       }
+    //     }
+    //   }
+    // ],
+    background: {
+      color: "transparent"
+    },
+    detectRetina: true,
+    themes: [
+      {
+        name: "flower",
+        default: {
+          value: true,
+          mode: "light"
+        },
+        options: {
+          particles: {
+            color: {
+              value: ["#ff69b4", "#ff1493", "#ff007f"]
+            }
+          }
+        }
+      }
+    ]
   });
 }
+
 
 // ===============================================================
 // 6. STARS ANIMATION - Enhanced with Sun/Moon
@@ -1281,10 +1386,10 @@ function initializeMouseTrail() {
     // Modify cursor appearance when over interactive elements
     if (overInteractive) {
       cursor.style.transform = 'translate(-50%, -50%) scale(1.2)';
-      cursor.style.opacity = '0.7';
+      cursor.style.opacity = '0.5';
     } else {
       cursor.style.transform = 'translate(-50%, -50%) scale(1)';
-      cursor.style.opacity = '1';
+      cursor.style.opacity = '0.5';
     }
     
     // Dynamic cursor size based on speed
