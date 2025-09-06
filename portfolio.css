@@ -1747,7 +1747,7 @@ MEDIA QUERIES - SEPARATED
 
 .contact-container {
   display: flex;
-  gap: 80px;
+  gap: 40px;
   justify-content: space-between;
   align-items: flex-start;
   max-width: 100%;
