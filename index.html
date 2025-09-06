@@ -12,6 +12,7 @@
     <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="icon" type="fav/svg" href="fav.svg"> 
     <script src="portfolio.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 </head>
 <body class="body">
 <!-- particles css style -->
@@ -185,8 +186,15 @@
                   </p>
                   <!-- <div class="social-downloadbutton-wrap"> -->
                     <p class="social-media">
-                      <a href="mailto:sakthivelidn@gmail.com"  target="_blank"><i class="fas fa-envelope"></i> sakthivelidn@gmail.com</a>
-                      <a href="https://www.linkedin.com/in/sakthi-vel-41634021a/"  target="_blank"> <i class="fab fa-linkedin"></i> LinkedIn</a>
+                      <a href="#contact" ><i class="fas fa-envelope"></i> sakthivelidn@gmail.com</a>
+                      <a href="https://www.linkedin.com/in/sakthi-vel-41634021a/"  target="_blank"> 
+                        <i class="fab fa-linkedin">
+                        </i> LinkedIn
+                      </a>
+                      <a href="https://github.com/sakthivelonestar" target="_blank">
+                      <i class="fab fa-github"></i> Sakthivel
+                     </a>
+                      
                     </p>
                     <a class="gmail-linkdin" href="Sakthivel_Resume.pdf" download="Sakthivel_Resume.pdf">
                       <button>
@@ -574,7 +582,69 @@
               </div> 
           </div>
         </div>
-  </div>
+
+          <!-- Add this before the closing </div> of content-wrap -->
+      <div class="contact" id="contact">
+        <h2 class="contact-title">Contact With Me</h2> <br>
+        <div class="contact-container">
+          <form id="contactForm" class="contact-form">
+            <div class="form-group">
+              <input type="text" id="name" name="name" required>
+              <label for="name">Name</label>
+            </div>
+            <div class="form-group">
+              <input type="email" id="email" name="email" required>
+              <label for="email">Email</label>
+            </div>
+            <div class="form-group">
+              <input type="text" id="subject" name="subject" required>
+              <label for="subject">Subject</label>
+            </div>
+            <div class="form-group">
+              <textarea type="text" id="message" name="message" required></textarea>
+              <label for="message">Message</label>
+            </div>
+            <button type="submit" class="submit-btn">
+              <span class="btn-text">Send Message</span>
+              <i class="fas fa-paper-plane"></i>
+            </button>
+          </form>
+        <div class="contact-info">
+           <div>
+                <h1 class="tech-title">Fullstack Developer</h1>
+            </div>
+            <div class="contact-details">
+                <div class="info-item">
+                    
+                    <a href="mailto:sakthivelidn@gmail.com"><i class="fas fa-envelope"></i> sakthivelidn@gmail.com</a>
+                </div>
+                <div class="info-item">
+                    <a href="tel:+919585657347"><i class="fas fa-phone"></i> +91 9585657347</a>
+                </div>
+                <div class="info-item">
+                    <a href="https://github.com/sakthivelonestar" target="_blank"><i class="fab fa-github"></i> github.com/sakthivelonestar</a>
+                </div>
+                <div class="info-item">
+                    <a href="https://www.linkedin.com/in/sakthi-vel-41634021a/" target="_blank"><i class="fab fa-linkedin"></i> linkedin.com/in/sakthi-vel</a>
+                </div>
+            </div>
+           
+        </div>
+        
+      </div>
+      <!-- error message -->
+      <div class="custom-alert" id="alertModal">
+        <div class="alert-content">
+          <div class="alert-icon">
+            <i class="fas fa-check-circle success-icon"></i>
+            <i class="fas fa-times-circle error-icon"></i>
+          </div>
+          <div class="alert-message"></div>
+          <button class="alert-close">OK</button>
+        </div>
+      </div>
+
+</div>
 </div>
 </body>
 </html>

@@ -1051,7 +1051,6 @@ function initializeStarsAnimation() {
   starsContainer.appendChild(celestialBody);
 }
  
-
 // ===============================================================
 // **MOUSE TRAIL ANIMATION
 // ===============================================================
@@ -1405,6 +1404,123 @@ function initializeMouseTrail() {
 }
 
 
+// contact form
 
+// Remove the duplicate contact form handlers and consolidate into one clean version
+document.addEventListener('DOMContentLoaded', function() {
+  // Remove all existing handlers first
+  const existingHandlers = document.querySelectorAll('[data-handler="contact"]');
+  existingHandlers.forEach(handler => handler.remove());
 
+  const contactForm = document.getElementById('contactForm');
+  if (!contactForm) return; // Guard clause if form doesn't exist
 
+  // Initialize EmailJS once
+  emailjs.init("4IsaU0jLyk7NQXfc8");
+
+ // filepath: d:\git_Hub\portfolio\portfolio.js
+// Replace the existing form submit handler with this:
+contactForm.addEventListener('submit', async function(e) {
+  e.preventDefault();
+    
+  const submitBtn = contactForm.querySelector('.submit-btn');
+  const btnText = submitBtn.querySelector('.btn-text');
+  const originalBtnText = btnText.textContent;
+  
+  try {
+    btnText.textContent = 'Sending...';
+    submitBtn.disabled = true;
+
+    await emailjs.sendForm(
+      'service_3nbe2df',
+      'template_zwjthza',
+      contactForm,
+      '4IsaU0jLyk7NQXfc8'
+    );
+    
+    showAlert('success', 'Message sent successfully! I will get back to you soon.');
+    contactForm.reset();
+  } catch (error) {
+    console.error('Error sending message:', error);
+    showAlert('error', 'Failed to send message. Please try again.');
+  } finally {
+    btnText.textContent = originalBtnText;
+    submitBtn.disabled = false;
+  }
+});
+
+// Add this function to handle the custom alert
+function showAlert(type, message) {
+  const alertModal = document.getElementById('alertModal');
+  const alertMessage = alertModal.querySelector('.alert-message');
+  const successIcon = alertModal.querySelector('.success-icon');
+  const errorIcon = alertModal.querySelector('.error-icon');
+  
+  // Set message and show correct icon
+  alertMessage.textContent = message;
+  successIcon.style.display = type === 'success' ? 'block' : 'none';
+  errorIcon.style.display = type === 'error' ? 'block' : 'none';
+  
+  // Show modal with animation
+  alertModal.style.display = 'flex';
+  
+  // Add shake animation for error
+  if (type === 'error') {
+    alertModal.querySelector('.alert-content').style.animation = 'shake 0.5s ease-in-out';
+  }
+  
+  // Handle close button
+  const closeBtn = alertModal.querySelector('.alert-close');
+  closeBtn.onclick = () => {
+    alertModal.style.display = 'none';
+  };
+  
+  // Close on background click
+  alertModal.onclick = (e) => {
+    if (e.target === alertModal) {
+      alertModal.style.display = 'none';
+    }
+  };
+  
+  // Close on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && alertModal.style.display === 'flex') {
+      alertModal.style.display = 'none';
+    }
+  });
+}
+
+  // Single handler for mailto links
+  document.querySelectorAll('a[href^="mailto:"]').forEach(link => {
+    // Remove existing handlers first
+    const clone = link.cloneNode(true);
+    link.parentNode.replaceChild(clone, link);
+    
+    clone.addEventListener('click', (e) => {
+      e.preventDefault();
+      const email = clone.getAttribute('href').replace('mailto:', '');
+      setTimeout(() => {
+        window.location.href = `mailto:${email}`;
+      }, 100);
+    });
+  });
+
+  // Single floating label effect handler
+  const formInputs = document.querySelectorAll('.form-group input, .form-group textarea');
+  formInputs.forEach(input => {
+    input.setAttribute('placeholder', ' ');
+    
+    const inputClone = input.cloneNode(true);
+    input.parentNode.replaceChild(inputClone, input);
+    
+    inputClone.addEventListener('focus', () => {
+      inputClone.parentElement.classList.add('focused');
+    });
+    
+    inputClone.addEventListener('blur', () => {
+      if (!inputClone.value) {
+        inputClone.parentElement.classList.remove('focused');
+      }
+    });
+  });
+});
