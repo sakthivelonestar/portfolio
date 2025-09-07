@@ -71,9 +71,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // defalut dark mode
   // const body = document.body;
-  // icon.style.color = "orange";
+  // const icon = document.getElementById("darkIcon");
   // icon.classList.replace("fa-moon", "fa-sun");
   // body.classList.toggle("dark-mode");
+  // icon.style.color = "orange";
+
 
   radiobutton("bubbles");
   initializeMouseTrail();
@@ -668,6 +670,7 @@ function initializeBubbleEffect() {
 // 4. star conection blink
 // ===============================================================
 function initializeFireEffect() {
+  const icon = document.getElementById("darkIcon");
   tsParticles.load("fire-js", {
     fullScreen: {
       enable: true,
@@ -685,7 +688,7 @@ function initializeFireEffect() {
         }
       },
       color: {
-        value: ["#ff69b4", "#ff1493", "#ff007f", "#ffb6c1", "#ffc0cb"]
+        value: ["#ff69b4", "#ff1493", "#ff007f", "#ffb6c1", "#cdc0ffff"]
       },
       shape: {
         type: ["circle", "star"],
@@ -753,8 +756,11 @@ function initializeFireEffect() {
         trail: {
           enable: true,
           length: 10,
-          fillColor: "#ff69b4"
+           fillColor: icon.classList.contains('fa-moon') 
+      ? "rgba(250, 203, 203, 1)" // Dark purple for dark mode
+      : "#3c0420ff"
         }
+        
       }
     },
     interactivity: {
@@ -781,7 +787,7 @@ function initializeFireEffect() {
           quantity: 4,
           particles: {
             color: {
-              value: "#ff69b4"
+              value: "#462c7cff"
             },
             size: {
               value: 10
@@ -797,54 +803,6 @@ function initializeFireEffect() {
         }
       }
     },
-    // emitters: [
-    //   // Center flower emitter
-    //   {
-    //     position: {
-    //       x: 50,
-    //       y: 50
-    //     },
-    //     rate: {
-    //       delay: 0.5,
-    //       quantity: 1
-    //     },
-    //     particles: {
-    //       color: {
-    //         value: ["#ff69b4", "#ff1493"]
-    //       },
-    //       size: {
-    //         value: 5
-    //       },
-    //       move: {
-    //         direction: "none",
-    //         speed: 1
-    //       }
-    //     }
-    //   },
-    //   // Falling petals
-    //   {
-    //     position: {
-    //       x: 0,
-    //       y: -5
-    //     },
-    //     rate: {
-    //       delay: 1,
-    //       quantity: 1
-    //     },
-    //     particles: {
-    //       shape: {
-    //         type: "flower"
-    //       },
-    //       color: {
-    //         value: "#ffc0cb"
-    //       },
-    //       move: {
-    //         direction: "bottom",
-    //         speed: 2
-    //       }
-    //     }
-    //   }
-    // ],
     background: {
       color: "transparent"
     },
@@ -870,7 +828,7 @@ function initializeFireEffect() {
 
 
 // ===============================================================
-// 6. STARS ANIMATION - Enhanced with Sun/Moon
+// 5. STARS ANIMATION - Enhanced with Sun/Moon
 // ===============================================================
 function initializeStarsAnimation() {
   const isDarkMode = document.body.classList.contains('dark-mode');
@@ -1165,14 +1123,14 @@ function initializeMouseTrail() {
   
   // More vibrant color palette
   const colors = [
-    '#ff00ff', // Magenta
-    '#00ffff', // Cyan
-    '#ffff00', // Yellow
-    '#ff0000', // Red
-    '#00ff00', // Green
-    '#0000ff', // Blue
-    '#ff7f00', // Orange
-    '#8a2be2'  // BlueViolet
+    '#ff00ffd0', // Magenta
+    '#00ffffb8', // Cyan
+    '#ffff00ae', // Yellow
+    '#ff0000c3', // Red
+    '#00ff00a5', // Green
+    '#0000ffb0', // Blue
+    '#ff8000c7', // Orange
+    '#892be2ae'  // BlueViolet
   ];
   
   let lastTime = 0;
