@@ -1270,6 +1270,34 @@ border: 1px solid  #a09bbe2d;
     color: var(--font-secondary-color);
     flex-wrap: wrap;
     width: 100%;
+
+    .atag {
+        display: inline-block;
+        padding: 10px 20px;
+        border-radius: 12px;
+        font-weight: 600;
+        text-decoration: none;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: #ffffff;
+        transition: all 0.3s ease;
+        letter-spacing: 1px;
+
+        &:hover {
+            background: linear-gradient(90deg, #007bff, #00bcd4);
+            color: #fff;
+            box-shadow: 0 0 15px rgba(0, 188, 212, 0.5);
+            transform: scale(1.05);
+        }
+
+        &:active {
+            transform: scale(0.98);
+            box-shadow: 0 0 10px rgba(0, 188, 212, 0.4);
+        }
+    }
+
 }
 
 .point-wraper .left{
