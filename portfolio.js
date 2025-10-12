@@ -1121,21 +1121,6 @@ function initializeStarsAnimation() {
 function initializeMouseTrail() {
   const body = document.body;
   
-  // More vibrant color palette
-  const colors = [
-    '#ff00ffd0', // Magenta
-    '#00ffffb8', // Cyan
-    '#ffff00ae', // Yellow
-    '#ff0000c3', // Red
-    '#00ff00a5', // Green
-    '#0000ffb0', // Blue
-    '#ff8000c7', // Orange
-    '#892be2ae'  // BlueViolet
-  ];
-  
-  let lastTime = 0;
-  const minInterval = 4; // Slightly faster trail creation
-  
   const style = document.createElement('style');
   style.textContent = `
     .cursor-container {
@@ -1148,104 +1133,88 @@ function initializeMouseTrail() {
       height: 100%;
     }
     
-    .neon-cursor {
+    .sparkle-cursor {
       position: absolute;
-      width: 24px;
-      height: 24px;
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
-      background-color: transparent;
+      background: #fbbf24;
       transform: translate(-50%, -50%);
-      transition: transform 0.08s ease-out;
       pointer-events: none;
-      filter: blur(0.5px);
-      z-index: 10000;
+      box-shadow: 0 0 20px rgba(251, 191, 36, 0.9);
     }
     
-    .neon-cursor::before {
+    .sparkle {
+      position: absolute;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      animation: sparkle-twinkle var(--duration) ease-out forwards;
+    }
+    
+    .sparkle::before,
+    .sparkle::after {
       content: '';
       position: absolute;
+      background: var(--sparkle-color);
+      box-shadow: 0 0 8px var(--sparkle-color);
+    }
+    
+    .sparkle::before {
+      width: var(--size);
+      height: 2px;
       top: 50%;
       left: 50%;
-      width: 14px;
-      height: 14px;
-      border-radius: 50%;
-      background-color: rgba(255, 255, 255, 0.9);
       transform: translate(-50%, -50%);
-      box-shadow: 0 0 15px 4px var(--cursor-color);
     }
     
-    .neon-cursor::after {
-      content: '';
-      position: absolute;
+    .sparkle::after {
+      width: 2px;
+      height: var(--size);
       top: 50%;
       left: 50%;
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background-color: #ffffff;
       transform: translate(-50%, -50%);
-      box-shadow: 0 0 5px 2px #ffffff;
     }
     
-    .neon-trail {
+    .sparkle-dot {
       position: absolute;
-      width: 12px;
-      height: 12px;
+      width: 3px;
+      height: 3px;
       border-radius: 50%;
-      background-color: rgba(255, 255, 255, 0.15);
-      border: 1px solid var(--cursor-color);
-      box-shadow: 0 0 10px 2px var(--cursor-color), inset 0 0 6px 1px var(--cursor-color);
-      transform: translate(-50%, -50%) scale(var(--scale, 1));
-      opacity: 0.6;
-      animation: trail-fade 0.8s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
-      filter: blur(0.5px);
-    }
-    
-    .neon-particle {
-      position: absolute;
-      width: 4px;
-      height: 4px;
-      border-radius: 50%;
-      background-color: var(--cursor-color);
+      background: var(--sparkle-color);
       transform: translate(-50%, -50%);
-      opacity: 0.8;
-      box-shadow: 0 0 8px 2px var(--cursor-color);
-      animation: particle-fade 1s ease-out forwards;
-      filter: blur(0.5px);
+      box-shadow: 0 0 6px var(--sparkle-color);
+      animation: dot-fade var(--duration) ease-out forwards;
     }
     
-    @keyframes trail-fade {
+    @keyframes sparkle-twinkle {
       0% {
-        opacity: 0.6;
-        width: 12px;
-        height: 12px;
-        transform: translate(-50%, -50%) scale(0.8);
+        opacity: 0;
+        transform: translate(-50%, -50%) rotate(0deg) scale(0);
       }
       50% {
-        opacity: 0.4;
-        transform: translate(-50%, -50%) scale(1.2) rotate(var(--rotate, 0deg));
+        opacity: 1;
+        transform: translate(-50%, -50%) rotate(180deg) scale(1);
       }
       100% {
         opacity: 0;
-        width: 20px;
-        height: 20px;
-        transform: translate(-50%, -50%) scale(1.5) rotate(var(--rotate, 0deg));
+        transform: translate(-50%, -50%) rotate(360deg) scale(0);
       }
     }
     
-    @keyframes particle-fade {
+    @keyframes dot-fade {
       0% {
-        opacity: 0.8;
+        opacity: 1;
         transform: translate(-50%, -50%) translate(0, 0);
       }
       100% {
         opacity: 0;
-        transform: translate(-50%, -50%) translate(var(--dx), var(--dy));
+        transform: translate(-50%, -50%) translate(var(--tx), var(--ty));
       }
     }
-      @media (max-width: 768px) {
+    
+    @media (max-width: 768px) {
       .cursor-container {
-          display:none;
+        display: none;
       }
     }
   `;
@@ -1256,215 +1225,109 @@ function initializeMouseTrail() {
   body.appendChild(cursorContainer);
 
   const cursor = document.createElement('div');
-  cursor.className = 'neon-cursor';
+  cursor.className = 'sparkle-cursor';
   cursorContainer.appendChild(cursor);
   
-  // Track when over interactive elements to adjust cursor appearance
-  let overInteractive = false;
-
-  // Store last positions for velocity calculation
-  let lastX = 0;
-  let lastY = 0;
-  let velocityX = 0;
-  let velocityY = 0;
-
-  // Color transitions
-  let currentColorIndex = 0;
-  let nextColorIndex = 1;
-  let colorTransition = 0;
+  const colors = ['#fbbf24', '#f59e0b', '#fef3c7', '#fde047', '#fb923c'];
   
-  // Smoother color transitions
-  const colorInterval = setInterval(() => {
-    nextColorIndex = (currentColorIndex + 1) % colors.length;
-    colorTransition = 0;
-  }, 1500);
-  
-  // Animation frame for color blending
-  function updateColors() {
-    colorTransition += 0.01;
-    if (colorTransition > 1) {
-      currentColorIndex = nextColorIndex;
-      nextColorIndex = (currentColorIndex + 1) % colors.length;
-      colorTransition = 0;
-    }
-    
-    // Linear interpolation between colors
-    // Convert hex to RGB to interpolate
-    const startColor = hexToRgb(colors[currentColorIndex]);
-    const endColor = hexToRgb(colors[nextColorIndex]);
-    
-    const r = Math.floor(startColor.r + colorTransition * (endColor.r - startColor.r));
-    const g = Math.floor(startColor.g + colorTransition * (endColor.g - startColor.g));
-    const b = Math.floor(startColor.b + colorTransition * (endColor.b - startColor.b));
-    
-    const blendedColor = `rgb(${r}, ${g}, ${b})`;
-    cursor.style.setProperty('--cursor-color', blendedColor);
-    
-    requestAnimationFrame(updateColors);
-  }
-  
-  updateColors();
-  
-  // Helper function to convert hex to RGB
-  function hexToRgb(hex) {
-    // Remove # if present
-    hex = hex.replace('#', '');
-    
-    // Parse the hex values
-    const r = parseInt(hex.substring(0, 2), 16);
-    const g = parseInt(hex.substring(2, 4), 16);
-    const b = parseInt(hex.substring(4, 6), 16);
-    
-    return { r, g, b };
-  }
+  let lastTime = 0;
+  const minInterval = 40;
 
   body.addEventListener('mousemove', e => {
-    // Check if we're over an interactive element
-    const element = document.elementFromPoint(e.clientX, e.clientY);
-    overInteractive = element && (
-      element.tagName === 'A' || 
-      element.tagName === 'BUTTON' || 
-      element.tagName === 'INPUT' || 
-      element.tagName === 'SELECT' || 
-      element.tagName === 'TEXTAREA' ||
-      element.getAttribute('role') === 'button' ||
-      element.classList.contains('clickable') ||
-      getComputedStyle(element).cursor === 'pointer'
-    );
-    
-    // Calculate velocity for dynamic trail effects
-    velocityX = e.clientX - lastX;
-    velocityY = e.clientY - lastY;
-    const speed = Math.sqrt(velocityX * velocityX + velocityY * velocityY);
-    
-    // Update cursor position
     cursor.style.left = `${e.clientX}px`;
     cursor.style.top = `${e.clientY}px`;
     
-    // Modify cursor appearance when over interactive elements
-    if (overInteractive) {
-      cursor.style.transform = 'translate(-50%, -50%) scale(1.2)';
-      cursor.style.opacity = '0.5';
-    } else {
-      cursor.style.transform = 'translate(-50%, -50%) scale(1)';
-      cursor.style.opacity = '0.5';
-    }
-    
-    // Dynamic cursor size based on speed
-    const cursorSize = Math.min(24, 18 + speed * 0.2);
-    cursor.style.width = `${cursorSize}px`;
-    cursor.style.height = `${cursorSize}px`;
-    
-    // Trail creation with timing control
     const currentTime = Date.now();
     if (currentTime - lastTime >= minInterval) {
       lastTime = currentTime;
       
-      // Create main trail element
-      const trail = document.createElement('div');
-      trail.className = 'neon-trail';
-      trail.style.left = `${e.clientX}px`;
-      trail.style.top = `${e.clientY}px`;
-      trail.style.setProperty('--cursor-color', cursor.style.getPropertyValue('--cursor-color'));
+      // Create star sparkle
+      const sparkle = document.createElement('div');
+      sparkle.className = 'sparkle';
+      sparkle.style.left = `${e.clientX}px`;
+      sparkle.style.top = `${e.clientY}px`;
       
-      // Random rotation for variety
-      const rotation = Math.random() * 180;
-      trail.style.setProperty('--rotate', `${rotation}deg`);
+      const color = colors[Math.floor(Math.random() * colors.length)];
+      const size = Math.random() * 8 + 6;
+      const duration = Math.random() * 0.4 + 0.5;
       
-      // Scale variation based on speed
-      const scale = 0.8 + Math.min(1, speed * 0.03);
-      trail.style.setProperty('--scale', scale);
+      sparkle.style.setProperty('--sparkle-color', color);
+      sparkle.style.setProperty('--size', `${size}px`);
+      sparkle.style.setProperty('--duration', `${duration}s`);
       
-      trail.addEventListener('animationend', () => trail.remove());
-      cursorContainer.appendChild(trail);
+      sparkle.addEventListener('animationend', () => sparkle.remove());
+      cursorContainer.appendChild(sparkle);
       
-      // Create additional particles on faster movements
-      if (speed > 5) {
-        const particleCount = Math.min(3, Math.floor(speed / 10));
-        
-        for (let i = 0; i < particleCount; i++) {
-          const particle = document.createElement('div');
-          particle.className = 'neon-particle';
-          particle.style.left = `${e.clientX}px`;
-          particle.style.top = `${e.clientY}px`;
-          particle.style.setProperty('--cursor-color', cursor.style.getPropertyValue('--cursor-color'));
+      // Add random sparkle dots
+      if (Math.random() > 0.6) {
+        for (let i = 0; i < 3; i++) {
+          const dot = document.createElement('div');
+          dot.className = 'sparkle-dot';
+          dot.style.left = `${e.clientX}px`;
+          dot.style.top = `${e.clientY}px`;
           
-          // Random movement direction
           const angle = Math.random() * Math.PI * 2;
-          const distance = Math.random() * 50 + 20;
-          const dx = Math.cos(angle) * distance;
-          const dy = Math.sin(angle) * distance;
+          const distance = Math.random() * 30 + 15;
+          const tx = Math.cos(angle) * distance;
+          const ty = Math.sin(angle) * distance;
           
-          particle.style.setProperty('--dx', `${dx}px`);
-          particle.style.setProperty('--dy', `${dy}px`);
+          dot.style.setProperty('--sparkle-color', color);
+          dot.style.setProperty('--tx', `${tx}px`);
+          dot.style.setProperty('--ty', `${ty}px`);
+          dot.style.setProperty('--duration', `${duration}s`);
           
-          particle.addEventListener('animationend', () => particle.remove());
-          cursorContainer.appendChild(particle);
+          dot.addEventListener('animationend', () => dot.remove());
+          cursorContainer.appendChild(dot);
         }
       }
     }
-    
-    // Update last position
-    lastX = e.clientX;
-    lastY = e.clientY;
   });
 
-  // Handle mouse leaving window
   document.addEventListener('mouseleave', () => {
     cursor.style.opacity = '0';
   });
   
-  // Handle mouse entering window
   document.addEventListener('mouseenter', () => {
     cursor.style.opacity = '1';
   });
 
-  // Handle click effect
   document.addEventListener('mousedown', (e) => {
-    // Pulse effect on click
-    cursor.style.transform = 'translate(-50%, -50%) scale(0.8)';
+    cursor.style.transform = 'translate(-50%, -50%) scale(0.7)';
     
-    // Create click particles
-    for (let i = 0; i < 8; i++) {
-      const particle = document.createElement('div');
-      particle.className = 'neon-particle';
-      particle.style.left = `${e.clientX}px`;
-      particle.style.top = `${e.clientY}px`;
-      particle.style.setProperty('--cursor-color', cursor.style.getPropertyValue('--cursor-color'));
+    // Create burst of sparkles on click
+    for (let i = 0; i < 12; i++) {
+      const sparkle = document.createElement('div');
+      sparkle.className = 'sparkle';
+      sparkle.style.left = `${e.clientX}px`;
+      sparkle.style.top = `${e.clientY}px`;
       
-      // Circular pattern
-      const angle = (i / 8) * Math.PI * 2;
+      const color = colors[Math.floor(Math.random() * colors.length)];
+      const size = Math.random() * 10 + 8;
+      
+      sparkle.style.setProperty('--sparkle-color', color);
+      sparkle.style.setProperty('--size', `${size}px`);
+      sparkle.style.setProperty('--duration', '0.6s');
+      
+      const angle = (i / 12) * Math.PI * 2;
       const distance = Math.random() * 40 + 20;
-      const dx = Math.cos(angle) * distance;
-      const dy = Math.sin(angle) * distance;
+      sparkle.style.left = `${e.clientX + Math.cos(angle) * distance}px`;
+      sparkle.style.top = `${e.clientY + Math.sin(angle) * distance}px`;
       
-      particle.style.setProperty('--dx', `${dx}px`);
-      particle.style.setProperty('--dy', `${dy}px`);
-      
-      particle.addEventListener('animationend', () => particle.remove());
-      cursorContainer.appendChild(particle);
+      sparkle.addEventListener('animationend', () => sparkle.remove());
+      cursorContainer.appendChild(sparkle);
     }
   });
   
-  // Reset scale on mouse up
   document.addEventListener('mouseup', () => {
-    // Keep the hover state if we're over an interactive element
-    if (overInteractive) {
-      cursor.style.transform = 'translate(-50%, -50%) scale(1.2)';
-      cursor.style.opacity = '0.7';
-    } else {
-      cursor.style.transform = 'translate(-50%, -50%) scale(1)';
-      cursor.style.opacity = '1';
-    }
+    cursor.style.transform = 'translate(-50%, -50%) scale(1)';
   });
 
-  // Clean up function
   return function cleanup() {
-    clearInterval(colorInterval);
     cursorContainer.remove();
-    document.head.removeChild(style);
+    style.remove();
   };
 }
+
 
 
 // contact form
