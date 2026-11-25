@@ -1450,3 +1450,19 @@ function showAlert(type, message) {
     });
   });
 });
+// Align timeline dots and dates with their entries (sections marked .auto-timeline)
+function alignAutoTimelines() {
+  document.querySelectorAll('.auto-timeline').forEach(section => {
+    const wrapper = section.querySelector('.timeline-wraper');
+    const items = section.querySelectorAll('.experience-list .point-wraper');
+    const dots = section.querySelectorAll('.dot-wraper .dot');
+    const years = section.querySelectorAll('.years-wraper .year');
+    items.forEach((item, i) => {
+      const center = item.offsetTop - wrapper.offsetTop + item.offsetHeight / 2;
+      if (dots[i]) dots[i].style.top = (center - dots[i].offsetHeight / 2) + 'px';
+      if (years[i]) years[i].style.top = (center - years[i].offsetHeight / 2) + 'px';
+    });
+  });
+}
+window.addEventListener('load', alignAutoTimelines);
+window.addEventListener('resize', alignAutoTimelines);

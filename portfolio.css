@@ -710,8 +710,14 @@ padding: 30px 20px 40px 20px;
 
 .skills-flow {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 20px;
+}
+
+@media (max-width: 1200px) {
+    .skills-flow {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 .skill-stage {
@@ -912,6 +918,16 @@ padding: 30px 20px 40px 20px;
     flex-wrap: wrap;
     gap: 20px;
     padding: 20px  0px 20px 0px;
+}
+
+.project-group-title {
+    width: 100%;
+    margin: 10px 12px 0px 12px;
+    padding-bottom: 6px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #4fc2f7;
+    border-bottom: 1px solid rgba(79, 194, 247, 0.3);
 }
 
 .project-card {
@@ -2255,3 +2271,31 @@ MEDIA QUERIES - SEPARATED
   
 
 
+
+/* timeline whose dots are positioned by alignAutoTimelines() in portfolio.js */
+.experience-section.auto-timeline {
+    position: relative;
+}
+.auto-timeline .dot-wraper .dot {
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* live link on project cards */
+.project-card .project-link {
+    margin-top: 12px;
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 14px;
+    text-decoration: none;
+    color: #4fc2f7;
+    border: 1px solid rgba(79, 194, 247, 0.5);
+    transition: all 0.3s ease;
+}
+
+.project-card .project-link:hover {
+    background: linear-gradient(90deg, #007bff, #00bcd4);
+    color: #fff;
+    box-shadow: 0 0 15px rgba(0, 188, 212, 0.5);
+}
