@@ -64,17 +64,17 @@ document.addEventListener("DOMContentLoaded", function() {
   });
   
   // defalut light mode
-  const body = document.body;
-  const icon = document.getElementById("darkIcon");
-  icon.classList.replace("fa-sun", "fa-moon");
-  icon.style.color = "block"
-
-  // defalut dark mode
   // const body = document.body;
   // const icon = document.getElementById("darkIcon");
-  // icon.classList.replace("fa-moon", "fa-sun");
-  // body.classList.toggle("dark-mode");
-  // icon.style.color = "orange";
+  // icon.classList.replace("fa-sun", "fa-moon");
+  // icon.style.color = "block"
+
+  // defalut dark mode
+  const body = document.body;
+  const icon = document.getElementById("darkIcon");
+  icon.classList.replace("fa-moon", "fa-sun");
+  body.classList.add("dark-mode");
+  icon.style.color = "orange";
 
 
   radiobutton("bubbles");
