@@ -67,6 +67,7 @@
     github: '<path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9a3.4 3.4 0 0 0-.9-2.6c3.1-.3 6.4-1.5 6.4-7A5.4 5.4 0 0 0 20 4.8 5 5 0 0 0 19.9 1S18.7.6 16 2.5a13.4 13.4 0 0 0-7 0C6.3.6 5.1 1 5.1 1A5 5 0 0 0 5 4.8a5.4 5.4 0 0 0-1.5 3.7c0 5.4 3.3 6.6 6.4 7a3.4 3.4 0 0 0-.9 2.6V22"/>',
     pin: '<path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/>',
     check: '<path d="M20 6 9 17l-5-5"/>',
+    lock: '<rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/>',
     x: '<path d="M18 6 6 18M6 6l12 12"/>',
     grid: '<rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/>',
     list: '<path d="M8 6h13M8 12h13M8 18h13M3.5 6h.01M3.5 12h.01M3.5 18h.01"/>',
@@ -89,7 +90,7 @@
   const PROJECTS = [
     {
       title: 'AI Healthcare Platform', org: 'VA Meditek', year: '2026', period: 'Feb 2026 – Oct 2026',
-      role: 'Full Stack Developer', status: 'Shipped', icon: 'pulse', hue: 172,
+      role: 'Full Stack Developer', icon: 'pulse', hue: 172,
       summary: 'Doctor consultations, lab tests, medicines and emergency help, with a multilingual AI care assistant, in one platform.',
       features: [
         'Built patient, doctor, lab-partner and admin portals on a single NestJS backend.',
@@ -103,7 +104,7 @@
     },
     {
       title: 'AI Speech-Practice App', org: 'VA Meditek', year: '2026', period: 'Nov 2026 – Present',
-      role: 'Full Stack Developer', status: 'Live', icon: 'wave', hue: 196,
+      role: 'Full Stack Developer', icon: 'wave', hue: 196,
       summary: 'AI-guided daily speech practice for adults and kids, with progress tracking and caregiver support.',
       features: [
         "Built daily practice sessions, reading exercises, progress tracking and a kids' area with stories and games.",
@@ -116,7 +117,7 @@
     },
     {
       title: 'Health Companion App', org: 'VA Meditek', year: '2026', period: 'Nov 2026 – Present',
-      role: 'Full Stack Developer', status: 'In progress', icon: 'heart', hue: 342,
+      role: 'Full Stack Developer', icon: 'heart', hue: 342,
       summary: 'A personal health companion with an AI assistant that answers questions from reviewed content.',
       features: [
         'Building onboarding, a home dashboard, daily logging, personal insights and plans.',
@@ -129,7 +130,7 @@
     },
     {
       title: 'Employee Engagement Platform', org: 'Finstein', year: '2023–24', period: 'Aug 2023 – Mar 2024',
-      role: 'Lead Developer', status: 'Shipped', icon: 'users', hue: 262,
+      role: 'Lead Developer', icon: 'users', hue: 262,
       summary: 'A multitenant platform for surveys, quizzes and real-time engagement across organisations.',
       features: [
         'Led development of a multitenant app that manages multiple organisations.',
@@ -141,7 +142,7 @@
     },
     {
       title: 'D3.js Finance Dashboard', org: 'Finstein', year: '2024–25', period: 'Jul 2024 – Feb 2025',
-      role: 'Lead Developer', status: 'Shipped', icon: 'chart', hue: 214,
+      role: 'Lead Developer', icon: 'chart', hue: 214,
       summary: 'Interactive financial visualisations with bulk Excel upload, data export and PDF reports.',
       features: [
         'Built interactive financial visualisations with D3.js.',
@@ -152,7 +153,7 @@
     },
     {
       title: 'Campaign Management System', org: 'Finstein · Hackathon', year: '2024', period: '2024',
-      role: 'Team Lead', status: 'Award winner', badge: '🏆 Achiever Award', icon: 'mail', hue: 38,
+      role: 'Team Lead', badge: '🏆 Achiever Award', icon: 'mail', hue: 38,
       summary: 'Category-based bulk email scheduling and tracking, built at a company hackathon by a team I led.',
       features: [
         'Led 4 junior developers to build the app during a company hackathon.',
@@ -164,7 +165,7 @@
     },
     {
       title: 'Event Management System', org: 'Finstein', year: '2023', period: 'May 2023 – Jul 2023',
-      role: 'Full Stack Developer', status: 'Shipped', icon: 'calendar', hue: 12,
+      role: 'Full Stack Developer', icon: 'calendar', hue: 12,
       summary: 'A multitenant event platform with an interactive calendar, ticketing and QR check-in.',
       features: [
         'Built a multitenant event platform with an Angular web app and an Angular-Ionic mobile app.',
@@ -176,7 +177,7 @@
     },
     {
       title: 'Document Management System', org: 'Finstein', year: '2022–23', period: 'Oct 2022 – Apr 2023',
-      role: 'Junior Developer', status: 'Shipped', icon: 'file', hue: 232,
+      role: 'Junior Developer', icon: 'file', hue: 232,
       summary: 'Secure document storage with encryption, fast search and role-based approvals.',
       features: [
         'Built secure document storage with encryption.',
@@ -187,7 +188,7 @@
     },
     {
       title: 'LogicPrograms Tutorial', org: 'Personal', year: '2025', period: 'Mar 2025 – Sep 2025',
-      role: 'Creator', status: 'Live', icon: 'code', hue: 140,
+      role: 'Creator', icon: 'code', hue: 140,
       summary: 'A full stack tutorial website built with Angular, with structured lessons starting from SQL.',
       features: [
         'Designed and built a tutorial site for full stack technologies with Angular 17.',
@@ -290,14 +291,13 @@
   };
   const projIcon = (p, flag = false) => {
     let f = '';
-    if (flag) {
-      if (p.status === 'Live') f = '<span class="pj-flag">LIVE</span>';
-      else if (p.status === 'In progress') f = '<span class="pj-flag wip">WIP</span>';
-      else if (p.badge) f = '<span class="pj-flag award">🏆</span>';
-    }
+    if (flag && p.link) f = '<span class="pj-flag">LIVE</span>';
     return `<span class="pj-ico" style="--h:${p.hue}">${svg(p.icon, '')}${f}</span>`;
   };
   const keyOf = (id) => id.split(':')[0];
+  // company work is shown by role only: no live demos or links are shared
+  const isCompany = (p) => !p.link;
+  const PRIVATE_NOTE = 'Company project. The demo and links stay private, so this shows my role and what I built.';
 
   function appOf(id) {
     const [k, arg] = id.split(':');
@@ -1388,7 +1388,8 @@
       const p = PROJECTS[st.sel];
       if (!p) { prev.innerHTML = `<div class="ex-empty">${svg('folder')}<p>Select a project to preview it.</p></div>`; return; }
       prev.innerHTML = `${projIcon(p)}<h3>${esc(p.title)}</h3><p class="sub">${esc(p.org)} · ${esc(p.period)}</p><p>${esc(p.summary)}</p>
-        <dl class="kv"><dt>Role</dt><dd>${esc(p.role)}</dd><dt>Status</dt><dd>${esc(p.badge || p.status)}</dd><dt>Year</dt><dd>${esc(p.year)}</dd></dl>
+        <dl class="kv"><dt>My role</dt><dd>${esc(p.role)}</dd><dt>Type</dt><dd>${isCompany(p) ? 'Company project' : 'Personal project'}</dd><dt>Demo</dt><dd>${p.link ? 'Live site' : 'Private'}</dd><dt>Year</dt><dd>${esc(p.year)}</dd></dl>
+        ${isCompany(p) ? `<p class="pv-note">${svg('lock')}<span>${PRIVATE_NOTE}</span></p>` : ''}
         <div class="chips">${p.stack.map((s) => `<span class="chip">${esc(s)}</span>`).join('')}</div>
         <div class="btns"><button class="btn btn-primary btn-sm" type="button" data-open="project:${st.sel}">${svg('arrow')}Open details</button>${p.link ? `<a class="btn btn-sm" href="${p.link.href}" target="_blank" rel="noopener">${svg('ext')}Live site</a>` : ''}</div>`;
     }
@@ -1433,11 +1434,12 @@
         <div>
           <p class="eyebrow">${esc(p.org)} · ${esc(p.year)}</p>
           <h2>${esc(p.title)}</h2>
-          <div class="pd-meta"><span>${esc(p.role)}</span><span>${esc(p.period)}</span><span class="badge${p.status === 'Live' || p.status === 'Shipped' ? ' is-live' : ''}">${esc(p.badge || p.status)}</span></div>
+          <div class="pd-meta"><span>${esc(p.role)}</span><span>${esc(p.period)}</span>${p.link ? '<span class="badge is-live">Live</span>' : `<span class="badge is-private">${svg('lock')}Private demo</span>`}${p.badge ? `<span class="badge">${esc(p.badge)}</span>` : ''}</div>
         </div>
       </div>
       <div class="pd-body">
         <p class="lead">${esc(p.summary)}</p>
+        ${isCompany(p) ? `<p class="pv-note">${svg('lock')}<span>${PRIVATE_NOTE}</span></p>` : ''}
         <section><h3 class="section-h">What I built</h3><ul class="checks">${p.features.map((f) => `<li>${svg('check')}<span>${esc(f)}</span></li>`).join('')}</ul></section>
         <section><h3 class="section-h">Tech stack</h3><div class="chips">${p.stack.map((s) => `<span class="chip">${esc(s)}</span>`).join('')}</div></section>
         <div class="wel-actions" style="margin-top:0">

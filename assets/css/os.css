@@ -470,6 +470,10 @@ html:not(.is-ready) .dock { transform: translate(-50%, 160%); }
 kbd { font-family: var(--font-mono); font-size: 11px; padding: 2px 7px; border-radius: 6px; background: var(--field); box-shadow: inset 0 -1px 0 var(--line-strong), inset 0 0 0 1px var(--line); color: var(--text); white-space: nowrap; }
 .link { color: var(--accent-text); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
 .badge { display: inline-flex; align-items: center; gap: 6px; font-size: 11.5px; font-weight: 600; padding: 3px 10px; border-radius: 999px; background: color-mix(in srgb, var(--accent) 16%, transparent); color: var(--accent-text); white-space: nowrap; }
+.badge .i { width: 12px; height: 12px; }
+.badge.is-private { background: var(--field); color: var(--text-2); box-shadow: inset 0 0 0 1px var(--line); }
+.pv-note { display: flex; gap: 9px; align-items: flex-start; font-size: 12.5px; line-height: 1.5; color: var(--text-2); padding: 10px 12px; border-radius: 10px; background: var(--field); box-shadow: inset 0 0 0 1px var(--line); }
+.pv-note .i { width: 15px; height: 15px; margin-top: 2px; color: var(--accent-text); }
 .badge.is-live::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: #4ade80; }
 .section-h { font-family: var(--font-mono); font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--text-3); margin-bottom: 10px; }
 .seg { display: inline-flex; padding: 2px; border-radius: 9px; background: var(--field); box-shadow: inset 0 0 0 1px var(--line); }
