@@ -967,7 +967,7 @@
       themeItem(),
       { label: 'Change Wallpaper', icon: 'image', run: cycleWallpaper },
       '-',
-      { label: 'Classic Website', icon: 'ext', run: () => window.open('classic.html', '_blank') },
+      { label: 'Classic Website', icon: 'ext', run: () => window.open('index.html', '_blank') },
       { label: 'Restart…', icon: 'power', run: restart },
     ],
     go: () => DESKTOP.filter((k) => k !== 'trash').map((k) => ({ label: APPS[k].label, icon: APPS[k].icon, run: () => openApp(k) })),
@@ -1105,7 +1105,7 @@
       { label: 'Open LinkedIn', g: 'linkedin', kw: 'linkedin social profile', run: () => window.open(PROFILE.linkedin, '_blank', 'noopener') },
       { label: 'Open GitHub', g: 'github', kw: 'github code repos', run: () => window.open(PROFILE.github, '_blank', 'noopener') },
       { label: 'Tile all windows', g: 'tile', kw: 'tile arrange windows layout', run: tileWindows },
-      { label: 'Classic website', g: 'ext', kw: 'classic old simple website', run: () => window.open('classic.html', '_blank') },
+      { label: 'Classic website', g: 'ext', kw: 'classic old simple website', run: () => window.open('index.html', '_blank') },
     ].map((a) => ({ ...a, group: 'Actions', icon: `<span class="act-ico">${svg(a.g)}</span>` }));
     return { apps, projects, skills, actions };
   }
@@ -1271,7 +1271,7 @@
           <div class="touch-only"><kbd>Tap</kbd> an app on the home screen to open it</div>
           <div class="touch-only"><kbd>‹ Home</kbd> takes you back</div>
         </div>
-        <p class="wel-foot">In a hurry? <button type="button" data-act="resume">Download my résumé</button> or open the <a class="link" href="classic.html">classic website</a>.</p>
+        <p class="wel-foot">In a hurry? <button type="button" data-act="resume">Download my résumé</button> or open the <a class="link" href="index.html">main website</a>.</p>
       </div>`;
   }
 

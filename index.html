@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sakthivel · Freelance Full Stack Developer, Chennai</title>
+  <meta name="description" content="Freelance full stack developer in Chennai, India. Websites, landing pages and web apps, deployed on Hostinger VPS, with database design and maintenance. Get a free quote.">
+  <meta name="author" content="Sakthivel">
+  <meta name="theme-color" content="#0b1414">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Sakthivel · Freelance Full Stack Developer">
+  <meta property="og:description" content="Websites, web apps, VPS deployment and database maintenance, from first idea to live on your server. Free quote.">
+  <meta property="og:url" content="https://sakthivelonestar.github.io/portfolio/">
+  <meta property="og:image" content="https://sakthivelonestar.github.io/portfolio/sakthivel.jpeg">
+  <link rel="icon" type="image/svg+xml" href="fav.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/site.css">
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Header -->
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a class="brand" href="#top" aria-label="Sakthivel, back to top">Sakthivel<span>.</span></a>
+
+      <nav class="nav" id="nav" aria-label="Main">
+        <a href="#services">Services</a>
+        <a href="#work">Work</a>
+        <a href="#process">Process</a>
+        <a href="#about">About</a>
+        <a href="#faq">FAQ</a>
+        <a class="btn btn-primary btn-sm nav-cta" href="#contact">Get a free quote</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="icon-btn" id="themeToggle" type="button" aria-label="Switch between dark and light theme">
+          <i class="fas fa-sun icon-sun" aria-hidden="true"></i>
+          <i class="fas fa-moon icon-moon" aria-hidden="true"></i>
+        </button>
+        <button class="icon-btn menu-toggle" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav">
+          <i class="fas fa-bars" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+    <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="badge"><span class="live-dot" aria-hidden="true"></span>Available for freelance projects</p>
+          <h1>Websites &amp; web apps that <em>grow your business.</em></h1>
+          <p class="lead">
+            I'm Sakthivel, a full stack developer from Chennai with 3.4+ years of experience.
+            I design, build and deploy fast websites, web apps and databases, from the first idea
+            to live on your own server.
+          </p>
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="#contact"><i class="fas fa-paper-plane" aria-hidden="true"></i> Get a free quote</a>
+            <a class="btn btn-ghost" href="#work">See my work <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+          </div>
+          <ul class="trust">
+            <li><i class="fas fa-check" aria-hidden="true"></i> Mobile-friendly</li>
+            <li><i class="fas fa-check" aria-hidden="true"></i> Deployed on your VPS</li>
+            <li><i class="fas fa-check" aria-hidden="true"></i> Talk directly to the developer</li>
+          </ul>
+        </div>
+
+        <div class="hero-visual">
+          <div class="hero-card">
+            <span class="hero-photo"><img src="assets/img/sakthivel.jpg" alt="Sakthivel, freelance full stack developer" width="1100" height="1357" fetchpriority="high"></span>
+            <div class="hero-card-foot">
+              <div>
+                <strong>Sakthivel</strong>
+                <span>Freelance Full Stack Developer · Chennai, India</span>
+              </div>
+              <a class="icon-btn" href="https://www.linkedin.com/in/sakthi-vel-41634021a/" target="_blank" rel="noopener" aria-label="LinkedIn profile"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+            </div>
+          </div>
+          <span class="float-badge fb1" aria-hidden="true"><img src="angular.png" alt="" width="22" height="22"> Angular</span>
+          <span class="float-badge fb2" aria-hidden="true"><img src="nestjs.png" alt="" width="22" height="22"> NestJS</span>
+          <span class="float-badge fb3" aria-hidden="true"><img src="sql.png" alt="" width="22" height="22"> PostgreSQL</span>
+          <span class="float-badge fb4" aria-hidden="true"><i class="fas fa-server"></i> Hostinger VPS</span>
+        </div>
+      </div>
+
+      <div class="container">
+        <dl class="stats">
+          <div><dt>Years building for the web</dt><dd><b data-count="3.4">3.4</b><span>+</span></dd></div>
+          <div><dt>Projects shipped</dt><dd><b data-count="10">10</b><span>+</span></dd></div>
+          <div><dt>Developers led &amp; mentored</dt><dd><b data-count="7">7</b></dd></div>
+          <div><dt>Hackathon Achiever Award</dt><dd><i class="fas fa-trophy" aria-hidden="true"></i></dd></div>
+        </dl>
+      </div>
+
+      <div class="marquee" aria-label="Technologies I work with">
+        <ul class="marquee-track">
+          <li><i class="fab fa-angular" aria-hidden="true"></i> Angular</li>
+          <li><i class="fas fa-feather" aria-hidden="true"></i> NestJS</li>
+          <li><i class="fab fa-node-js" aria-hidden="true"></i> Node.js</li>
+          <li><i class="fas fa-database" aria-hidden="true"></i> PostgreSQL</li>
+          <li><i class="fas fa-code" aria-hidden="true"></i> TypeScript</li>
+          <li><i class="fas fa-chart-pie" aria-hidden="true"></i> D3.js</li>
+          <li><i class="fas fa-mobile-screen" aria-hidden="true"></i> Ionic</li>
+          <li><i class="fas fa-fire" aria-hidden="true"></i> Firebase</li>
+          <li><i class="fas fa-server" aria-hidden="true"></i> Hostinger VPS</li>
+          <li><i class="fas fa-network-wired" aria-hidden="true"></i> Nginx</li>
+          <li><i class="fas fa-rotate" aria-hidden="true"></i> PM2</li>
+          <li><i class="fab fa-aws" aria-hidden="true"></i> AWS</li>
+          <li><i class="fab fa-google" aria-hidden="true"></i> Google Cloud</li>
+          <li><i class="fas fa-robot" aria-hidden="true"></i> AI APIs</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section class="section" id="services">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="eyebrow">Services</p>
+          <h2>What I can do for you</h2>
+          <p>One developer for the whole job: the website or app, the server it runs on, and the database behind it.</p>
+        </header>
+
+        <div class="cards cards-3">
+          <article class="card service reveal">
+            <span class="service-icon"><i class="fas fa-store" aria-hidden="true"></i></span>
+            <h3>Websites &amp; landing pages</h3>
+            <p>A professional online presence that brings you enquiries.</p>
+            <ul class="service-list">
+              <li>Business websites for shops, clinics, schools and companies</li>
+              <li>Landing pages for a product, offer or event</li>
+              <li>Portfolio and personal brand websites</li>
+              <li>Enquiry forms, WhatsApp, Google Maps and social links</li>
+            </ul>
+          </article>
+
+          <article class="card service reveal">
+            <span class="service-icon"><i class="fas fa-laptop-code" aria-hidden="true"></i></span>
+            <h3>Web applications</h3>
+            <p>Custom software that runs your business in the browser.</p>
+            <ul class="service-list">
+              <li>Admin panels and dashboards with charts and reports</li>
+              <li>Booking, appointment and ticketing systems</li>
+              <li>Customer and staff portals with login and user roles</li>
+              <li>Online payments, OTP sign-in, notifications and real-time updates</li>
+            </ul>
+          </article>
+
+          <article class="card service reveal">
+            <span class="service-icon"><i class="fas fa-server" aria-hidden="true"></i></span>
+            <h3>VPS deployment &amp; hosting</h3>
+            <p>Your site or app live on your own server, fast and secure.</p>
+            <ul class="service-list">
+              <li>Hostinger VPS (or any Linux VPS) setup from scratch</li>
+              <li>Domain, DNS and free SSL for HTTPS</li>
+              <li>Nginx reverse proxy and PM2 auto-restart for Node.js apps</li>
+              <li>Move your site from shared hosting to a VPS</li>
+            </ul>
+          </article>
+
+          <article class="card service reveal">
+            <span class="service-icon"><i class="fas fa-database" aria-hidden="true"></i></span>
+            <h3>Database design &amp; maintenance</h3>
+            <p>Keep your data organised, safe and fast.</p>
+            <ul class="service-list">
+              <li>PostgreSQL and SQL database design</li>
+              <li>Regular backups and restore</li>
+              <li>Speeding up slow queries with indexes and tuning</li>
+              <li>Data migration, Excel imports and clean-up</li>
+            </ul>
+          </article>
+
+          <article class="card service reveal">
+            <span class="service-icon"><i class="fas fa-wand-magic-sparkles" aria-hidden="true"></i></span>
+            <h3>Website redesign</h3>
+            <p>Give an old website a modern, fast, mobile-friendly look.</p>
+            <ul class="service-list">
+              <li>New modern design for your existing content</li>
+              <li>Works properly on phones and tablets</li>
+              <li>Faster loading and basic SEO fixes</li>
+            </ul>
+          </article>
+
+          <article class="card service reveal">
+            <span class="service-icon"><i class="fas fa-screwdriver-wrench" aria-hidden="true"></i></span>
+            <h3>Maintenance &amp; support</h3>
+            <p>Keep your website, app and server working after launch.</p>
+            <ul class="service-list">
+              <li>Content updates and new pages or features</li>
+              <li>Bug fixes and security updates</li>
+              <li>Server checks, logs and uptime issues</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="includes reveal">
+          <h3>Every project includes</h3>
+          <ul>
+            <li><i class="fas fa-mobile-screen" aria-hidden="true"></i> Responsive design for phone, tablet &amp; desktop</li>
+            <li><i class="fas fa-gauge-high" aria-hidden="true"></i> Fast loading speed</li>
+            <li><i class="fas fa-magnifying-glass" aria-hidden="true"></i> Basic SEO setup for Google</li>
+            <li><i class="fas fa-lock" aria-hidden="true"></i> HTTPS / SSL security</li>
+            <li><i class="fas fa-server" aria-hidden="true"></i> Deployment on your hosting or VPS</li>
+            <li><i class="fas fa-life-ring" aria-hidden="true"></i> Support after launch</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Work -->
+    <section class="section section-alt" id="work">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="eyebrow">Work</p>
+          <h2>Real projects, delivered</h2>
+          <p>Live websites you can open right now, plus web and mobile apps I've built and deployed for companies.</p>
+        </header>
+
+        <!-- Live websites -->
+        <div class="work-group">
+          <div class="work-group-head reveal">
+            <h3><i class="fas fa-globe" aria-hidden="true"></i> Live websites</h3>
+            <p>Open them right now</p>
+          </div>
+
+          <div class="work-grid work-grid-live">
+            <article class="card project project-live reveal">
+              <a class="preview" href="https://teal-twilight-9546d8.netlify.app/sql/data-types" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+                <span class="preview-bar"><i></i><i></i><i></i><span class="preview-url">teal-twilight-9546d8.netlify.app</span></span>
+                <span class="preview-body preview-lp"><span class="preview-mark"><i class="fas fa-code"></i>LogicPrograms</span></span>
+              </a>
+              <div class="project-body">
+                <p class="project-tag">Live website · 2025</p>
+                <h3>LogicPrograms Tutorial</h3>
+                <p>A full stack tutorial website with structured lessons, starting from SQL.</p>
+                <ul class="project-points">
+                  <li>Designed and built with Angular 17</li>
+                  <li>Wrote the lesson content and navigation</li>
+                  <li>Deployed on Netlify</li>
+                </ul>
+                <div class="project-foot">
+                  <ul class="chips"><li>Angular</li><li>TypeScript</li><li>CSS</li></ul>
+                  <a class="project-link" href="https://teal-twilight-9546d8.netlify.app/sql/data-types" target="_blank" rel="noopener">Visit <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+                </div>
+              </div>
+            </article>
+
+            <article class="card project project-live reveal">
+              <a class="preview" href="os.html" tabindex="-1" aria-hidden="true">
+                <span class="preview-bar"><i></i><i></i><i></i><span class="preview-url">sakthivelonestar.github.io/portfolio/os.html</span></span>
+                <span class="preview-body preview-os"><span class="preview-mark"><i class="fas fa-desktop"></i><span>Sakthi<em>OS</em></span></span></span>
+              </a>
+              <div class="project-body">
+                <p class="project-tag">Live website · 2026</p>
+                <h3>SakthiOS, Interactive Portfolio</h3>
+                <p>A portfolio you use like a desktop computer. It shows what's possible on the web.</p>
+                <ul class="project-points">
+                  <li>Draggable windows, dock and search</li>
+                  <li>Dark/light themes and wallpapers</li>
+                  <li>Built without any framework</li>
+                </ul>
+                <div class="project-foot">
+                  <ul class="chips"><li>JavaScript</li><li>CSS</li><li>Canvas</li></ul>
+                  <a class="project-link" href="os.html">Open <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                </div>
+              </div>
+            </article>
+
+            <article class="card project project-live reveal">
+              <a class="preview" href="classic.html" tabindex="-1" aria-hidden="true">
+                <span class="preview-bar"><i></i><i></i><i></i><span class="preview-url">sakthivelonestar.github.io/portfolio/classic.html</span></span>
+                <span class="preview-body preview-glass"><span class="preview-mark"><i class="fas fa-layer-group"></i>Glass UI</span></span>
+              </a>
+              <div class="project-body">
+                <p class="project-tag">Live website · 2025</p>
+                <h3>Glassmorphism Portfolio</h3>
+                <p>My first portfolio website, with a glass-style design and animated backgrounds.</p>
+                <ul class="project-points">
+                  <li>Glass-effect cards and dark/light mode</li>
+                  <li>5 switchable animated backgrounds</li>
+                  <li>Working contact form with EmailJS</li>
+                </ul>
+                <div class="project-foot">
+                  <ul class="chips"><li>HTML</li><li>CSS</li><li>JavaScript</li></ul>
+                  <a class="project-link" href="classic.html">Open <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <!-- Company projects -->
+        <div class="work-group">
+          <div class="work-group-head reveal">
+            <h3><i class="fas fa-briefcase" aria-hidden="true"></i> Web &amp; mobile apps for companies</h3>
+            <p>VA Meditek · Finstein</p>
+          </div>
+
+          <div class="work-grid work-grid-company">
+            <article class="card project project-featured reveal">
+              <div class="project-main">
+                <div class="project-head">
+                  <span class="project-icon"><i class="fas fa-heart-pulse" aria-hidden="true"></i></span>
+                  <p class="project-tag">VA Meditek · 2026</p>
+                  <span class="featured-badge"><i class="fas fa-star" aria-hidden="true"></i> Featured</span>
+                </div>
+                <h3>AI Healthcare Platform</h3>
+                <p>Doctor consultations, lab tests, medicines and emergency help in one platform, with a multilingual AI care assistant. I built it end to end, from the database to the live server.</p>
+                <ul class="chips"><li>Angular SSR</li><li>NestJS</li><li>PostgreSQL</li><li>Socket.IO</li><li>Python</li><li>AI</li><li>Linux VPS</li><li>Nginx</li><li>PM2</li></ul>
+              </div>
+              <ul class="project-points">
+                <li>Patient, doctor, lab-partner and admin portals on one NestJS backend</li>
+                <li>Video consultations and a real-time token queue</li>
+                <li>Multilingual AI care assistant with safety checks</li>
+                <li>Online payments, OTP sign-in and push notifications</li>
+                <li>Emergency help with nearby hospitals on maps and ambulance booking</li>
+                <li>Deployed on a Linux VPS with Nginx, HTTPS and PM2 auto-restart</li>
+              </ul>
+            </article>
+
+            <article class="card project reveal">
+              <div class="project-head">
+                <span class="project-icon"><i class="fas fa-microphone-lines" aria-hidden="true"></i></span>
+                <p class="project-tag">VA Meditek · 2026</p>
+              </div>
+              <h3>AI Speech-Practice App</h3>
+            <p>Daily AI-guided speech practice for adults and kids, with caregiver support.</p>
+            <ul class="project-points">
+              <li>Practice sessions, progress tracking and a kids' area</li>
+              <li>REST API with login, user roles and API docs</li>
+              <li>Live on a VPS behind Nginx with HTTPS</li>
+            </ul>
+            <ul class="chips"><li>Angular</li><li>Node.js</li><li>Express</li><li>PostgreSQL</li><li>AI</li><li>VPS</li></ul>
+          </article>
+
+            <article class="card project reveal">
+              <div class="project-head">
+                <span class="project-icon"><i class="fas fa-heart" aria-hidden="true"></i></span>
+                <p class="project-tag">VA Meditek · 2026</p>
+              </div>
+              <h3>Health Companion App</h3>
+            <p>A personal health app with an AI assistant that answers from reviewed content.</p>
+            <ul class="project-points">
+              <li>Onboarding, dashboard, daily logging and insights</li>
+              <li>OTP sign-in, consent management and admin consoles</li>
+              <li>API on its own subdomain with secure real-time chat</li>
+            </ul>
+            <ul class="chips"><li>Angular</li><li>Node.js</li><li>Express</li><li>PostgreSQL</li><li>AI</li><li>VPS</li></ul>
+          </article>
+
+            <article class="card project reveal">
+              <div class="project-head">
+                <span class="project-icon"><i class="fas fa-chart-line" aria-hidden="true"></i></span>
+                <p class="project-tag">Finstein · 2024–25</p>
+              </div>
+            <h3>Financial Data Dashboard</h3>
+            <p>Interactive charts that turn financial data into clear insights.</p>
+            <ul class="project-points">
+              <li>Interactive D3.js visualisations</li>
+              <li>Bulk upload of many Excel files, with skip and replace options</li>
+              <li>Excel export and PDF export of the whole dashboard</li>
+            </ul>
+            <ul class="chips"><li>Angular</li><li>D3.js</li><li>NestJS</li><li>PostgreSQL</li></ul>
+          </article>
+
+            <article class="card project reveal">
+              <div class="project-head">
+                <span class="project-icon"><i class="fas fa-users" aria-hidden="true"></i></span>
+                <p class="project-tag">Finstein · Lead developer</p>
+              </div>
+            <h3>Employee Engagement Platform</h3>
+            <p>Surveys, quizzes and real-time engagement for many organisations in one app.</p>
+            <ul class="project-points">
+              <li>Led development of the web app and mobile app</li>
+              <li>Real-time notifications and an analytics dashboard</li>
+              <li>Admin and super-admin roles for each organisation</li>
+            </ul>
+            <ul class="chips"><li>Angular</li><li>Ionic</li><li>NestJS</li><li>SQL</li></ul>
+          </article>
+
+            <article class="card project reveal">
+              <div class="project-head">
+                <span class="project-icon"><i class="fas fa-envelopes-bulk" aria-hidden="true"></i></span>
+                <p class="project-tag">Finstein · Hackathon</p>
+              </div>
+            <h3>Campaign Management System</h3>
+            <p>Scheduled bulk email by category, with delivery tracking.</p>
+            <ul class="project-points">
+              <li>Led a team of 4 developers</li>
+              <li>Targeting by company, colleagues and custom groups</li>
+              <li>Won the Achiever Award</li>
+            </ul>
+            <ul class="chips"><li>Angular</li><li>NestJS</li><li>SQL</li></ul>
+          </article>
+
+            <article class="card project reveal">
+              <div class="project-head">
+                <span class="project-icon"><i class="fas fa-calendar-days" aria-hidden="true"></i></span>
+                <p class="project-tag">Finstein · 2023</p>
+              </div>
+            <h3>Event Management System</h3>
+            <p>Events for many organisations, with ticketing and QR check-in.</p>
+            <ul class="project-points">
+              <li>Interactive event calendar with filters</li>
+              <li>Tickets, QR scanning and real-time alerts</li>
+              <li>Web app plus mobile app, with event analytics</li>
+            </ul>
+            <ul class="chips"><li>Angular</li><li>Ionic</li><li>NestJS</li><li>SQL</li></ul>
+          </article>
+
+            <article class="card project reveal">
+              <div class="project-head">
+                <span class="project-icon"><i class="fas fa-folder-open" aria-hidden="true"></i></span>
+                <p class="project-tag">Finstein · 2022–23</p>
+              </div>
+            <h3>Document Management System</h3>
+            <p>Secure document storage for teams.</p>
+            <ul class="project-points">
+              <li>Encrypted file storage</li>
+              <li>Fast search across documents</li>
+              <li>Role-based permissions and approvals</li>
+            </ul>
+            <ul class="chips"><li>Nuxt</li><li>NestJS</li><li>SQL</li><li>Firebase</li></ul>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Process -->
+    <section class="section" id="process">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="eyebrow">Process</p>
+          <h2>How we'll work together</h2>
+          <p>Simple, clear steps, and you see progress at every stage.</p>
+        </header>
+
+        <ol class="steps">
+          <li class="reveal">
+            <span class="step-num">01</span>
+            <h3>Discuss</h3>
+            <p>Tell me about your business, your users and what you need built.</p>
+          </li>
+          <li class="reveal">
+            <span class="step-num">02</span>
+            <h3>Plan &amp; quote</h3>
+            <p>I share a clear quote, timeline and plan. No surprises later.</p>
+          </li>
+          <li class="reveal">
+            <span class="step-num">03</span>
+            <h3>Design &amp; build</h3>
+            <p>I build it and share previews so you can give feedback along the way.</p>
+          </li>
+          <li class="reveal">
+            <span class="step-num">04</span>
+            <h3>Deploy</h3>
+            <p>It goes live on your domain, hosting or VPS, secured with HTTPS and tested on every device.</p>
+          </li>
+          <li class="reveal">
+            <span class="step-num">05</span>
+            <h3>Support</h3>
+            <p>Need a change, a fix or a server check later? I'm a message away.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section class="section section-alt" id="about">
+      <div class="container about-grid">
+        <div class="about-copy reveal">
+          <p class="eyebrow">About me</p>
+          <h2>One developer, from design to server</h2>
+          <p>
+            I've spent 3.4+ years building real products for companies, from healthcare platforms used by
+            doctors and patients to finance dashboards and event apps. I build the frontend, the backend and
+            the database, deploy the apps to Linux servers myself, and keep them running.
+          </p>
+          <p>
+            As a freelancer, you work directly with me. No agency, no middlemen. I'll keep you updated,
+            explain things in plain language and deliver something you're proud to share.
+          </p>
+          <div class="about-links">
+            <a class="btn btn-ghost btn-sm" href="sakthivel_fullstackdeveloper.pdf" download="sakthivel_fullstackdeveloper.pdf"><i class="fas fa-download" aria-hidden="true"></i> Download résumé</a>
+            <a class="btn btn-ghost btn-sm" href="https://github.com/sakthivelonestar?tab=repositories" target="_blank" rel="noopener"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a>
+          </div>
+
+          <div class="why">
+            <h3>Why work with me</h3>
+            <ul class="why-grid">
+              <li>
+                <span class="why-icon"><i class="fas fa-layer-group" aria-hidden="true"></i></span>
+                <strong>End to end</strong>
+                <span>Design, code, database and server, all handled by one person.</span>
+              </li>
+              <li>
+                <span class="why-icon"><i class="fas fa-comments" aria-hidden="true"></i></span>
+                <strong>Direct communication</strong>
+                <span>Talk to the person writing your code, in plain language.</span>
+              </li>
+              <li>
+                <span class="why-icon"><i class="fas fa-bolt" aria-hidden="true"></i></span>
+                <strong>Fast delivery</strong>
+                <span>Landing pages in about a day, business websites in about 3 days.</span>
+              </li>
+              <li>
+                <span class="why-icon"><i class="fas fa-shield-halved" aria-hidden="true"></i></span>
+                <strong>Reliable after launch</strong>
+                <span>HTTPS, backups and auto-restart, plus support when you need it.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="about-side reveal">
+          <h3>Experience</h3>
+          <ul class="timeline">
+            <li>
+              <span class="tl-date">Feb 2026 – Present</span>
+              <strong>Full Stack Developer · VA Meditek</strong>
+              <p>Three AI-powered healthcare apps, from database design to VPS deployment.</p>
+            </li>
+            <li>
+              <span class="tl-date">Mar 2025 – Sep 2025</span>
+              <strong>Personal projects · Independent</strong>
+              <p>LogicPrograms tutorial site, FDNA finance dashboard (Angular, NestJS, PostgreSQL, D3.js) and my first portfolio.</p>
+            </li>
+            <li>
+              <span class="tl-date">Jul 2022 – Mar 2025</span>
+              <strong>Full Stack Developer → Lead · Finstein, Chennai</strong>
+              <p>Dashboards, engagement, event and document platforms. Led the engagement platform and finance dashboard.</p>
+            </li>
+          </ul>
+
+          <h3>Education &amp; awards</h3>
+          <ul class="facts">
+            <li><i class="fas fa-trophy" aria-hidden="true"></i> Hackathon Achiever Award, Finstein (2024)</li>
+            <li><i class="fas fa-certificate" aria-hidden="true"></i> MEAN Stack Development certificate, Livewire (2022)</li>
+            <li><i class="fas fa-graduation-cap" aria-hidden="true"></i> B.E. Computer Science, Narasu's Sarathy Institute (2022)</li>
+          </ul>
+
+          <h3>Skills</h3>
+          <dl class="skill-groups">
+            <div><dt>Frontend</dt><dd>HTML, CSS, JavaScript, TypeScript, Angular, Ionic, D3.js</dd></div>
+            <div><dt>Backend</dt><dd>Node.js, NestJS, Express, REST APIs, Socket.IO</dd></div>
+            <div><dt>Database</dt><dd>PostgreSQL, SQL, TypeORM, Firebase</dd></div>
+            <div><dt>Deployment</dt><dd>Hostinger VPS, Linux, Nginx, PM2, SSL, Domains &amp; DNS</dd></div>
+            <div><dt>Cloud &amp; AI</dt><dd>AWS, Google Cloud, OpenAI, Claude, Gemini APIs</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" id="faq">
+      <div class="container faq-grid">
+        <header class="faq-head reveal">
+          <p class="eyebrow">FAQ</p>
+          <h2>Common questions</h2>
+          <p>Can't find your answer here? Send me a message and I'll reply personally.</p>
+          <a class="btn btn-ghost btn-sm" href="#contact"><i class="fas fa-comments" aria-hidden="true"></i> Ask a question</a>
+        </header>
+
+        <div class="faq reveal">
+          <details>
+            <summary>How much does a project cost?</summary>
+            <p>Every project is different. It depends on the pages, features and hosting you need. Tell me what you need and I'll send a free quote with no obligation.</p>
+          </details>
+          <details>
+            <summary>How long does it take?</summary>
+            <p>A landing page usually takes about 1 day, and a business website about 3 days. Web apps depend on the features, so you'll get a clear timeline with the quote.</p>
+          </details>
+          <details>
+            <summary>Can you host my website or app on a VPS?</summary>
+            <p>Yes. I set up Hostinger VPS or any Linux VPS: the server, domain, DNS and HTTPS. Then I deploy your site or app so it restarts automatically if anything goes wrong.</p>
+          </details>
+          <details>
+            <summary>I already have a database. Can you maintain it?</summary>
+            <p>Yes. I can set up backups, fix slow queries, clean or migrate data, and make changes to the database structure safely.</p>
+          </details>
+          <details>
+            <summary>Can I ask for changes after launch?</summary>
+            <p>Of course. Updates, fixes and new features can be handled whenever you need them.</p>
+          </details>
+          <details>
+            <summary>Do you work with clients outside Chennai?</summary>
+            <p>Yes. I work remotely with clients anywhere, over email, calls and video meetings.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section section-alt" id="contact">
+      <div class="container contact-grid">
+        <div class="contact-copy reveal">
+          <p class="eyebrow">Contact</p>
+          <h2>Let's build your project</h2>
+          <p>Share a few details and I'll get back to you with a free quote. No commitment needed.</p>
+
+          <ul class="contact-list">
+            <li><a href="mailto:sakthivelidn@gmail.com"><i class="fas fa-envelope" aria-hidden="true"></i> sakthivelidn@gmail.com</a></li>
+            <li><a href="tel:+916374857173"><i class="fas fa-phone" aria-hidden="true"></i> +91 63748 57173</a></li>
+            <li><a href="https://www.linkedin.com/in/sakthi-vel-41634021a/" target="_blank" rel="noopener"><i class="fab fa-linkedin-in" aria-hidden="true"></i> linkedin.com/in/sakthi-vel</a></li>
+          </ul>
+        </div>
+
+        <form class="card contact-form reveal" id="contactForm" novalidate>
+          <div class="field-row">
+            <label class="field">
+              <span>Your name</span>
+              <input type="text" name="name" autocomplete="name" required>
+            </label>
+            <label class="field">
+              <span>Email</span>
+              <input type="email" name="email" autocomplete="email" required>
+            </label>
+          </div>
+          <div class="field-row">
+            <label class="field">
+              <span>What do you need?</span>
+              <select name="subject" required>
+                <option value="" disabled selected>Choose one</option>
+                <option>Business website</option>
+                <option>Landing page</option>
+                <option>Web application</option>
+                <option>VPS deployment / hosting setup</option>
+                <option>Database design / maintenance</option>
+                <option>Website redesign</option>
+                <option>Maintenance / support</option>
+                <option>Something else</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>Budget <em>(optional)</em></span>
+              <select name="budget">
+                <option value="Not sure yet" selected>Not sure yet</option>
+                <option>Under ₹10,000</option>
+                <option>₹10,000 – ₹25,000</option>
+                <option>₹25,000 – ₹50,000</option>
+                <option>₹50,000 – ₹1,00,000</option>
+                <option>₹1,00,000+</option>
+              </select>
+            </label>
+          </div>
+          <label class="field">
+            <span>Tell me about your project</span>
+            <textarea name="message" rows="5" placeholder="Your business, what you need built, current hosting or database, any deadline…" required></textarea>
+          </label>
+          <button class="btn btn-primary btn-block" type="submit">
+            <span class="btn-label">Send enquiry</span> <i class="fas fa-paper-plane" aria-hidden="true"></i>
+          </button>
+          <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year">2026</span> Sakthivel · Freelance Full Stack Developer, Chennai</p>
+      <p><a href="os.html">Try SakthiOS, the interactive desktop version <i class="fas fa-arrow-right" aria-hidden="true"></i></a></p>
+    </div>
+  </footer>
+
+  <a class="to-top" id="toTop" href="#top" aria-label="Back to top"><i class="fas fa-arrow-up" aria-hidden="true"></i></a>
+
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3.11.0/dist/email.min.js" defer></script>
+  <script src="assets/js/site.js" defer></script>
+</body>
+</html>
