@@ -1,807 +1,170 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark" data-wallpaper="aurora">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Full Stack Developer Portfolio</title>
-    <link rel="stylesheet" href="portfolio.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
-    <link rel="icon" type="fav/svg" href="fav.svg"> 
-    <script src="portfolio.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Sakthivel · Full Stack Developer · SakthiOS</title>
+  <meta name="description" content="Sakthivel is a Full Stack Developer from Chennai, India with 3.4+ years of experience building AI-powered web and mobile apps with Angular, NestJS, Express and PostgreSQL. Explore the portfolio as a tiny operating system.">
+  <meta name="author" content="Sakthivel">
+  <meta name="theme-color" content="#031c1b">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Sakthivel · Full Stack Developer">
+  <meta property="og:description" content="SakthiOS: a portfolio you can use like a desktop. Angular, NestJS, PostgreSQL and AI for healthcare.">
+  <meta property="og:url" content="https://sakthivelonestar.github.io/portfolio/">
+  <link rel="icon" type="image/svg+xml" href="fav.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/os.css">
+  <script>
+    (function () {
+      var d = document.documentElement;
+      try {
+        var t = localStorage.getItem('theme');
+        var w = localStorage.getItem('sos-wallpaper');
+        var a = localStorage.getItem('sos-accent');
+        if (t === 'light' || t === 'dark') d.setAttribute('data-theme', t);
+        if (w === 'aurora' || w === 'midnight' || w === 'sunrise') d.setAttribute('data-wallpaper', w);
+        if (a === 'rose' || a === 'amber' || a === 'sky') d.setAttribute('data-accent', a);
+        if (localStorage.getItem('sos-reduce') === '1') d.classList.add('reduce-motion');
+      } catch (e) {}
+      d.classList.add('js');
+    })();
+  </script>
 </head>
-<body class="body dark-mode">
-<!-- particles css style -->
-<div id="fluid-js"></div>
-<div id="floating-js"></div>
-<div id="bubbles-js"></div>
-<div id="fire-js"></div>
-<div id="stars-js"></div>
+<body>
+  <h1 class="sr-only">Sakthivel, Full Stack Developer from Chennai, India</h1>
+  <noscript>
+    <div class="noscript">
+      <p>SakthiOS needs JavaScript to run.<br>Here is the <a href="classic.html">classic website</a> instead.</p>
+    </div>
+  </noscript>
 
-<div class="overall-wraper">
-  <!-- header section -->
-  <div class="header">
-          <div class="logo">
-              <div class="icon" onclick="showModal()">
-                <svg class="svgModal" viewBox="-15 -15 180 180" xmlns="http://www.w3.org/2000/svg">
-                  <!-- Background Rectangle -->
-                  <rect x="-15" y="-15" width="180" height="180" class="svg-background" /> 
-                  <defs>
-                    <linearGradient id="chromeStroke" x1="0" y1="0" x2="1" y2="1">
-                      <stop offset="0%" stop-color="#DB4437"/>
-                      <stop offset="33%" stop-color="#F4B400"/>
-                      <stop offset="66%" stop-color="#0F9D58"/>
-                      <stop offset="100%" stop-color="#4285F4"/>
-                    </linearGradient>
-                    
-                    <!-- Sun gradient -->
-                    <radialGradient id="sunGradient" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
-                      <stop offset="0%" stop-color="#FFFFCC" />
-                      <stop offset="70%" stop-color="#FFD700" />
-                      <stop offset="100%" stop-color="#FF8C00" />
-                    </radialGradient>
-                    
-                    <!-- Moon gradient -->
-                    <radialGradient id="moonGradient" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
-                      <stop offset="0%" stop-color="#F0F8FF" />
-                      <stop offset="70%" stop-color="#B0C4DE" />
-                      <stop offset="100%" stop-color="#4A5D7E" />
-                    </radialGradient>
-                    
-                    <!-- Glow filter for sun/moon with enhanced glow -->
-                    <filter id="elementGlow" x="-40%" y="-40%" width="180%" height="180%">
-                      <feGaussianBlur stdDeviation="5" result="blur" />
-                      <feFlood flood-color="#FFA500" flood-opacity="0.8" result="sunGlow" class="sun-glow" />
-                      <feFlood flood-color="#6495ED" flood-opacity="0.7" result="moonGlow" class="moon-glow" />
-                      <feComposite in="sunGlow" in2="blur" operator="in" result="sunColoredBlur" class="light-mode-element" />
-                      <feComposite in="moonGlow" in2="blur" operator="in" result="moonColoredBlur" class="dark-mode-element" />
-                      <feBlend in="SourceGraphic" in2="sunColoredBlur" mode="normal" class="light-mode-element" />
-                      <feBlend in="SourceGraphic" in2="moonColoredBlur" mode="normal" class="dark-mode-element" />
-                    </filter>
-                  </defs>
-                
-                  <circle cx="75" cy="75" r="72" fill="none" stroke="url(#chromeStroke)" stroke-width="20" stroke-linecap="round">
-                    <animateTransform attributeName="transform" type="rotate" from="0 75 75" to="360 75 75" dur="5s" repeatCount="indefinite"/>
-                  </circle>
-                  
-                  <circle cx="75" cy="75" r="57" fill="url(#sunGradient)" class="theme-fill" filter="url(#elementGlow)">
-                    <animate attributeName="r" values="57;58;57;59;57" dur="5s" repeatCount="indefinite" />
-                  </circle>
-                
-                  <text x="75" y="75" text-anchor="middle" dominant-baseline="middle" font-family="monospace" font-size="24" fill="#61DAFB" font-weight="bold">
-                    &lt;/&gt;
-                  </text>
-                
-                  <!-- Updated icon group with improved styles -->
-                  <g id="icons" transform="translate(-2, -2)">
-                    <g transform="translate(75, 30)" class="icon-wrapper">
-                      <circle cx="1.9" cy="2" r="9.5" stroke="transparent" stroke-width="1" fill="transparent" class="icon-border" />
-                      <image href="angular.png" class="icon-img" x="-8" y="-8" width="20" height="20" />
-                    </g>
-                  
-                    <g transform="translate(102, 41)" class="icon-wrapper">
-                      <circle cx="1.9" cy="2" r="10" stroke="transparent" stroke-width="1" fill="transparent" class="icon-border" />
-                      <image href="nodejs.png" class="icon-img" x="-8" y="-8" width="20" height="20" />
-                    </g>
-                    
-                    <g transform="translate(117, 62)" class="icon-wrapper">
-                      <circle cx="1.9" cy="2" r="10" stroke="transparent" stroke-width="1" fill="transparent" class="icon-border" />
-                      <image href="nestjs.png" class="icon-img" x="-8" y="-8" width="20" height="20" />
-                    </g>
-                
-                    <g transform="translate(117, 86)" class="icon-wrapper">
-                      <circle cx="1.7" cy="2.2" r="9.4" stroke="transparent" stroke-width="1" fill="transparent" class="icon-border" />
-                      <image href="js.png" class="icon-img" x="-8" y="-8" width="20" height="20" />
-                    </g>
-                
-                    <g transform="translate(102, 109)" class="icon-wrapper">
-                      <circle cx="2" cy="2" r="9.5" stroke="transparent" stroke-width="1" fill="transparent" class="icon-border" />
-                      <image href="sql.png" class="icon-img" x="-8" y="-8" width="20" height="20" />
-                    </g>
-                
-                    <g transform="translate(75, 120)" class="icon-wrapper">
-                      <circle cx="1.7" cy="2.2" r="9.4" stroke="transparent" stroke-width="1" fill="transparent" class="icon-border" />
-                      <image href="d3js.png" class="icon-img" x="-8" y="-8" width="20" height="20" />
-                    </g>
-                
-                    <g transform="translate(48, 110)" class="icon-wrapper">
-                      <circle cx="2.2" cy="2.2" r="9.3" stroke="transparent" stroke-width="1" fill="transparent" class="icon-border" />
-                      <image href="firebase.png" class="icon-img" x="-8" y="-8" width="20" height="20" />
-                    </g>
-                    
-                    <g transform="translate(33, 86)" class="icon-wrapper">
-                      <circle cx="2.5" cy="2.5" r="10" stroke="transparent" stroke-width="1" fill="transparent" class="icon-border" />
-                      <image href="aws.png" class="icon-img" x="-8" y="-8" width="21" height="21" />
-                    </g>
-                    
-                    <g transform="translate(48, 41)" class="icon-wrapper">
-                      <circle cx="2.4" cy="2.7" r="10" stroke="transparent" stroke-width="1" fill="transparent" class="icon-border" />
-                      <image href="github.png" class="icon-img" x="-8" y="-8" width="21" height="21" />
-                    </g>
-                    
-                    <g transform="translate(33, 62)" class="icon-wrapper">
-                      <circle cx="1.9" cy="2" r="10" stroke="transparent" stroke-width="1" fill="transparent" class="icon-border" />
-                      <image href="gitlab.png" class="icon-img" x="-8" y="-8" width="20" height="20" />
-                    </g>
-                  </g>
-                </svg>
-              </div>
-          </div>
-          <div class="lap-titles">
-              <a class="rout-title" href="#about"><h1>About</h1></a> 
-              <a class="rout-title" href="#skills"><h1>Skills</h1></a> 
-              <a class="rout-title" href="#experience"><h1>Experience</h1></a>
-              <a class="rout-title" href="#projects"><h1>Projects</h1></a>
-              <a class="rout-title" href="#certification"><h1>Certification & Education</h1></a>
-          </div>
-          <div class="mobile-titles">
-              <h1>Full Stack Developer</h1>
-          </div>
-          <div class="menu-darkmode">
-              <span class="menu" onclick="toggleMenu()">☰</span>  
-              <div class="menu-options" id="menuOptions" >
-                  <a href="#about"       onclick="toggleMenu()">About</a>
-                  <a href="#skills"      onclick="toggleMenu()">Skills</a>
-                  <a href="#projects"    onclick="toggleMenu()">Projects</a>
-                  <a href="#experience"  onclick="toggleMenu()">Experience</a>
-                  <a href="#certification"  onclick="toggleMenu()">Certification & Education</a>
-              </div>
-              <span class="mode-icons" onclick="toggleDarkMode()"><i id="darkIcon" class="fas fa-moon"></i> </span>          
-          </div>
+  <!-- Boot screen -->
+  <div class="boot" id="boot" aria-hidden="true">
+    <div class="boot-inner">
+      <div class="boot-logo"><svg viewBox="0 0 48 48"><path d="M17 14 7 24l10 10M31 14l10 10-10 10M27 10l-6 28"/></svg></div>
+      <p class="boot-name">Sakthi<em>OS</em></p>
+      <div class="boot-bar"><i id="bootBar"></i></div>
+      <pre class="boot-log" id="bootLog"></pre>
+    </div>
+    <p class="boot-skip">Click or press any key to skip</p>
   </div>
-  <div class="content-wrap">
-        <!-- background switcher -->
-        <div class="bg-switcher">
-          <span class="switcher-arrow" title="Open backgrounds">&rArr;</span>
-          <input type="radio" id="fire" name="background" onclick="radiobutton('fire')" value="fire">
-          <label for="fire"></label>
-          <input type="radio" id="fluid" name="background" onclick="radiobutton('fluid')" value="fluid">
-          <label for="fluid"></label>
-          <input type="radio" id="bubbles" name="background" onclick="radiobutton('bubbles')" value="bubbles" checked>
-          <label for="bubbles"></label>
-          <input type="radio" id="floating" name="background" onclick="radiobutton('floating')" value="floating">
-          <label for="floating"></label>
-          <input type="radio" id="stars" name="background" onclick="radiobutton('stars')" value="stars" >
-          <label for="stars"></label>
-          <span class="switcher-arrow" title="Close backgrounds">&lArr;</span>
-        </div>
-        <!-- about section -->
-        <div class="about" id="about">
-          <div class="left-about">
-                <p class="welcome">Welcome to my portfolio website!</p>
-                <h1 class="name typewriter-animation">Hi!, I'm 
-                  <span>Sakthivel</span> 
-                  <span>Full Stack  Developer</span>
-                </h1>
-                <div class="summary">
-                  <p class="glitch-text" data-text="A skilled Full Stack Developer with 3.4 years of experience in building web and mobile applications. Proficient in Angular, D3.js, NestJS, Express.js, PostgreSQL, Python (FastAPI), AI integration (OpenAI, Claude, Gemini), GitHub, GitLab, Visual Studio Code Editor, Cursor AI Code Editor, AWS, Google Cloud and Firebase. Experienced in working on various projects like AI-powered healthcare platforms, a speech-practice companion, a reproductive-health companion, employee engagement platforms, event management systems, document management systems, financial dashboards and Campaign Management System. Strong in team collaboration, taking responsibility, and solving problems effectively to deliver quality results.">
-                         A skilled <span class="heiglight1">Full Stack Developer with 3.4 years of experience</span>  in building web and mobile applications.
-                    <span class="heiglight2">Proficient in Angular, D3.js, NestJS, Express.js, PostgreSQL, Python (FastAPI), AI integration (OpenAI, Claude, Gemini), Github, gitlab, Visual Studio Code Editor, Cursor AI Code Editor, Aws, Google Cloud and Firebase.</span>
-                    Experienced in working on various projects like <span class="heiglight3">AI-powered healthcare platforms, a speech-practice companion, a reproductive-health companion, Employee engagement platforms, Event management systems, Document management systems, Financial dashboards and Campaign Management System.</span>
-                    Strong in team collaboration, taking responsibility, and solving problems effectively to deliver quality results.
-                  </p>
-                  <!-- <div class="social-downloadbutton-wrap"> -->
-                    <p class="social-media">
-                      <a href="#contact" ><i class="fas fa-envelope"></i></a>
-                      <a href="https://www.linkedin.com/in/sakthi-vel-41634021a/"  target="_blank"> 
-                        <i class="fab fa-linkedin">
-                        </i>
-                      </a>
-                      <a href="https://github.com/sakthivelonestar?tab=repositories" target="_blank">
-                      <i class="fab fa-github"></i>
-                     </a>
-                      
-                    </p>
-                    <a class="gmail-linkdin" href="sakthivel_fullstackdeveloper.pdf" download="sakthivel_fullstckdeveloper.pdf">
-                      <button>
-                          <i class="fas fa-download"></i> Download Resume
-                      </button>
-                    </a>
-                  <!-- </div> -->
-              </div>
-          </div>
-          <div class="right-about"> 
-              <img src="sakthi.png" class="profile-image"  alt="">
-          </div>
-        </div>
-        
-        <!-- skill section -->
-        <div class="skills-wraper" id="skills">
-            <h2 class="skill-title">Development Skills</h2>
-            <h3 class="skill-note"> Integrating technologies to build efficient and scalable web site, web app and mobile app  </h3>
-            <div class="skills-flow" >
-                <div class="skill-stage">
-                    <h3 class="stage-title">Frontend Development</h3>
-                    <div class="skill-connections">
-                        <div class="connection-item"><p>HTML,CSS,JavaScript</p></div>
-                        <div class="connection-item"><p>Angular Framework</p></div>
-                        <div class="connection-item"><p>Angular-Ionic</p></div>
-                        <div class="connection-item"><p>D3.js Visualization</p></div>
-                        <div class="connection-item"><p>Firebase</p></div>
-                    </div>
-                    <div class="connection-details">
-                        Creates interactive user interfaces and experiences
-                    </div>
-                </div>
 
-                <div class="skill-stage">
-                    <h3 class="stage-title">Backend Development</h3>
-                    <div class="skill-connections">
-                        <div class="connection-item"><p>NestJS Framework</p></div>
-                        <div class="connection-item"><p>Type ORM</p> </div>
-                        <div class="connection-item"><p>RESTful API Design</p></div>
-                        <div class="connection-item"><p>SQL</p></div>
-                        <div class="connection-item"><p>Postgres</p> </div>
-                    </div>
-                    <div class="connection-details">
-                        Manages server-side logic and data processing
-                    </div>
-                </div>
+  <!-- Wallpaper -->
+  <div class="wallpaper" aria-hidden="true">
+    <div class="wp-blob b1"></div>
+    <div class="wp-blob b2"></div>
+    <div class="wp-blob b3"></div>
+    <div class="wp-blob b4"></div>
+    <div class="wp-stars"></div>
+    <div class="wp-grid"></div>
+    <div class="wp-type">
+      <span class="wp-name">Sakthivel.</span>
+      <span class="wp-role">Full Stack Developer · Chennai, India</span>
+    </div>
+  </div>
 
-                <div class="skill-stage">
-                    <h3 class="stage-title">Development Tools</h3>
-                    <div class="skill-connections">
-                        <div class="connection-item"><p>Git Hub</p></div>
-                        <div class="connection-item"><p>Git Lab</p></div>
-                        <div class="connection-item"><p>Visual Studio Code Editor</p></div>
-                        <div class="connection-item"><p>Cursor AI Code Editor</p></div>
-                        <div class="connection-item"><p>AWS</p></div>
-                    </div>
-                    <div class="connection-details">
-                        Ensures efficient and quality-driven development
-                    </div>
-                </div>
+  <!-- Menu bar -->
+  <header class="menubar" id="menubar">
+    <div class="mb-left">
+      <span class="mb-mtime" data-clock-short></span>
+      <button class="mb-btn mb-logo" id="mbLogo" type="button" aria-haspopup="menu" aria-label="SakthiOS menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 7 3.5 12l5 5M15.5 7l5 5-5 5M13.5 4.5l-3 15"/></svg>
+      </button>
+      <strong class="mb-app" id="mbApp">Desktop</strong>
+      <button class="mb-btn" type="button" data-menu="go" aria-haspopup="menu">Go</button>
+      <button class="mb-btn" type="button" data-menu="window" aria-haspopup="menu">Window</button>
+      <button class="mb-btn" type="button" data-menu="help" aria-haspopup="menu">Help</button>
+    </div>
+    <div class="mb-right">
+      <button class="mb-btn mb-status" type="button" data-open="contact"><i class="dot"></i>Open to work</button>
+      <button class="mb-btn mb-icon" id="mbSearch" type="button" aria-label="Search (Ctrl+K)">
+        <svg class="i" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      </button>
+      <button class="mb-btn mb-icon" id="mbTheme" type="button" aria-label="Switch between dark and light">
+        <svg class="i theme-ico" viewBox="0 0 24 24"><g class="moon"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></g><g class="sun"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></g></svg>
+      </button>
+      <span class="mb-btn mb-icon mb-deco" aria-hidden="true">
+        <svg class="i" viewBox="0 0 24 24"><path d="M2 8.8a15 15 0 0 1 20 0M5 12.6a10 10 0 0 1 14 0M8.5 16.3a5 5 0 0 1 7 0"/><circle cx="12" cy="19.6" r=".9" fill="currentColor"/></svg>
+      </span>
+      <span class="mb-btn mb-icon mb-deco" aria-hidden="true">
+        <svg class="i" viewBox="0 0 26 24" style="width:20px"><rect x="1.5" y="7" width="20" height="10" rx="3"/><rect x="4" y="9.5" width="13" height="5" rx="1.2" fill="currentColor" stroke="none"/><path d="M24 10.5v3"/></svg>
+      </span>
+      <time class="mb-btn mb-clock" data-clock-long></time>
+    </div>
+  </header>
 
-                <div class="skill-stage">
-                    <h3 class="stage-title">AI &amp; Integrations</h3>
-                    <div class="skill-connections">
-                        <div class="connection-item"><p>OpenAI, Claude, Gemini APIs</p></div>
-                        <div class="connection-item"><p>Python, FastAPI, scikit-learn</p></div>
-                        <div class="connection-item"><p>Express.js, Socket.IO</p></div>
-                        <div class="connection-item"><p>Angular SSR, PrimeNG</p></div>
-                        <div class="connection-item"><p>Google Cloud, Razorpay</p></div>
-                    </div>
-                    <div class="connection-details">
-                        Adds AI agents, real-time features and payments to apps
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- experience section: VA Meditek (Feb 2026 - Present) -->
-        <div  class="experience" id="experience">
-          <div class="profile-section">
-              <h1>Professional Experience</h1>
-              <h2>Full Stack Developer</h2>
-              <div class="job-details">
-                  <span>VA Meditek Pvt Ltd</span>
-                  <span>|</span>
-                  <span>Feb 2026 - Present</span>
-              </div>
-          </div>
-          <div class="experience-section auto-timeline">
-              <div class="timeline-wraper">
-                <div class="line">
-                  <div class="dot-wraper">
-                    <div class="dot dot-1"></div>
-                    <div class="dot dot-2"></div>
-                    <div class="dot dot-3"></div>
-                  </div>
-                </div>
-                <div class="years-wraper">
-                  <div class="year year-1"> Feb 2026 <br class="brakpoint"> - <br class="brakpoint"> Oct 2026</div>
-                  <div class="year year-2"> Nov 2026 <br class="brakpoint"> - <br class="brakpoint"> Present</div>
-                  <div class="year year-3"> Nov 2026 <br class="brakpoint"> - <br class="brakpoint"> Present</div>
-                </div>
-              </div>
-
-              <div class="experience-list">
-                <div class="point-wraper">
-                  <div class="left"><strong>ZenBvel - AI Healthcare Platform (9 Months)</strong><br>
-                    • Built patient, doctor, lab partner and admin portals with an AI care chat in English, Tamil and Tanglish.<br>
-                    • Live: <a class="atag" href="https://zenbvel.com/registration/sign" target="_blank" rel="noopener">zenbvel.com</a></div>
-                  <div class="right">
-                    <img src="angular.png" alt="Angular" width="50px" height="50px">
-                    <img src="primeng.png" alt="PrimeNG" width="50px" height="50px">
-                    <img src="nestjs.png" alt="NestJS" width="50px" height="50px">
-                    <img src="sql.png" alt="PostgreSQL" width="50px" height="50px">
-                    <img src="firebase.png" alt="Firebase" width="50px" height="50px">
-                  </div>
-                </div>
-
-                <div class="point-wraper">
-                  <div class="left"><strong>Stamigo - Speech-Practice Companion</strong><br>
-                    • Built AI-guided daily speech practice for people who stammer, with kids' stories, games and caregiver support.<br>
-                    • Live: <a class="atag" href="https://stamigo.com/registration" target="_blank" rel="noopener">stamigo.com</a></div>
-                  <div class="right">
-                    <img src="angular.png" alt="Angular" width="50px" height="50px">
-                    <img src="primeng.png" alt="PrimeNG" width="50px" height="50px">
-                    <img src="nodejs.png" alt="Node.js" width="50px" height="50px">
-                    <img src="sql.png" alt="PostgreSQL" width="50px" height="50px">
-                    <img src="firebase.png" alt="Firebase" width="50px" height="50px">
-                  </div>
-                </div>
-
-                <div class="point-wraper">
-                  <div class="left"><strong>Sayujya - Reproductive-Health Companion</strong><br>
-                    • Building a companion web app for her, him and couples, with an AI "Ask" assistant and ops consoles.<br>
-                    • Live: <a class="atag" href="https://sayujya.com/" target="_blank" rel="noopener">sayujya.com</a></div>
-                  <div class="right">
-                    <img src="angular.png" alt="Angular" width="50px" height="50px">
-                    <img src="primeng.png" alt="PrimeNG" width="50px" height="50px">
-                    <img src="nodejs.png" alt="Node.js" width="50px" height="50px">
-                    <img src="sql.png" alt="PostgreSQL" width="50px" height="50px">
-                    <img src="firebase.png" alt="Firebase" width="50px" height="50px">
-                  </div>
-                </div>
-              </div>
-          </div>
-        </div>
-
-        <!-- experience section: Finstein (Jul 2022 - Mar 2025) -->
-        <div  class="experience">
-          <div class="profile-section">
-              <h2>Full Stack Developer</h2>
-              <div class="job-details">
-                  <span>Finstein</span>
-                  <span>|</span>
-                  <span>Chennai</span>
-                  <span>|</span>
-                  <span>Jul 2022 - Mar 2025</span>
-              </div>
-          </div>
-          <div class="experience-section">
-              <div class="timeline-wraper">
-                <div class="line">
-                  <div class="dot-wraper">
-                    <div class="dot dot-1"></div>
-                    <div class="dot dot-2"></div>
-                    <div class="dot dot-3"></div>
-                    <div class="dot dot-4"></div>
-                    <div class="dot dot-5"></div>
-                    <div class="dot dot-6"></div>
-                    <div class="dot dot-7"></div>
-                    <div class="dot dot-8"></div>
-                  </div>
-                </div>
-                <div class="years-wraper">
-                  <div class="year year-1"> Jul 2022 <br class="brakpoint"> - <br class="brakpoint"> Sep 2022</div>
-                  <div class="year year-2"> Oct 2022 <br class="brakpoint"> - <br class="brakpoint"> Apr 2023</div>
-                  <div class="year year-3"> May 2023 <br class="brakpoint"> - <br class="brakpoint"> Jul 2023</div>
-                  <div class="year year-4"> Aug 2023 <br class="brakpoint"> - <br class="brakpoint"> Mar 2024</div>
-                  <div class="year year-5"> Apr 2024 <br class="brakpoint"> - <br class="brakpoint"> May 2024</div>
-                  <div class="year year-6"> Jul 2024 <br class="brakpoint"> - <br class="brakpoint"> Feb 2025</div>
-                  <div class="year year-7"> Jul 2022 <br class="brakpoint"> - <br class="brakpoint"> Mar 2025</div>
-                  <div class="year year-8"> Mar 2025 <br class="brakpoint"> - <br class="brakpoint"> Oct 2025</div>
-                </div>
-              </div>
-              
-              <div class="experience-list">
-                <div class="point-wraper">
-                    <div class="left"><strong>Training Period (3 Months)</strong> - Completed full-stack development training.</div>
-                    <div class="right" >
-                      <img src="html.png" alt="D3.js Logo" width="50px" height="50px" >
-                      <img src="css.png" alt="D3.js Logo" width="50px" height="50px" >
-                      <img src="js.png" alt="D3.js Logo" width="50px" height="50px" >
-                      <img src="angular.png" alt="D3.js Logo" width="50px" height="50px" >
-                      <img src="nodejs.png" alt="D3.js Logo" width="50px" height="50px" >
-                    </div>
-                </div>
-
-                <div class="point-wraper">
-                  <div class="left"><strong>Document Management System (7 Months) - Junior Developer</strong><br>
-                    • Developed a role-based access and search functionality system.</div>
-                    <div class="right">
-                      <img src="nuxtjs.png" alt="D3.js Logo" width="50px" height="50px" >
-                      <img src="nestjs.png" alt="D3.js Logo" width="50px" height="50px" >
-                      <img src="sql.png" alt="D3.js Logo" width="50px" height="50px" >
-                      <img src="firebase.png" alt=""  width="50px" height="50px" >
-                    </div>
-                </div>
-                
-                <div class="point-wraper">
-                  <div class="left"><strong>Event Management System (3 Months)</strong><br>
-                    • Built a scalable event platform with real-time notifications.</div>
-                    <div class="right">
-                      <img src="angular.png" alt="D3.js Logo" width="50px" height="50px" >
-                      <img src="ionic.png" alt="D3.js Logo" width="50px" height="50px"  >
-                      <img src="nestjs.png" alt="D3.js Logo" width="50px" height="50px" >
-                      <img src="sql.png" alt="D3.js Logo" width="50px" height="50px" >
-                      <img src="d3js.png" alt="D3.js Logo" width="50px" height="50px" >
-                    </div>
-                </div>
-
-                <div class="point-wraper">
-                  <div class="left"><strong>Employee Engagement Platform (8 Months) - Lead Developer</strong><br>
-                    • Led the development of an employee engagement platform.</div>
-                    <div class="right">
-                      <img src="angular.png" alt="D3.js Logo" width="50px" height="50px">
-                      <img src="ionic.png" alt="D3.js Logo" width="50px" height="50px"  >
-                      <img src="nestjs.png" alt="D3.js Logo" width="50px" height="50px" >
-                      <img src="sql.png" alt="D3.js Logo" width="50px" height="50px">
-                      <img src="d3js.png" alt="D3.js Logo" width="50px" height="50px">
-                    </div>
-                </div>
-
-                <div class="point-wraper">
-                  <div class="left"><strong>Event-Based Application (2 Months)</strong><br>
-                    • Assisted in final-stage development of an event-based application.</div>
-                  <div class="right">
-                    <img src="angular.png" alt="D3.js Logo" width="50px" height="50px" >
-                    <img src="nestjs.png" alt="D3.js Logo" width="50px" height="50px">
-                    <img src="sql.png" alt="D3.js Logo" width="50px" height="50px">
-                  </div>
-                </div>
-                
-                <div class="point-wraper">
-                  <div class="left"><strong>D3.js-Based Finance Dashboard (9 Months)</strong><br>
-                    • Developed an interactive finance dashboard using D3.js.</div>
-                  <div class="right">
-                    <img src="angular.png" alt="D3.js Logo" width="50px" height="50px" >
-                    <img src="nestjs.png" alt="D3.js Logo" width="50px" height="50px">
-                    <img src="sql.png" alt="D3.js Logo" width="50px" height="50px">
-                    <img src="d3js.png" alt="D3.js Logo" width="50px" height="50px">
-                    <img src="firebase.png" alt=""  width="50px" height="50px">
-                  </div>
-                </div>
-                
-                <div class="point-wraper">
-                  <div class="left"><strong>Hackathon Participation</strong><br>
-                    • Led 4 junior developers in building a Bulk Email Campaign Management Application.<br>
-                    • Received the <strong>Achiever Award</strong> for  performance. <br>
-                    <strong>Leadership & Mentorship</strong><br>
-                    • Trained and mentored 3 junior developers in our development team.</div>
-                    <div class="right">
-                      <img src="angular.png" alt="D3.js Logo" width="50px" height="50px" >
-                      <img src="nestjs.png" alt="D3.js Logo" width="50px" height="50px" >
-                      <img src="sql.png" alt="" width="50px" height="50px">
-                    </div>
-                </div>
-
-                <div class="point-wraper">
-                  <div class="left"><strong>Projects (8 Months)</strong><br>
-                    •  D3 Js Real Time Example Project FDNA (Finance DNA) <br>
-                    •  Fullstack Technologies Tutorial <a class="atag" href="https://teal-twilight-9546d8.netlify.app/sql/data-types" target="_blank">https://teal-twilight-9546d8.netlify.app/sql/data-types</a> <br>
-                    •  Portfolio based on glassmorphism background <a class="atag" href="https://sakthivelonestar.github.io/portfolio/" target="_blank">https://sakthivelonestar.github.io/portfolio/</a>
-                  </div>
-                  <div class="right">
-                    <img src="html.png" alt="D3.js Logo" width="50px" height="50px" >
-                    <img src="css.png" alt="D3.js Logo" width="50px" height="50px" >
-                    <img src="js.png" alt="D3.js Logo" width="50px" height="50px" >
-                    <img src="angular.png" alt="D3.js Logo" width="50px" height="50px" >
-                    <img src="nestjs.png" alt="D3.js Logo" width="50px" height="50px" >
-                    <img src="sql.png" alt="" width="50px" height="50px">
-                  </div>
-                </div>
-              </div>
-          </div>
-        </div>
-        <!-- project section -->
-        <div class="projects" id="projects">
-          <div class="project-header">
-              <h2 class="section-title">Projects</h2>
-              <h4 class="from-to">Jul/2022 - Present</h4>
-              <button id="toggleButton" class="toggle-button"  onclick="toggleViewMode()">Show Descriptions</button>
-          </div>
-          <div class="projects-flex">
-            <h4 class="project-group-title">VA Meditek &middot; Feb/2026 - Present</h4>
-            <div class="project-card" onclick="toggleBackside(this)">
-                <div class="project-card-inner">
-                  <div class="project-front">
-                      <div class="project">
-                          <h3>ZenBvel - AI Healthcare Platform</h3>
-                      </div>
-                      <p>Doctors, lab tests, medicines, emergency help and an AI care companion in one app.</p>
-                      <span class="tech-stack">Angular 17 SSR, PrimeNG, NestJS 11, PostgreSQL, Python FastAPI, OpenAI</span>
-                      <a class="project-link" href="https://zenbvel.com/registration/sign" target="_blank" rel="noopener" onclick="event.stopPropagation()"><i class="fas fa-arrow-up-right-from-square"></i> zenbvel.com</a>
-                  </div>
-                  <div class="project-back">
-                      <div class="description">
-                          <h4>ZenBvel features:</h4>
-                          <p>
-                            <i class="fas fa-star"></i> Built four portals on one backend: patient app, doctor portal, lab partner portal and admin center.
-                            Developed doctor video consultation (Zego Cloud), smart token and live queue with Socket.IO, lab test booking with home sample collection, and medicine orders from an uploaded prescription.
-                            Built an AI care chat in English, Tamil and Tanglish on our own Python (FastAPI, scikit-learn) models for intents, symptoms and triage, with a safety gate and OpenAI as backup.
-                            Added AI medical report explanations, emergency help with nearby hospitals on Google Maps and ambulance booking.
-                            Integrated Razorpay payments, Dial4SMS OTP and WhatsApp, Firebase push notifications, Google Cloud Storage and PDF prescriptions.
-                          </p>
-                      </div>
-                  </div>
-              </div>
-            </div>
-            <div class="project-card" onclick="toggleBackside(this)">
-                <div class="project-card-inner">
-                  <div class="project-front">
-                      <div class="project">
-                          <h3>Stamigo - Speech-Practice Companion</h3>
-                      </div>
-                      <p>AI-guided daily speech practice for people who stammer, kids and caregivers.</p>
-                      <span class="tech-stack">Angular 21 SSR, PrimeNG, Express, TypeORM, PostgreSQL, OpenAI</span>
-                      <a class="project-link" href="https://stamigo.com/registration" target="_blank" rel="noopener" onclick="event.stopPropagation()"><i class="fas fa-arrow-up-right-from-square"></i> stamigo.com</a>
-                  </div>
-                  <div class="project-back">
-                      <div class="description">
-                          <h4>Stamigo features:</h4>
-                          <p>
-                            <i class="fas fa-star"></i> Built daily practice sessions, reading exercises, a calm room, progress tracking and a kids' area with stories and games.
-                            Designed a set of AI agents (script writer, planner, listener, translator) with versioned prompt packs, each with a fallback when the model is slow.
-                            Added a word-safety check on every AI reply before it is shown or spoken, plus speech-to-text and text-to-speech.
-                            Built the REST API with Express, TypeORM and PostgreSQL, with user, caregiver and admin roles, JWT login and Swagger docs.
-                          </p>
-                      </div>
-                  </div>
-              </div>
-            </div>
-            <div class="project-card" onclick="toggleBackside(this)">
-                <div class="project-card-inner">
-                  <div class="project-front">
-                      <div class="project">
-                          <h3>Sayujya - Reproductive-Health Companion</h3>
-                      </div>
-                      <p>A health companion for her, him and couples, with an AI "Ask" assistant.</p>
-                      <span class="tech-stack">Angular 21 SSR, PrimeNG, Express, TypeORM, PostgreSQL, OpenAI</span>
-                      <a class="project-link" href="https://sayujya.com/" target="_blank" rel="noopener" onclick="event.stopPropagation()"><i class="fas fa-arrow-up-right-from-square"></i> sayujya.com</a>
-                  </div>
-                  <div class="project-back">
-                      <div class="description">
-                          <h4>Sayujya features:</h4>
-                          <p>
-                            <i class="fas fa-star"></i> Built the companion web app: onboarding, home, quick logs, cycle insights and plans, organised by module and by user type.
-                            Developed the "Ask" assistant: a safety check runs before the AI, then OpenAI writes a cited answer from reviewed content, then a guardrail checks it.
-                            Built a cycle pattern engine, phone OTP and anonymous sign-in, and an append-only consent ledger.
-                            Created web consoles for pharmacist, reviewer, moderator, doctor, institution and admin roles, on a data model of 58 entities.
-                          </p>
-                      </div>
-                  </div>
-              </div>
-            </div>
-            <h4 class="project-group-title">Finstein &middot; Jul/2022 - Mar/2025</h4>
-            <div class="project-card" onclick="toggleBackside(this)">          
-                    <div class="project-card-inner">
-                      <div class="project-front">
-                          <div class="project">
-                              <h3>Document Management System</h3>
-                          </div>
-                          <p>Created secure document storage with encryption & Role permission.</p>
-                          <span class="tech-stack">Nuxt, NestJS, SQL</span>
-                      </div>
-                      <div class="project-back">
-                          <!-- <h3>Document Management System</h3> -->
-                          <div class="description">
-                              <h4>Document management system features:</h4>
-                              <p>
-                                <i class="fas fa-star"></i> Developed a secure document storage system with encryption to ensure data safety.  
-                                Implemented advanced search functionality for quick and efficient document retrieval.  
-                                Designed and integrated a role-based permission management system for controlled access.
-                            </p>                          
-                          </div>
-                      </div>
-                  </div>
-            </div>
-            <div class="project-card" onclick="toggleBackside(this)" >
-                <div class="project-card-inner">                   
-                   <div class="project-front">
-                        <div class="project">
-                            <h3>Financial Data Dashboard</h3>
-                        </div>
-                        <p>Built a dashboard with D3.js and real-time data updates.</p>
-                        <span class="tech-stack">Angular, NestJS, Postgres</span>
-                    </div>
-                    <div class="project-back">
-                        <!-- <h3>Financial Data Dashboard</h3> -->
-                        <div class="description"> 
-                            <h4>Financial Data Dashboard features:</h4>
-                            <p>
-                              <i class="fas fa-star"></i> Developed interactive data visualizations using D3.js for better financial insights.  
-                              Implemented bulk upload functionality for multiple Excel files with skip and replace options.  
-                              Enabled Excel data export and dashboard PDF export for seamless data sharing.
-                          </p>
-                        </div>
-                    </div>
-                </div>
-            </div> 
-            <div class="project-card" onclick="toggleBackside(this)">   
-                  <div class="project-card-inner">
-                    <div class="project-front">
-                        <div class="project">
-                            <h3>Employee Engagement Platform</h3>
-                        </div>
-                        <p>Built a real-time engagement platform..</p>
-                        <span class="tech-stack">Angular, NestJS, SQL, Angular-IOnic</span>
-                    </div>
-                    <div class="project-back">
-                        <!-- <h3>Employee Engagement Platform</h3> -->
-                      <div class="description">
-                          <h4>Employee Engagement Platform features:</h4>
-                          <p>
-                            <i class="fas fa-star"></i> Developed a multitenant application for managing multiple organizations.  
-                            Built a responsive web UI using Angular and a mobile UI using Angular-Ionic.  
-                            Designed and developed backend APIs using NestJS for seamless data handling.  
-                            Implemented a real-time notification system to enhance user engagement.  
-                            Created an admin dashboard for analyzing Survey, Quiz, and Spinwheel activities.
-                        </p>
-                      </div>
-                    </div>
-                </div>
-            </div>
-            <div class="project-card" onclick="toggleBackside(this)">            
-               <div class="project-card-inner">
-                  <div class="project-front">
-                      <div class="project">
-                          <h3>Event Management System</h3>
-                      </div>
-                      <p>Developed an interactive event calendar with ticket management.</p>
-                      <span class="tech-stack">Angular, NestJS, SQL, Angular-Ionic</span>
-                  </div>
-                  <div class="project-back">
-                      <!-- <h3>Event Management System</h3> -->
-                      <div class="description">
-                          <h4>Event management platform features:</h4>
-                          <p>
-                            <i class="fas fa-star"></i> Developed a multitenant application for managing multiple organizations.  
-                            Built a responsive web UI using Angular and a mobile UI using Angular-Ionic.  
-                            Designed an interactive event calendar with custom filters for better event organization.  
-                            Implemented a ticket management system for seamless event registration and access control.  
-                            Created an admin dashboard with analytics for tracking event performance.
-                        </p>
-                      </div>
-                  </div>
-              </div>
-            </div> 
-            <div class="project-card" onclick="toggleBackside(this)">
-                <div class="project-card-inner">
-                  <div class="project-front">
-                      <div class="project">
-                          <h3>Campaign Management System - Magic</h3>
-                      </div>
-                      <p>Built a bulk email category-based sending and tracking system.</p>
-                      <span class="tech-stack">Angular, NestJS, SQL</span>
-                  </div>
-                  <div class="project-back">
-                      <!-- <h3>Campaign Management System - Magic</h3> -->
-                      <div class="description">
-                          <h4>Bulk email sending Platform features:</h4>
-                          <p>
-                            <i class="fas fa-star"></i> Enabled scheduled bulk email sending with category-based targeting.  
-                            Targeted specific groups, including companies, colleagues, and custom segments.  
-                            Integrated email monitoring to track delivery and engagement.
-                         </p>
-                      </div>
-                  </div>
-              </div>
-            </div>  
-          </div> 
-        </div> 
-         <!-- certification section -->
-        <div class="certification" id="certification">
-          <h1>Certification & Education</h1>
-          <div class="certification-wraper">
-            <div class="circle-container">
-              <div class="ring outer"></div>
-              <div class="ring middle"></div>
-              <div class="ring inner"></div>
-              <div id="outer-text"  class="circle-text" data-text="★ Hackathon Achiever Award ★" data-radius="160"></div>
-              <div id="middle-text" class="circle-text" data-text="★ Finstein ★" data-radius="120"></div>
-              <div class="center-label">
-                <div class="year">2024</div>
-                <div class="percent">100%</div>
-              </div>
-            </div>
-
-            <div class="circle-container">
-              <div class="ring outer"></div>
-              <div class="ring middle"></div>
-              <div class="ring inner"></div>
-              <div id="outer-text"  class="circle-text" data-text="★ Full Stack Developer ★" data-radius="160"></div>
-              <div id="middle-text" class="circle-text" data-text="★ Livewire ★" data-radius="120"></div>
-              <div class="center-label">
-                <div class="year">2023</div>
-                <div class="percent">100%</div>
-              </div>
-            </div>  
-
-            <div class="circle-container">
-              <div class="ring outer"></div>
-              <div class="ring middle"></div>
-              <div class="ring inner"></div>
-              <div id="outer-text"  class="circle-text" data-text="★ Narasu's Sarathy Institute ★" data-radius="160"></div>
-              <div id="middle-text" class="circle-text" data-text="★ Bachelor's in CSE ★" data-radius="120"></div>
-              <div class="center-label">
-                <div class="year">2022</div>
-                <div class="percent">7.81%</div>
-              </div>
-            </div>
-  
-              <div class="circle-container">
-                <div class="ring outer"></div>
-                <div class="ring middle"></div>
-                <div class="ring inner"></div>
-                <div id="outer-text"  class="circle-text" data-text="★ Govt Boys Higher Secondary School ★" data-radius="160"></div>
-                <div id="middle-text" class="circle-text" data-text="★ HSC ★" data-radius="120"></div>
-                <div class="center-label">
-                  <div class="year">2018</div>
-                  <div class="percent">58%</div>
-                </div>
-              </div>
-
-              <div class="circle-container">
-                <div class="ring outer"></div>
-                <div class="ring middle"></div>
-                <div class="ring inner"></div>
-                <div id="outer-text"  class="circle-text" data-text="★ GovtBoys Higher Secondary School ★" data-radius="160"></div>
-                <div id="middle-text" class="circle-text" data-text="★ SSLC ★" data-radius="120">SSLC (10th)</div>
-                <div class="center-label">
-                  <div class="year">2016</div>
-                  <div class="percent">75.4%</div>
-                </div>
-              </div> 
-          </div>
-        </div>
-
-          <!-- Add this before the closing </div> of content-wrap -->
-      <div class="contact" id="contact">
-        <h2 class="contact-title">Contact With Me</h2> <br>
-        <div class="contact-container">
-          <form id="contactForm" class="contact-form">
-            <div class="form-group">
-              <input type="text" id="name" name="name" required>
-              <label for="name">Name</label>
-            </div>
-            <div class="form-group">
-              <input type="email" id="email" name="email" required>
-              <label for="email">Email</label>
-            </div>
-            <div class="form-group">
-              <input type="text" id="subject" name="subject" required>
-              <label for="subject">Subject</label>
-            </div>
-            <div class="form-group">
-              <textarea type="text" id="message" name="message" required></textarea>
-              <label for="message">Message</label>
-            </div>
-            <button type="submit" class="submit-btn">
-              <span class="btn-text">Send Message</span>
-              <i class="fas fa-paper-plane"></i>
-            </button>
-          </form>
-        <div class="contact-info">
-           <div>
-                <h1 class="tech-title">Fullstack Developer</h1>
-            </div>
-            <div class="contact-details">
-                <div class="info-item">
-                    <a href="mailto:sakthivelidn@gmail.com"><i class="fas fa-envelope"></i> sakthivelidn@gmail.com</a>
-                </div>
-                <div class="info-item">
-                    <a href="tel:+916374857173"><i class="fas fa-phone"></i> +91 6374857173</a>
-                </div>
-                <div class="info-item">
-                    <a href="https://github.com/sakthivelonestar?tab=repositories" target="_blank"><i class="fab fa-github"></i> github.com/sakthivelonestar</a>
-                </div>
-                <div class="info-item">
-                    <a href="https://www.linkedin.com/in/sakthi-vel-41634021a/" target="_blank"><i class="fab fa-linkedin"></i> linkedin.com/in/sakthi-vel</a>
-                </div>
-            </div>
-           
-        </div>
-        
+  <!-- Desktop -->
+  <main class="desktop" id="desktop" aria-label="Desktop">
+    <section class="m-hello" aria-label="Hello">
+      <img src="sakthivel.jpeg" alt="" width="58" height="58">
+      <div>
+        <strong>Hi, I'm Sakthivel 👋</strong>
+        <p>Full Stack Developer · Chennai</p>
+        <span class="avail-pill"><i class="dot-live"></i>Open to work</span>
       </div>
-      <!-- error message -->
-      <div class="custom-alert" id="alertModal">
-        <div class="alert-content">
-          <div class="alert-icon">
-            <i class="fas fa-check-circle success-icon"></i>
-            <i class="fas fa-times-circle error-icon"></i>
-          </div>
-          <div class="alert-message"></div>
-          <button class="alert-close">OK</button>
+    </section>
+
+    <div class="icons" id="icons" role="list" aria-label="Desktop apps"></div>
+
+    <aside class="widgets" aria-label="Widgets">
+      <div class="widget w-glass hero-visual" style="--i:0">
+        <canvas id="heroCanvas" aria-hidden="true"></canvas>
+        <div class="w-cap"><span class="w-kicker">Now building</span><strong>AI for healthcare</strong></div>
+      </div>
+      <div class="widget w-clock" style="--i:1">
+        <svg class="clock-face" viewBox="0 0 100 100" aria-hidden="true">
+          <circle class="rim" cx="50" cy="50" r="47"/>
+          <g id="clockTicks"></g>
+          <line class="hand h" id="handH" x1="50" y1="50" x2="50" y2="27"/>
+          <line class="hand m" id="handM" x1="50" y1="50" x2="50" y2="16"/>
+          <line class="hand s" id="handS" x1="50" y1="58" x2="50" y2="12"/>
+          <circle class="pin" cx="50" cy="50" r="3"/>
+        </svg>
+        <div>
+          <div class="w-time" id="wTime">--:--</div>
+          <div class="w-date" id="wDate"></div>
+          <div class="w-loc">Chennai · IST</div>
         </div>
       </div>
+      <div class="widget w-stats" style="--i:2">
+        <div class="w-stat"><b>3.4<sup>+</sup></b><span>Years building</span></div>
+        <div class="w-stat"><b>10<sup>+</sup></b><span>Projects shipped</span></div>
+        <div class="w-stat"><b>7</b><span>Developers led &amp; mentored</span></div>
+        <div class="w-stat"><b>1</b><span>Hackathon award</span></div>
+      </div>
+    </aside>
 
-</div>
-</div>
+    <div class="lasso" id="lasso"></div>
+  </main>
+
+  <div class="snap-preview" id="snapPreview" aria-hidden="true"></div>
+  <div class="windows" id="windows"></div>
+
+  <!-- Dock -->
+  <nav class="dock" id="dock" aria-label="Dock"></nav>
+
+  <!-- Spotlight search -->
+  <div class="spot" id="spot" aria-hidden="true">
+    <div class="spot-panel" role="dialog" aria-label="Search SakthiOS">
+      <label class="spot-field">
+        <svg class="i" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input id="spotInput" type="text" placeholder="Search apps, projects and actions…" autocomplete="off" spellcheck="false" aria-label="Search">
+        <kbd>esc</kbd>
+      </label>
+      <div class="spot-list" id="spotList" role="listbox"></div>
+      <div class="spot-foot"><span><kbd>↑</kbd> <kbd>↓</kbd> move</span><span><kbd>↵</kbd> open</span><span><kbd>esc</kbd> close</span></div>
+    </div>
+  </div>
+
+  <div class="menu" id="menu" role="menu" hidden></div>
+  <div class="notifs" id="notifs" aria-live="polite"></div>
+  <canvas class="confetti" id="confetti" aria-hidden="true"></canvas>
+
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js" defer></script>
+  <script src="assets/js/os.js" defer></script>
+  <script src="assets/js/hero3d.js" defer></script>
 </body>
 </html>
