@@ -595,6 +595,9 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .footer-inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
 .site-footer a { text-decoration: none; color: var(--muted); }
 .site-footer a:hover { color: var(--accent); }
+.footer-links { display: flex; flex-wrap: wrap; gap: 6px 20px; margin: 0; padding: 0; list-style: none; }
+.footer-links i { color: var(--accent); margin-right: 4px; }
+.footer-links .fa-xs { margin: 0 0 0 2px; opacity: 0.7; }
 
 /* ---------- Scroll progress & back to top ---------- */
 .scroll-progress {
