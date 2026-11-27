@@ -41,6 +41,7 @@
         <a href="#work">Work</a>
         <a href="#process">Process</a>
         <a href="#about">About</a>
+        <a href="#course">Course</a>
         <a href="#faq">FAQ</a>
         <a class="btn btn-primary btn-sm nav-cta" href="#contact">Get a free quote</a>
       </nav>
@@ -568,6 +569,67 @@
       </div>
     </section>
 
+    <!-- Course -->
+    <section class="section" id="course">
+      <div class="container contact-grid">
+        <div class="contact-copy course-copy reveal">
+          <p class="eyebrow">Course</p>
+          <h2>Learn Full Stack Development in 90 days</h2>
+          <p>A hands-on course where you build something every day. Register and I'll contact you with the batch details.</p>
+
+          <ul class="course-facts">
+            <li><i class="fas fa-calendar-days" aria-hidden="true"></i> 90 training days, 6 days a week</li>
+            <li><i class="fas fa-clock" aria-hidden="true"></i> 3 hours a day: topic and live demo, then a task you build</li>
+            <li><i class="fas fa-users" aria-hidden="true"></i> Morning and evening batches, 15 students each</li>
+            <li><i class="fas fa-diagram-project" aria-hidden="true"></i> Ends with a final project you build on your own</li>
+          </ul>
+
+          <ul class="chips" aria-label="Subjects">
+            <li>HTML &amp; CSS</li><li>JavaScript</li><li>SQL</li><li>TypeScript</li><li>Angular</li><li>Node.js</li><li>NestJS</li>
+          </ul>
+
+          <a class="btn btn-ghost" href="fullstack-90-day-flow.html">See the 90-day plan <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+        </div>
+
+        <form class="card contact-form reveal" id="courseForm" novalidate>
+          <h3 class="form-title">Register for the course</h3>
+          <div class="field-row">
+            <label class="field">
+              <span>Your name</span>
+              <input type="text" name="name" autocomplete="name" required>
+            </label>
+            <label class="field">
+              <span>Phone</span>
+              <input type="tel" name="phone" autocomplete="tel" inputmode="tel" pattern="[0-9+ ]{10,15}" required>
+            </label>
+          </div>
+          <div class="field-row">
+            <label class="field">
+              <span>Email</span>
+              <input type="email" name="email" autocomplete="email" required>
+            </label>
+            <label class="field">
+              <span>Batch</span>
+              <select name="batch" required>
+                <option value="" disabled selected>Choose one</option>
+                <option>Morning batch</option>
+                <option>Evening batch</option>
+                <option>Either batch</option>
+              </select>
+            </label>
+          </div>
+          <label class="field">
+            <span>Anything I should know? <em>(optional)</em></span>
+            <textarea name="note" rows="3" placeholder="Student or working, what you already know, any question…"></textarea>
+          </label>
+          <button class="btn btn-primary btn-block" type="submit">
+            <span class="btn-label">Register</span> <i class="fas fa-user-plus" aria-hidden="true"></i>
+          </button>
+          <p class="form-status" id="courseStatus" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
     <!-- FAQ -->
     <section class="section" id="faq">
       <div class="container faq-grid">
@@ -679,6 +741,7 @@
       <ul class="footer-links" aria-label="My other websites">
         <li><a href="os.html"><i class="fas fa-desktop" aria-hidden="true"></i> Try SakthiOS, the interactive desktop version</a></li>
         <li><a href="classic.html"><i class="fas fa-layer-group" aria-hidden="true"></i> Classic website</a></li>
+        <li><a href="#course"><i class="fas fa-chalkboard-user" aria-hidden="true"></i> Register for the full stack course</a></li>
         <li><a href="https://teal-twilight-9546d8.netlify.app/sql/data-types" target="_blank" rel="noopener"><i class="fas fa-graduation-cap" aria-hidden="true"></i> Full stack tutorial <i class="fas fa-arrow-up-right-from-square fa-xs" aria-hidden="true"></i></a></li>
       </ul>
     </div>

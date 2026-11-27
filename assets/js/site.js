@@ -149,15 +149,15 @@
   var EMAILJS_SERVICE = 'service_3nbe2df';
   var EMAILJS_TEMPLATE = 'template_zwjthza';
 
-  var form = document.getElementById('contactForm');
-  var status = document.getElementById('formStatus');
+  /* One handler for both forms: check the fields, send with EmailJS, show the result. */
+  function wireForm(form, status, text, send) {
+    if (!form || !status) return;
 
-  function setStatus(text, kind) {
-    status.textContent = text;
-    status.className = 'form-status' + (kind ? ' ' + kind : '');
-  }
+    function setStatus(msg, kind) {
+      status.textContent = msg;
+      status.className = 'form-status' + (kind ? ' ' + kind : '');
+    }
 
-  if (form) {
     form.addEventListener('submit', function (e) {
       e.preventDefault();
 
@@ -169,7 +169,7 @@
         if (bad && !firstBad) firstBad = el;
       });
       if (firstBad) {
-        setStatus('Please fill in your name, a valid email, what you need and a short message.', 'err');
+        setStatus(text.invalid, 'err');
         firstBad.focus();
         return;
       }
@@ -186,9 +186,9 @@
       label.textContent = 'Sending…';
       setStatus('');
 
-      window.emailjs.sendForm(EMAILJS_SERVICE, EMAILJS_TEMPLATE, form, EMAILJS_PUBLIC_KEY)
+      send(form)
         .then(function () {
-          setStatus('Thanks! Your enquiry was sent. I\'ll get back to you soon.', 'ok');
+          setStatus(text.ok, 'ok');
           form.reset();
         })
         .catch(function (err) {
@@ -205,4 +205,26 @@
       if (e.target.classList.contains('invalid') && e.target.checkValidity()) e.target.classList.remove('invalid');
     });
   }
+
+  wireForm(document.getElementById('contactForm'), document.getElementById('formStatus'), {
+    invalid: 'Please fill in your name, a valid email, what you need and a short message.',
+    ok: 'Thanks! Your enquiry was sent. I\'ll get back to you soon.'
+  }, function (form) {
+    return window.emailjs.sendForm(EMAILJS_SERVICE, EMAILJS_TEMPLATE, form, EMAILJS_PUBLIC_KEY);
+  });
+
+  /* Course registration uses the same email template: the phone, batch and note travel in the message. */
+  wireForm(document.getElementById('courseForm'), document.getElementById('courseStatus'), {
+    invalid: 'Please fill in your name, a phone number, a valid email and a batch.',
+    ok: 'Thanks! Your registration was sent. I\'ll contact you with the batch details.'
+  }, function (form) {
+    var val = function (name) { return form.querySelector('[name="' + name + '"]').value.trim(); };
+    return window.emailjs.send(EMAILJS_SERVICE, EMAILJS_TEMPLATE, {
+      name: val('name'),
+      email: val('email'),
+      subject: 'Course registration: Full Stack 90-day course',
+      budget: 'Not applicable',
+      message: 'Phone: ' + val('phone') + '\nBatch: ' + val('batch') + '\nNote: ' + (val('note') || '-')
+    }, EMAILJS_PUBLIC_KEY);
+  });
 })();

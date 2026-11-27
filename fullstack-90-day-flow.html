@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Full Stack 90-Day Course Plan · Sakthivel</title>
+  <meta name="description" content="Day-by-day plan of the 90-day Full Stack Development course: HTML, CSS, JavaScript, SQL, TypeScript, Angular, Node.js and NestJS, with a task for every day.">
+  <meta name="author" content="Sakthivel">
+  <meta name="theme-color" content="#0b1414">
+  <link rel="icon" type="image/svg+xml" href="fav.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Patrick+Hand&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/site.css">
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+<style>
+/* Portfolio copy: colours, font and theme come from assets/css/site.css. Only the plan's own tokens are set here. */
+:root{
+  --paper:var(--surface); --panel:var(--bg-alt); --ink:var(--text); --line:var(--border); --line2:rgba(10,40,36,.24);
+  --good:#0b7a6c; --bad:#c92a2a; --on-sc:#ffffff;
+  --h:#d9480f; --j:#9a6b00; --q:#0b7285; --t:#1864ab; --a:#c92a2a; --n:#2b8a3e; --e:#c2255c; --f:#6741d9;
+  --display:var(--font); --body:var(--font);
+  --hand:"Patrick Hand","Segoe Print","Comic Sans MS",cursive;
+  --mono:ui-monospace,"Cascadia Code",Consolas,monospace;
+  --sc:var(--ink); --tint:var(--panel);
+}
+:root[data-theme="dark"]{
+  --line2:rgba(255,255,255,.22); --good:#2dd4bf; --bad:#f87171; --on-sc:#0b1414;
+  --h:#fb923c; --j:#facc15; --q:#22d3ee; --t:#60a5fa; --a:#f87171; --n:#4ade80; --e:#f472b6; --f:#a78bfa;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:15px/1.55 var(--body)}
+.wrap{max-width:1360px;margin-inline:auto;padding-inline:clamp(16px,4vw,56px)}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+code{font-family:var(--mono);font-size:.86em;background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:0 4px;overflow-wrap:anywhere}
+
+/* ---------- header ---------- */
+.top{padding-block:40px 20px}
+h1{margin:0;font:700 clamp(34px,5vw,56px)/1.08 var(--display);letter-spacing:-.02em;text-wrap:balance}
+.lede{margin:12px 0 0;max-width:66ch;color:var(--muted);font-size:16px}
+.cfacts{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 0;padding:0;list-style:none}
+.cfacts li{border:1px solid var(--line);border-radius:8px;padding:7px 12px;font-size:13px;color:var(--muted)}
+.cfacts b{color:var(--ink);font:600 15px var(--display);margin-right:5px;font-variant-numeric:tabular-nums}
+.rhythm{margin-top:22px;max-width:640px}
+.rhythm p{margin:0 0 6px;font-size:13px;color:var(--muted)}
+.rbar{display:flex;gap:3px}
+.rbar div{min-width:0;border-radius:8px;padding:8px 12px;font-size:12.5px;line-height:1.3}
+.rbar b{display:block;font:600 15px var(--display)}
+.rbar .r1{flex:70 1 0;background:var(--ink);color:var(--paper)}
+.rbar .r2{flex:110 1 0;background:var(--panel);border:1px solid var(--line2)}
+.tools{margin:14px 0 0;font-size:13px;color:var(--muted);max-width:72ch}
+
+.bar{display:flex;gap:2px;margin-top:26px;height:34px;border-radius:9px;overflow:hidden}
+.bar a{flex:var(--d) 1 0;min-width:0;background:var(--sc);color:var(--on-sc);display:grid;place-items:center;text-decoration:none;font:600 12px var(--body);font-variant-numeric:tabular-nums}
+.bar a:hover{filter:brightness(1.08)}
+.barcap{display:flex;justify-content:space-between;margin:6px 0 0;font-size:12px;color:var(--muted)}
+
+.track{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;margin-top:22px}
+.seg{display:inline-flex;border:1px solid var(--line2);border-radius:9px;padding:2px;background:var(--panel)}
+.seg button{font:500 13px var(--body);color:var(--muted);background:none;border:0;border-radius:7px;padding:6px 12px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--paper);color:var(--ink);box-shadow:0 0 0 1px var(--line2)}
+.prog{flex:1 1 220px;min-width:0;font-size:13px;color:var(--muted)}
+.prog b{color:var(--ink);font-variant-numeric:tabular-nums}
+.pbar{height:6px;border-radius:3px;background:var(--panel);border:1px solid var(--line);margin-top:6px;overflow:hidden}
+.pbar i{display:block;height:100%;width:0;background:var(--good)}
+
+/* ---------- sticky subject buttons ---------- */
+.subnav{position:sticky;top:68px;z-index:9;background:var(--paper);border-bottom:1px solid var(--line)}
+.subnav .wrap{display:flex;gap:8px;overflow-x:auto;padding-block:10px;scrollbar-width:thin}
+.subnav a{--tint:color-mix(in srgb,var(--sc) 10%,var(--paper));display:inline-flex;align-items:center;gap:7px;white-space:nowrap;text-decoration:none;font-size:13px;font-weight:500;border:1px solid var(--line);border-radius:999px;padding:6px 12px;background:var(--paper)}
+.subnav a i{width:9px;height:9px;border-radius:50%;background:var(--sc)}
+.subnav a small{color:var(--muted);font-size:12px;font-variant-numeric:tabular-nums}
+.subnav a:hover{border-color:var(--line2)}
+.subnav a.on{border-color:var(--sc);background:var(--tint)}
+
+/* ---------- subject sections ---------- */
+main{padding-block:8px 64px}
+.sub{--tint:color-mix(in srgb,var(--sc) 11%,var(--paper));padding-top:36px;scroll-margin-top:128px}
+.sh{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 18px;padding-bottom:10px;border-bottom:2px solid var(--sc);margin-bottom:16px}
+.sh h2{margin:0;font:700 26px/1.1 var(--display);letter-spacing:-.01em}
+.sm{margin:0;display:flex;flex-wrap:wrap;gap:4px 14px;font-size:13.5px;color:var(--muted);font-variant-numeric:tabular-nums}
+.sm b{color:var(--sc)}
+.sm .cnt{color:var(--ink)}
+.days{display:flex;flex-direction:column;gap:16px}
+
+/* ---------- day card ---------- */
+.day{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,480px);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--paper);scroll-margin-top:136px}
+.info{min-width:0;padding:18px 22px 20px}
+.meta{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.dn{font:700 13px var(--display);color:var(--sc);background:var(--tint);border-radius:6px;padding:3px 9px;font-variant-numeric:tabular-nums}
+.sj{font-size:12.5px;color:var(--muted)}
+.tag{font-size:11.5px;font-weight:600;border-radius:999px;padding:2px 9px;border:1px solid var(--line2);color:var(--muted)}
+.tag.add{border-style:dashed;color:var(--ink)}
+.tag.rev{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.tag.two{border-color:var(--sc);color:var(--sc);background:var(--tint)}
+.done{margin-left:auto;display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;border:1px solid var(--line2);border-radius:8px;padding:4px 10px 4px 8px;cursor:pointer;user-select:none}
+.done input{margin:0;width:15px;height:15px;accent-color:var(--good)}
+.day.is-done{border-color:color-mix(in srgb,var(--good) 45%,var(--line))}
+.done.on{color:var(--good);border-color:color-mix(in srgb,var(--good) 45%,var(--line));background:color-mix(in srgb,var(--good) 8%,var(--paper))}
+.day h3{margin:12px 0 4px;font:600 20px/1.25 var(--display);text-wrap:balance}
+.key{margin:0;color:var(--muted);font-size:14px}
+.key b{color:var(--ink);font-weight:600}
+.time{margin:12px 0 0;display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;font-size:12.5px;color:var(--muted);font-variant-numeric:tabular-nums}
+.time b{color:var(--ink)}
+.time .sq{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:5px;background:var(--ink)}
+.time .sq.b{background:var(--paper);border:1.5px solid var(--ink)}
+.task{margin:14px 0 0;font-weight:600;font-size:15.5px}
+.task span{display:inline-block;margin-right:8px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--sc)}
+.day h4{margin:14px 0 4px;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.day ol{margin:0;padding-left:20px;font-size:14px}
+.day li{margin:4px 0;padding-left:2px}
+.day li::marker{color:var(--sc);font-weight:600}
+.draw{min-width:0;margin:0;padding:14px 16px 16px;display:flex;flex-direction:column;justify-content:center;gap:6px;border-left:1px solid var(--line);background:var(--panel) radial-gradient(var(--dot) 1px,transparent 1.2px) 0 0/14px 14px}
+.draw figcaption{font-size:11.5px;color:var(--muted)}
+.frame{background:var(--paper);border:1px solid var(--line2);border-radius:3px;padding:6px}
+.day.pair{display:block}
+.ph{padding:18px 22px 16px}
+.ph h3{margin-bottom:0}
+.part{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,480px);border-top:1px solid var(--line);scroll-margin-top:136px}
+.part .key{margin-top:10px}
+.pt{margin:10px 0 0;font:600 16px/1.3 var(--display)}
+.must{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 24px}
+.req{list-style:none;margin:0;padding:0;font-size:14px}
+.req li{display:flex;align-items:center;gap:8px;margin:0;padding:5px 0;border-bottom:1px solid var(--line)}
+.req li::before{content:"";flex:none;width:7px;height:7px;border-radius:2px;background:var(--sc)}
+.new{margin-left:auto;font-size:10.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--sc);background:var(--tint);border-radius:4px;padding:1px 6px}
+.legend{margin:10px 0 0;font-size:12.5px;color:var(--muted)}
+.legend .new{margin:0 6px 0 0}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips .done{margin-left:0}
+@media (max-width:480px){.must{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:820px){
+  .day,.part{grid-template-columns:minmax(0,1fr)}
+  .draw{border-left:0;border-top:1px solid var(--line)}
+  .info{padding:16px 16px 18px}
+  .ph{padding:16px 16px 14px}
+}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+
+/* ---------- sketches ---------- */
+.sk{display:block;width:100%;height:auto;font-family:var(--hand)}
+.sk rect,.sk circle,.sk path{fill:var(--paper);stroke:var(--ink);stroke-width:1.5}
+.sk line{stroke:var(--ink);stroke-width:1.5;stroke-linecap:round}
+.sk .f{fill:var(--tint)} .sk .g{fill:var(--panel)} .sk .s{fill:var(--sc);stroke:var(--sc)} .sk .k{fill:var(--ink)} .sk .n{fill:none}
+.sk .q{stroke:var(--line2);stroke-width:3} .sk .q2{stroke:var(--muted);stroke-width:4}
+.sk .th{stroke-width:1} .sk .pk{stroke:var(--sc);stroke-width:3} .sk .fd{opacity:.35}
+.sk .c0{fill:var(--h)} .sk .c1{fill:var(--n)} .sk .c2{fill:var(--t)} .sk .c3{fill:var(--f)}
+.sk text{fill:var(--ink);stroke:none;font-size:13px;white-space:pre}
+.sk .ts{font-size:11.5px} .sk .tx{font-size:10px} .sk .tf{font-size:12px} .sk .tb{font-size:16px} .sk .tm{font-size:13.5px;font-weight:700} .sk .tk{font-weight:700}
+.sk .td{fill:var(--muted)} .sk .ta{fill:var(--sc)} .sk .tw{fill:var(--on-sc)} .sk .tr{fill:var(--bad)} .sk .tg{fill:var(--good)}
+
+/* ---------- portfolio fit ---------- */
+.top{padding-block:56px 20px}
+.top .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+.lede,.key,.day ol,.tools{max-width:72ch}
+.day ol{list-style:decimal}
+.subnav{backdrop-filter:saturate(160%) blur(12px);-webkit-backdrop-filter:saturate(160%) blur(12px);background:var(--header-bg)}
+.site-footer{margin-top:24px}
+</style>
+</head>
+<body>
+  <a class="skip-link" href="#content">Skip to content</a>
+
+  <!-- Header (same as the home page; links go back to its sections) -->
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="Sakthivel, back to the home page"><span class="brand-mark" aria-hidden="true">S</span>Sakthivel</a>
+
+      <nav class="nav" id="nav" aria-label="Main">
+        <a href="index.html#services">Services</a>
+        <a href="index.html#work">Work</a>
+        <a href="index.html#process">Process</a>
+        <a href="index.html#about">About</a>
+        <a class="active" href="index.html#course" aria-current="page">Course</a>
+        <a href="index.html#faq">FAQ</a>
+        <a class="btn btn-primary btn-sm nav-cta" href="index.html#course">Register</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="icon-btn" id="themeToggle" type="button" aria-label="Switch between dark and light theme">
+          <i class="fas fa-sun icon-sun" aria-hidden="true"></i>
+          <i class="fas fa-moon icon-moon" aria-hidden="true"></i>
+        </button>
+        <button class="icon-btn menu-toggle" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav">
+          <i class="fas fa-bars" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+    <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+  </header>
+
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+  <filter id="wob" x="-3%" y="-3%" width="106%" height="106%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="11" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3.2" xChannelSelector="R" yChannelSelector="G"/></filter>
+</defs></svg>
+
+<section class="top"><div class="wrap">
+  <p class="eyebrow">Full Stack Development course</p>
+  <h1>90-Day Teaching Flow</h1>
+  <p class="lede">A day-by-day plan built from the handwritten course notes. HTML &amp; CSS days are added. The morning and evening batch follow the same syllabus.</p>
+  <div class="cta"><a class="btn btn-primary" href="index.html#course"><i class="fas fa-user-plus" aria-hidden="true"></i> Register for the course</a><a class="btn btn-ghost" href="index.html"><i class="fas fa-arrow-left" aria-hidden="true"></i> Back to portfolio</a></div>
+  <ul class="cfacts">
+    <li><b>90</b>training days</li>
+    <li><b>6</b>days a week (15 weeks)</li>
+    <li><b>3 h</b>every day</li>
+  </ul>
+  <!-- <div class="rhythm">
+    <p>Every training day (3 hours)</p>
+    <div class="rbar"><div class="r1"><b>70 min</b>Topic + live demo</div><div class="r2"><b>110 min</b>Task: students build it</div></div>
+  </div> -->
+  <!-- <p class="tools">Tools used in this plan: VS Code, MySQL with Workbench, Express, Postman and TypeORM (in NestJS). Swap them if your lab uses different ones.</p> -->
+
+  <nav class="bar" id="bar" aria-label="Days per subject"></nav>
+  <p class="barcap"><span>Day 1</span><span>Number in each block = training days</span><span>Day 90</span></p>
+
+  <div class="track">
+    <div class="seg" role="group" aria-label="Batch to track"><button type="button" id="bm" aria-pressed="true">Morning batch</button><button type="button" id="be" aria-pressed="false">Evening batch</button></div>
+    <div class="prog"><span id="pcount"><b>0</b> of 90 days done</span><div class="pbar"><i id="pfill"></i></div></div>
+  </div>
+</div></section>
+
+<nav class="subnav" aria-label="Subjects"><div class="wrap" id="subnav"></div></nav>
+<main id="content"><div class="wrap" id="main"></div></main>
+
+<script>
+/* ============ subjects: id, name, first day, last day, colour token ============ */
+const SUBJ=[['html-css','HTML & CSS',1,6,'h'],['javascript','JavaScript',7,14,'j'],['sql','SQL',15,23,'q'],['typescript','TypeScript',24,27,'t'],['angular','Angular',28,47,'a'],['nodejs','Node.js',48,70,'n'],['nestjs','NestJS',71,83,'e'],['final-project','Final project',84,90,'f']];
+
+/* ============ sketch builder ============ */
+const E=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+const n1=v=>+(+v).toFixed(1);
+class K{
+  constructor(){this.a='';this.b=''}
+  r(x,y,w,h,c,rx){this.a+=`<rect x="${n1(x)}" y="${n1(y)}" width="${n1(w)}" height="${n1(h)}" rx="${rx??4}"${c?` class="${c}"`:''}/>`;return this}
+  l(x1,y1,x2,y2,c){this.a+=`<line x1="${n1(x1)}" y1="${n1(y1)}" x2="${n1(x2)}" y2="${n1(y2)}"${c?` class="${c}"`:''}/>`;return this}
+  o(x,y,r,c){this.a+=`<circle cx="${n1(x)}" cy="${n1(y)}" r="${r}"${c?` class="${c}"`:''}/>`;return this}
+  p(d,c){this.a+=`<path d="${d}"${c?` class="${c}"`:''}/>`;return this}
+  t(x,y,s,c,an){this.b+=`<text x="${n1(x)}" y="${n1(y)}"${c?` class="${c}"`:''}${an?` text-anchor="${an}"`:''}>${E(s)}</text>`;return this}
+  q(x,y,w,n,g=8){for(let i=0;i<n;i++)this.l(x,y+i*g,x+(i==n-1&&n>1?w*.6:w),y+i*g,'q');return this}
+  ar(x1,y1,x2,y2){const a=Math.atan2(y2-y1,x2-x1),h=7;this.l(x1,y1,x2,y2);this.l(x2,y2,x2-h*Math.cos(a-.5),y2-h*Math.sin(a-.5));this.l(x2,y2,x2-h*Math.cos(a+.5),y2-h*Math.sin(a+.5));return this}
+  im(x,y,w,h,c){this.r(x,y,w,h,'g'+(c?' '+c:''),3);this.l(x,y,x+w,y+h,'th'+(c?' '+c:''));this.l(x+w,y,x,y+h,'th'+(c?' '+c:''));return this}
+  bt(x,y,w,s,h=20){this.r(x,y,w,h,'s',h/2);this.t(x+w/2,y+h/2+4,s,'ts tw','middle');return this}
+  win(url){this.r(4,4,352,222,'',8);this.l(4,30,356,30);for(let i=0;i<3;i++)this.o(18+i*12,17,3.5,'g');this.r(58,9,236,16,'g',8);this.t(68,21,url,'ts td');return this}
+  tb(x,y,w,cols,rows,rh=20,hl=-1){
+    const len=cols.map((c,i)=>Math.max(String(c).length,...rows.map(r=>String(r[i]??'').length))+2),tot=len.reduce((a,b)=>a+b,0),xs=[x];
+    len.forEach(n=>xs.push(xs[xs.length-1]+w*n/tot));
+    const H=rh*(rows.length+1);
+    this.r(x,y,w,H,'',3);this.r(x,y,w,rh,'f',3);
+    if(hl>=0)this.r(x,y+(hl+1)*rh,w,rh,'f',0);
+    for(let i=1;i<=rows.length;i++)this.l(x,y+i*rh,x+w,y+i*rh,'th');
+    for(let i=1;i<cols.length;i++)this.l(xs[i],y,xs[i],y+H,'th');
+    cols.forEach((c,i)=>this.t(xs[i]+6,y+rh-6,c,'ts tk'));
+    rows.forEach((r,j)=>r.forEach((c,i)=>this.t(xs[i]+6,y+(j+2)*rh-6,c,'ts')));
+    return this}
+  out(label){return `<svg class="sk" viewBox="0 0 360 230" role="img" aria-label="${E(label)}"><g filter="url(#wob)">${this.a}</g>${this.b}</svg>`}
+}
+
+const G={
+  news(url,head,f=''){const k=new K().win(url),c=f.includes('c'),b=f.includes('b');
+    k.r(14,38,332,26,c?'f':'',3).t(180,57,'THE DAILY NEWS','tb','middle').t(338,55,'Mon, 12 Jan','tx td','end');
+    k.t(16,86,head,'tb'+(c?' ta':'')).q(16,98,184,5,9).im(214,74,132,64);
+    if(b)k.bt(16,144,118,'Change headline',19);
+    const y=b?182:162;
+    for(let i=0;i<3;i++){const x=16+i*112;if(c)k.r(x-4,y-12,108,56,'',3);k.l(x+2,y,x+62,y,'q2').q(x+2,y+10,94,b?3:4,8)}
+    return k},
+  form(url,title,fields,btn,out){const k=new K().win(url),W=out?150:210,X=out?18:75,big=fields.length<=4;let y=60;
+    k.t(X,52,title,'tm');
+    fields.forEach(f=>{const [lab,val]=f.split('|');
+      if(big){k.t(X,y+9,lab,'ts td');if(!(val&&val[0]=='○'))k.r(X,y+12,W,15,'',3);if(val)k.t(X+6,y+23.5,val,'ts');y+=30}
+      else{k.r(X,y,W,18,'',3);k.t(X+6,y+13,val||lab,val?'ts':'ts td');y+=24}});
+    if(btn)k.bt(X,y+4,74,btn,19);
+    if(out){k.ar(172,120,192,120).r(198,46,146,168,'f',6);if(out.t)k.t(208,64,out.t,'ts td');out.l.forEach((s,i)=>k.t(208,(out.t?88:72)+i*21,s,i?'':'tb'))}
+    return k},
+  web(url,title,cols,rows,note){const k=new K().win(url).t(16,54,title,'tm').tb(14,64,332,cols,rows,22);if(note)k.t(16,64+22*(rows.length+1)+18,note,'ts td');return k},
+  grid(title,cols,rows,note,db){const k=new K();
+    if(db)k.p('M14 13v14a11 4 0 0 0 22 0V13','f').p('M14 13a11 4 0 1 0 22 0a11 4 0 1 0-22 0');
+    k.t(db?44:14,27,title,'tb').tb(14,40,332,cols,rows,22);
+    if(note)k.t(16,40+22*(rows.length+1)+20,note,'ts ta');return k},
+  con(title,lines){const k=new K().r(4,4,352,222,'',8).l(4,30,356,30);for(let i=0;i<3;i++)k.o(18+i*12,17,3.5,'g');
+    k.t(60,21,title,'ts td');
+    lines.forEach((s,i)=>{let c='';if(/^[>$] /.test(s))c='ta';else if(/^(\/\/|--)/.test(s.trim()))c='td';else if(s[0]=='!'){c='tr';s=s.slice(1)}k.t(16,50+i*20,s,c)});
+    return k},
+  pm(m,path,body,st,resp){const k=new K().r(4,4,352,222,'',8).t(14,20,'Postman','ts td');
+    let u='localhost:3000'+path;if(u.length>44)u='…'+path;
+    k.r(14,26,54,20,'s',4).t(41,40,m,'ts tw','middle').r(72,26,214,20,'',4).t(78,40,u,u.length>34?'tx':'ts').bt(292,26,54,'Send',20);
+    let y=58;
+    if(body){k.t(14,y+6,'Body (JSON)','ts td').r(14,y+10,332,body.length*15+10,'g',4);body.forEach((s,i)=>k.t(22,y+25+i*15,s,'ts'));y+=body.length*15+32}
+    k.t(14,y+6,'Response','ts td').t(346,y+6,st,'ts tk '+(st[0]=='2'?'tg':'tr'),'end').r(14,y+10,332,206-y,'',4);
+    resp.forEach((s,i)=>k.t(22,y+27+i*16,s,'ts'));return k},
+  er(ents,links,note){const k=new K(),n=ents.length,w=n>2?96:124,g=n>2?28:52,x0=(360-n*w-(n-1)*g)/2,hm=Math.max(...ents.map(e=>e[1].length)),top=Math.max(18,(note?196:214)/2-(30+hm*18)/2);
+    ents.forEach((e,i)=>{const x=x0+i*(w+g),h=30+e[1].length*18;
+      k.r(x,top,w,h,'',5).r(x,top,w,24,'f',5).t(x+w/2,top+17,e[0],'tm','middle');
+      e[1].forEach((f,j)=>k.t(x+8,top+41+j*18,f,'ts'));
+      if(i<n-1){const lx=x+w,[A,B]=(links[i]||'').split(' — ');k.l(lx,top+50,lx+g,top+50);
+        if(B)k.t(lx+4,top+45,A,'ts ta').t(lx+g-4,top+45,B,'ts ta','end');else k.t(lx+g/2,top+45,A,'ts ta','middle')}});
+    if(note)k.t(180,216,note,'ts td','middle');return k},
+  flow(title,bx,note){const k=new K().t(14,26,title,'tb'),n=bx.length,per=n<=4?n:3,rows=Math.ceil(n/per),bw=per>3?74:92,g=(348-per*bw)/(per-1),bh=56,y0=rows>1?50:84;
+    bx.forEach((b,i)=>{const r=Math.floor(i/per),c=i%per,col=r%2?per-1-c:c,x=6+col*(bw+g),y=y0+r*(bh+34);
+      k.r(x,y,bw,bh,i%2?'':'f',6).t(x+bw/2,y+26,b[0],per>3?'tf tk':'tm','middle').t(x+bw/2,y+43,b[1],'tx td','middle');
+      k.o(x+10,y,8,'s').t(x+10,y+4,i+1,'ts tw','middle');
+      if(i<n-1){if(Math.floor((i+1)/per)==r){const d=r%2?-1:1;k.ar(d>0?x+bw+3:x-3,y+bh/2,d>0?x+bw+g-3:x-g+3,y+bh/2)}else k.ar(x+bw/2,y+bh+4,x+bw/2,y+bh+30)}});
+    if(note)k.t(180,rows>1?218:178,note,'ts ta','middle');return k},
+  map(title,pairs,heads){const k=new K().t(14,24,title,'tb');
+    if(heads)k.t(85,44,heads[0],'ts td','middle').t(275,44,heads[1],'ts td','middle');
+    pairs.forEach((p,i)=>{const y=52+i*42;k.r(10,y,150,30,'',5).t(85,y+19,p[0],'ts','middle').ar(164,y+15,196,y+15).r(200,y,150,30,'f',5).t(275,y+19,p[1],'ts','middle')});
+    return k},
+  tree(title,items){const k=new K().r(4,4,352,222,'',8).t(14,23,title,'ts td').l(4,32,356,32);
+    items.forEach((it,i)=>{const [d,name,dir]=it,x=22+d*22,y=54+i*22;
+      if(d>0)k.l(x-12,y-22,x-12,y-4,'th').l(x-12,y-4,x-3,y-4,'th');
+      if(dir)k.r(x,y-11,15,11,'f',2);else k.r(x+2,y-12,10,13,'',1);
+      k.t(x+22,y,name,dir?'tm':'')});
+    return k},
+  phone(server,from,app,lines){const k=new K();
+    k.r(12,82,114,56,'',6).t(69,106,server,'tm','middle').t(69,124,from,'tx td','middle');
+    k.ar(130,110,198,110).t(164,102,'push','ts ta','middle');
+    k.r(206,8,130,214,'',18).l(252,20,290,20,'q').t(271,50,'10:15','tb','middle');
+    k.r(214,62,114,62,'f',8).o(226,77,5,'s').t(236,81,app,'ts td');
+    lines.forEach((s,i)=>k.t(222,99+i*15,s,i?'ts tk':'ts'));
+    k.q(224,146,94,3,12).l(252,210,290,210);return k},
+  calc(disp,notes){const k=new K().r(28,8,154,214,'',10).r(40,18,130,30,'g',4).t(162,39,disp,'tb','end');
+    ['7','8','9','÷','4','5','6','×','1','2','3','−','C','0','=','+'].forEach((s,i)=>{const x=40+(i%4)*34,y=58+Math.floor(i/4)*40,eq=s=='=';
+      k.r(x,y,28,32,eq?'s':(i%4==3||s=='C')?'f':'',5).t(x+14,y+21,s,eq?'tm tw':'tm','middle')});
+    k.ar(174,33,198,33).t(204,37,notes[0]);
+    notes.slice(1).forEach((s,i)=>k.t(204,96+i*26,s,i==notes.length-2?'ts td':''));return k},
+  grid9(m){const k=new K().win(m?'localhost:4200/c5':'localhost:4200');
+    if(!m){for(let i=0;i<9;i++){const x=60+(i%3)*82,y=42+Math.floor(i/3)*60;k.r(x,y,76,54,i%2?'':'f',5).t(x+38,y+29,'C'+(i+1),'tb','middle').t(x+38,y+44,'app-c'+(i+1),'tx td','middle')}return k}
+    k.t(16,54,'Home (grid of links)','ts td');
+    for(let i=0;i<9;i++){const x=16+(i%3)*45,y=62+Math.floor(i/3)*45,on=i==4;k.r(x,y,40,40,on?'s':'',4).t(x+20,y+25,'C'+(i+1),on?'tm tw':'tm','middle')}
+    k.ar(156,128,196,128).t(176,120,'click','ts ta','middle');
+    k.t(204,54,'<router-outlet>','ts td').r(202,62,144,144,'f',6).t(214,88,'C5 page','tb').q(214,102,116,4,10).t(214,160,'← Back to grid','ts ta').t(214,190,'route: /c5','ts td');return k},
+  picker(m){const k=new K().win('localhost:4200/images').t(16,52,'Pick your favourite image','tm');
+    for(let i=0;i<5;i++){const x=16+i*66,on=i==2,fd=m&&!on?'fd':'';
+      k.im(x,60,56,48,fd);if(on)k.r(x,60,56,48,'n pk',3);k.o(x+28,120,5,on?'s':'')}
+    k.r(16,132,328,30,m?'s':'f',6).t(180,152,'You picked image 3. Nice choice!',m?'tw':'','middle');
+    if(!m)k.t(16,186,'*ngFor shows the 5 images','ts td').t(16,206,'*ngIf shows the message after a pick','ts td');
+    else{k.t(16,187,'Box colour:','ts');for(let i=0;i<4;i++)k.o(98+i*24,183,7,'c'+i);k.o(98,183,10.5,'n');
+      k.t(16,209,'Text colour:','ts').o(98,205,7,'k').o(122,205,7,'');
+      k.t(344,187,'ngClass → thick border','ts td','end').t(344,209,'ngStyle → your colours','ts td','end')}
+    return k},
+  pc(){const k=new K();
+    k.r(40,18,280,54,'',6).t(54,40,'Parent: student-list','tm').t(54,60,'Selected: Ravi','ts ta');
+    k.r(40,150,280,62,'f',6).t(54,172,'Child: student-card','tm').t(54,194,'Ravi · Full Stack · 82','ts').bt(250,172,56,'Select',20);
+    k.ar(120,76,120,146).t(128,106,'@Input()','ts tk').t(128,122,'student goes down','ts td');
+    k.ar(240,146,240,76).t(248,106,'@Output()','ts tk').t(248,122,'selected goes up','ts td');return k},
+  folders(){const k=new K();
+    [[14,'folder-a',[2,3]],[250,'folder-b',[0,1]]].forEach(([x,name,hl])=>{
+      k.r(x,14,18,13,'f',2).t(x+24,26,name,'tm').l(x+8,30,x+8,142,'th');
+      for(let i=0;i<4;i++){const y=62+i*28,on=hl.includes(i);k.l(x+8,y-4,x+22,y-4,'th');if(on)k.r(x+24,y-17,56,24,'f',5);k.t(x+36,y,'C'+(i+1),on?'tm':'')}});
+    k.r(128,84,104,52,'',8).t(180,106,'Shared service','tm','middle').t(180,123,'BehaviorSubject','tx td','middle');
+    k.ar(98,113,125,106).ar(98,141,125,124).ar(235,98,270,60).ar(235,112,270,88);
+    k.t(110,160,'send()','ts ta','middle').t(252,122,'data$','ts ta','middle');
+    k.t(180,188,'folder-a C3 sends  →  folder-b C1 shows','ts td','middle').t(180,206,'folder-a C4 sends  →  folder-b C2 shows','ts td','middle');return k},
+  split(url,ft,fields,btn,cols,rows,hl,note,search){const k=new K().win(url).t(14,52,ft,'tm');
+    fields.forEach((f,i)=>{const v=f[0]=='=';k.r(14,60+i*23,120,18,'',3).t(20,73+i*23,v?f.slice(1):f,v?'ts':'ts td')});
+    k.bt(14,64+fields.length*23,64,btn,19);
+    if(search)k.r(146,40,116,16,'',8).t(154,52,'Search name…','tx td');else k.t(146,54,'Table','ts td');
+    k.tb(146,62,200,cols,rows,20,hl).t(146,62+20*(rows.length+1)+18,note,'tx td');return k},
+  cards(){const k=new K().win('courses.html');
+    k.r(14,38,332,24,'f',4).t(24,54,'LOGO','tm').t(336,54,'Home     Courses     Contact','ts','end');
+    ['Full Stack','UI Design','Testing'].forEach((s,i)=>{const x=14+i*116;k.r(x,72,100,122,'',6).im(x+8,80,84,38).t(x+8,134,s,'tm').q(x+8,144,84,2,8).bt(x+8,164,48,'Join',18)});
+    k.t(180,212,'display: flex  ·  space-between  ·  gap','ts td','middle');return k},
+  resp(){const k=new K().r(8,10,232,178,'',6).l(8,28,240,28);
+    for(let i=0;i<6;i++)k.im(18+(i%3)*72,38+Math.floor(i/3)*72,66,62);
+    k.t(124,206,'Laptop: 3 columns','ts td','middle');
+    k.r(264,10,84,196,'',12);for(let i=0;i<3;i++)k.im(274,24+i*58,64,50);
+    k.t(306,222,'Mobile: 1 column','ts td','middle').ar(244,100,260,100);return k},
+  profile(){const k=new K().win('profile.html');
+    k.o(46,72,24,'g').t(84,68,'Your Name','tb').q(84,80,170,2,9).t(16,116,'Skills','ts td');
+    ['HTML','CSS','Flexbox','Grid'].forEach((s,i)=>k.r(16+i*82,122,74,20,'f',10).t(53+i*82,136,s,'ts','middle'));
+    k.t(16,162,'Education','ts td').tb(14,168,180,['Course','Year'],[['B.Sc','2025']],18);
+    k.t(208,162,'Contact','ts td').r(206,168,140,15,'',3).r(206,187,140,15,'',3).bt(206,206,50,'Send',15);return k}
+};
+const CAP={news:'Browser page',form:'Form on a browser page',web:'Table on a browser page',grid:'Table',con:'Console output',pm:'Postman request and response',er:'ER diagram',flow:'Flow boxes',map:'Flow boxes',tree:'Folder tree',phone:'Phone notification',calc:'Calculator',grid9:'Browser page',picker:'Browser page',pc:'Flow boxes',folders:'Flow boxes',split:'Form and table side by side',cards:'Browser page',resp:'Laptop and mobile view',profile:'Browser page'};
+
+/* ============ days 1 to 83: [topic, key points, task, steps, sketch, caption?, "add" = not in the handwritten notes]. Days 84 to 90 are the one final-project card (PROJ) ============ */
+const ST=[[1,'Ravi','ravi@mail.com','Full Stack',82],[2,'Priya','priya@mail.com','UI Design',91]];
+const D=[
+/* ---- HTML & CSS (added) ---- */
+/*1*/["HTML structure & text tags","Page skeleton (html, head, body), headings, paragraphs, lists, images and links.","Newspaper page (HTML)",[
+ "Create `newspaper.html` and type the basic page skeleton: `html`, `head`, `body`.",
+ "Add the paper name in an `h1` and today's date in a `p` tag.",
+ "Write one main story: an `h2` headline, two paragraphs and one image.",
+ "Add three small stories below with `h3` headings and short paragraphs.",
+ "Add a list of “Top 5 headlines” and one link, then open the file in the browser."],
+ ['news','newspaper.html','Rain brings joy to the city']],
+/*2*/["HTML forms & tables","Form, input types, label, select, radio, checkbox and button; table, tr, th and td.","Form creation (HTML)",[
+ "Create `form.html` with the heading “Student Registration”.",
+ "Add inputs with labels for name, email, phone and date of birth.",
+ "Add a course dropdown (`select`), gender radio buttons and an “I agree” checkbox.",
+ "Add Submit and Reset buttons, and mark name and email as `required`.",
+ "Below the form, make a table of 3 sample students (name, email, course)."],
+ ['form','form.html','Student Registration',['Name','Email','Course|Full Stack ▾','Gender|○ Male     ○ Female'],'Submit']],
+/*3*/["CSS basics","Selectors (tag, class, id), colours, fonts, the box model (margin, border, padding) and linking a CSS file.","Style the newspaper page",[
+ "Create `style.css` and link it to your `newspaper.html`.",
+ "Set a font, a text colour and a background colour for the whole page.",
+ "Style the paper name: big, centred, with a border line below it.",
+ "Give each small story a class, then add padding, margin and a thin border.",
+ "Set the image width and change the link colour on hover."],
+ ['news','newspaper.html','Rain brings joy to the city','c']],
+/*4*/["CSS Flexbox","display: flex, direction, justify-content, align-items, gap and wrap.","Nav bar and course cards in a row",[
+ "Create `courses.html` with a nav bar: logo text on the left, 3 links on the right.",
+ "Use `display: flex` and `justify-content: space-between` on the nav bar.",
+ "Add 3 course cards (image, title, short text, button) inside one container.",
+ "Make the container a flex row with `gap` and give every card the same width.",
+ "Add `flex-wrap` so the cards move to the next line on a small screen."],
+ ['cards']],
+/*5*/["CSS Grid & responsive","grid-template-columns, the fr unit, gap, media queries and the viewport meta tag.","Photo gallery for laptop and mobile",[
+ "Create `gallery.html` with 6 image boxes inside one container.",
+ "Use `display: grid` with 3 equal columns and a gap.",
+ "Add media queries: below 768px show 2 columns, below 480px show 1 column.",
+ "Add the viewport meta tag and test in the browser's mobile view (F12).",
+ "Make every image fill its box with `width: 100%`."],
+ ['resp']],
+/*6*/["HTML & CSS – revision + test","Recap quiz on tags, forms, tables, the box model, flexbox and grid. Then one page built alone.","My profile page (build alone)",[
+ "Answer the 15-question recap quiz (20 minutes, no notes).",
+ "Build `profile.html`: your photo, your name, a short “About me” and a skills list.",
+ "Add a table of your education and a small contact form.",
+ "Style it with your own CSS: flexbox for the top part, grid for the skills.",
+ "Check it in mobile view and show it to the trainer."],
+ ['profile']],
+/* ---- JavaScript ---- */
+/*7*/["Get all types in JS","let and const, string, number, boolean, null, undefined, array and object; checking a type with typeof.","Type finder in the console",[
+ "Create `types.html` with a `script` tag and open the browser console (F12).",
+ "Make one variable for each type: name, age, isStudent, a marks array and a student object.",
+ "Print every value with its type using `typeof`.",
+ "Try `typeof null` and `typeof []` and write down what surprised you.",
+ "Change a number to a string with `String()` and back with `Number()`, then print the types again."],
+ ['con','Console',['> typeof "Ravi"','"string"','> typeof 21','"number"','> typeof true','"boolean"','> typeof [82, 91]','"object"']]],
+/*8*/["DOM – add / change content","getElementById, querySelector, textContent, innerHTML, createElement, appendChild and the click event.","Live headline changer on the newspaper page",[
+ "Open your newspaper page and give the headline an `id`.",
+ "Add a “Change headline” button and write a click function in `script.js`.",
+ "On click, change the headline text using `textContent`.",
+ "Add an “Add news” button that creates a new paragraph and appends it.",
+ "Add a third button that removes the last news item."],
+ ['news','newspaper.html','Breaking: new headline!','b']],
+/*9*/["DOM – change style & input values","element.style, classList (add, remove, toggle) and reading or setting input.value.","Name card maker",[
+ "Create a page with two inputs (name, favourite colour) and a “Show” button.",
+ "On click, read both inputs with `.value`.",
+ "Show “Hello, name!” in a card beside the inputs.",
+ "Change the card's background to the typed colour using `.style`.",
+ "Add a “Dark mode” button that toggles a class on the `body`."],
+ ['form','card.html','Name card maker',['Name|Priya','Favourite colour|orange'],'Show',{t:'Card',l:['Hello, Priya!','background: orange']}]],
+/*10*/["Conditional statements – if / else","Comparison operators, if, else if, else, and joining checks with && and ||.","Marks to grade checker",[
+ "Create a page with a marks input (0 to 100) and a “Check” button.",
+ "Read the marks and change the text to a number.",
+ "Use `if / else if / else`: 90+ is A, 75+ is B, 50+ is C, below 50 is Fail.",
+ "Show the grade in green for pass and in red for fail.",
+ "Show “Enter marks between 0 and 100” when the input is empty or out of range."],
+ ['form','grade.html','Grade checker',['Marks|82'],'Check',{t:'Result',l:['Grade: B','Pass']}]],
+/*11*/["Conditional statements – switch & ternary","switch, case, break and default; the short form condition ? a : b.","Course fee finder",[
+ "Create a page with a course dropdown (Full Stack, UI Design, Testing) and a button.",
+ "Use `switch` on the picked course to set the fee and the duration.",
+ "Add a `default` case that shows “Please pick a course”.",
+ "Add an age input and use a ternary: below 23 shows “Student offer”, else “Regular fee”.",
+ "Show all the results together in one message box."],
+ ['form','fee.html','Course fee finder',['Course|Full Stack ▾','Age|21'],'Find fee',{t:'Result',l:['Full Stack','Fee: Rs. 30,000','Duration: 3 months','Student offer']}]],
+/*12*/["Simple calculator (part 1)","Plan the layout, build the button grid, use one click function for all buttons and show numbers on the display.","Simple calculator – layout and number buttons",[
+ "Create `calculator.html` with a display box and 16 buttons (0 to 9, + − × ÷, C, =).",
+ "Arrange the buttons in 4 columns using CSS grid.",
+ "Write one function that runs when any number button is clicked.",
+ "Add the clicked number to the display, so you can type 125.",
+ "Make the C button clear the display."],
+ ['calc','125',['display shows 125','Click 1, then 2, then 5','C clears the display','= comes tomorrow']]],
+/*13*/["Simple calculator (part 2)","Remember the first number and the operator, calculate on =, use switch for the operators, check divide by zero.","Simple calculator – make it calculate",[
+ "When an operator is clicked, save the first number and the operator, then clear the display.",
+ "When = is clicked, read the second number.",
+ "Use `switch` on the operator to add, subtract, multiply or divide.",
+ "Show the answer on the display. Show “Cannot divide by 0” for a division by zero.",
+ "Test it: 12 + 7, 9 × 9, 10 ÷ 4 and 5 ÷ 0."],
+ ['calc','19',['answer of 12 + 7','9 × 9 = 81','10 ÷ 4 = 2.5','5 ÷ 0 → Cannot divide by 0']]],
+/*14*/["JavaScript – revision + test","Recap quiz on types, DOM and conditional statements. Then one small page built alone.","Student result card (build alone)",[
+ "Answer the recap quiz (20 minutes).",
+ "Build a page with inputs for a name and 3 subject marks.",
+ "On click, find the total and the average.",
+ "Use conditions to show the grade and Pass or Fail in colour.",
+ "Add a “Clear” button that resets everything."],
+ ['form','result.html','Result card',['Name|Arun','Maths|78','Science|85','English|69'],'Get result',{t:'Result',l:['Arun','Total: 232','Average: 77.3','Grade: B · Pass']}]],
+/* ---- SQL ---- */
+/*15*/["SQL basics","What a database, table, row and column are; CREATE DATABASE, CREATE TABLE and SELECT *.","Create the training database and the students table",[
+ "Open MySQL Workbench and create a database called `training`.",
+ "Create a `students` table with id, name, email, course and marks.",
+ "Run `DESCRIBE students;` to check the columns.",
+ "Add 2 rows using the trainer's sample INSERT.",
+ "Run `SELECT * FROM students;` and read the result."],
+ ['grid','students',['id','name','email','course','marks'],ST,'SELECT * FROM students;',1],'Database table'],
+/*16*/["CRUD – insert & select","INSERT INTO, SELECT with chosen columns, WHERE and ORDER BY.","Add 10 students and find them",[
+ "Insert 10 students with different courses and marks.",
+ "Select only the name and marks of all students.",
+ "Find the students of the “Full Stack” course using `WHERE`.",
+ "Find students with marks above 75, highest first (`ORDER BY marks DESC`).",
+ "Find one student by email."],
+ ['con','SQL editor',['> INSERT INTO students (name, marks)','     VALUES ("Arun", 78);','1 row inserted','> SELECT name, marks FROM students','     WHERE marks > 75 ORDER BY marks DESC;','Priya  |  91','Ravi   |  82','Arun   |  78']]],
+/*17*/["CRUD – update & delete","UPDATE … SET … WHERE, DELETE … WHERE, and the danger of a missing WHERE.","Correct and clean the student data",[
+ "Update one student's marks using their id.",
+ "Change the course of one student from “Testing” to “Full Stack”.",
+ "Add 5 grace marks to everyone below 40.",
+ "Delete one student by id and check with SELECT.",
+ "Write (do not run) an UPDATE without WHERE and tell your partner what it would do."],
+ ['con','SQL editor',['> UPDATE students SET marks = 88','     WHERE id = 1;','1 row changed','> DELETE FROM students WHERE id = 9;','1 row deleted','-- no WHERE = every row changes!']]],
+/*18*/["Data types (part 1)","Number and text types: INT, DECIMAL, VARCHAR, CHAR and TEXT; choosing a size; NOT NULL.","Pick the right type for every student column",[
+ "Write a list of student details: name, phone, fee paid, marks and address.",
+ "Pick a data type and size for each one and say why.",
+ "Create a `students_v2` table with those types.",
+ "Try to insert a 300-letter name, and text into the marks column. Read the errors.",
+ "Drop the table and create it again where your type was wrong."],
+ ['grid','students_v2',['column','data type','why'],[['name','VARCHAR(60)','short text'],['phone','CHAR(10)','always 10 digits'],['fee_paid','DECIMAL(8,2)','money'],['marks','INT','whole number'],['address','TEXT','long text']],'',1],'Database table'],
+/*19*/["Data types (part 2)","Date and yes/no types: DATE, DATETIME, TIMESTAMP and BOOLEAN; NULL and DEFAULT values.","Add dates and yes/no columns",[
+ "Add `date_of_birth` (DATE), `joined_at` (DATETIME) and `is_active` (BOOLEAN) to the table design.",
+ "Set defaults: `is_active` is true and `joined_at` is the current time.",
+ "Insert 3 students without giving `joined_at` and look at the default value.",
+ "Find the students who joined this month.",
+ "Find the students where phone is NULL."],
+ ['grid','students',['name','date_of_birth','joined_at','is_active'],[['Ravi','2003-05-14','2026-01-05 09:30','1'],['Priya','2002-11-02','2026-01-05 09:31','1'],['Arun','2004-02-20','2026-01-06 18:02','0']],'joined_at fills itself (DEFAULT)',1],'Database table'],
+/*20*/["Data model – keys","Primary key, AUTO_INCREMENT, unique key and foreign key; why every table needs an id.","Move courses into their own table",[
+ "Create a `courses` table with id (primary key), name and duration.",
+ "Insert 3 courses.",
+ "In `students`, replace the course text with `course_id` and make it a foreign key.",
+ "Make `email` unique and try to insert the same email twice.",
+ "Try to insert a student with a `course_id` that does not exist and read the error."],
+ ['er',[['courses',['id  PK','name','duration']],['students',['id  PK','name','email  UNIQUE','course_id  FK']]],['1 — N'],'One course has many students']],
+/*21*/["Data model – relationships","One-to-one, one-to-many and many-to-many; drawing an ER diagram; the link table.","Draw and build the student–course model",[
+ "On paper, draw boxes for students, courses and enrollments.",
+ "Mark the relationships: one student has many enrollments, one course has many enrollments.",
+ "Create the `enrollments` table with student_id, course_id and enrolled_on.",
+ "Enroll 2 students in 2 courses each.",
+ "Use SELECT with WHERE to list all the course ids of one student."],
+ ['er',[['students',['id PK','name','email']],['enrollments',['id PK','student_id FK','course_id FK','enrolled_on']],['courses',['id PK','name','duration']]],['1 — N','N — 1'],'Many students ↔ many courses']],
+/*22*/["CASE","CASE WHEN … THEN … ELSE … END inside a SELECT; turning values into labels.","Grade report with CASE",[
+ "Select the name and marks of all students.",
+ "Add a `grade` column with CASE: 90+ is A, 75+ is B, 50+ is C, else Fail.",
+ "Add a `result` column that shows Pass or Fail.",
+ "Add a CASE on `is_active` that shows “Active” or “Left”.",
+ "Sort the report by marks, highest first."],
+ ['grid','Grade report',['name','marks','grade','result'],[['Priya',91,'A','Pass'],['Ravi',82,'B','Pass'],['Meena',64,'C','Pass'],['Karthik',38,'Fail','Fail']],'CASE WHEN marks >= 90 THEN "A" … END AS grade',1],'Database table'],
+/*23*/["SQL – revision + test","Recap quiz on CRUD, data types, keys, relationships and CASE. Then one small database task built alone.","Trainers table (build alone)",[
+ "Answer the recap quiz (20 minutes).",
+ "Create a `trainers` table with the right data types and a primary key.",
+ "Link it to `courses` with a foreign key (`trainer_id` in courses).",
+ "Insert 4 trainers, update one and delete one.",
+ "Write a report with CASE: 5 or more years of experience is “Senior”, else “Junior”."],
+ ['er',[['trainers',['id  PK','name','experience']],['courses',['id  PK','name','trainer_id  FK']]],['1 — N'],'One trainer teaches many courses']],
+/* ---- TypeScript ---- */
+/*24*/["TypeScript – types","Why TypeScript, installing it and running tsc; string, number, boolean, arrays, any and union types.","Typed student variables",[
+ "Install TypeScript and create `student.ts`.",
+ "Declare typed variables: name (string), marks (number), isActive (boolean), skills (string array).",
+ "Give a wrong type on purpose and read the red error.",
+ "Make `phone` a union type: `string | null`.",
+ "Compile with `tsc student.ts` and run the JS file with `node`."],
+ ['con','student.ts',['let name: string = "Ravi";','let marks: number = 82;','let isActive: boolean = true;','let skills: string[] = ["HTML", "CSS"];','let phone: string | null = null;','','marks = "eighty";','!Error: string is not a number'],'Code']],
+/*25*/["TypeScript – interfaces & functions","interface, optional property (?), typed function parameters and return type, arrow functions.","Student interface and grade function",[
+ "Create a `Student` interface: id, name, email, marks and an optional phone.",
+ "Make an array of 5 students that follows the interface.",
+ "Write `getGrade(marks: number): string` using your if / else from JavaScript.",
+ "Write a function that takes a `Student` and returns a line like “Ravi – B”.",
+ "Loop over the array and print every student's line."],
+ ['con','student.ts',['interface Student {','   id: number;','   name: string;','   marks: number;','   phone?: string;','}','function getGrade(marks: number): string','> Ravi – B'],'Code']],
+/*26*/["TypeScript – classes & generics","class, constructor, public and private, methods; generics <T> for reusable code.","Student class and a reusable list",[
+ "Create a `Student` class with a constructor (id, name, marks).",
+ "Add a method `isPass()` that returns true when marks are 50 or more.",
+ "Create 3 students with `new Student(...)` and print who passed.",
+ "Write a generic function `firstItem<T>(list: T[]): T`.",
+ "Use it with a list of students and with a list of numbers."],
+ ['con','student.ts',['class Student {','   constructor(public name: string,','                    public marks: number) {}','   isPass() { return this.marks >= 50; }','}','function firstItem<T>(list: T[]): T','> firstItem(students).name','"Ravi"'],'Code']],
+/*27*/["TypeScript – revision + test","Recap quiz on types, interfaces, functions, classes and generics. Then one small program built alone.","Course catalogue in TypeScript (build alone)",[
+ "Answer the recap quiz (20 minutes).",
+ "Create a `Course` interface: id, name, durationMonths and fee.",
+ "Create a `CourseList` class that keeps the courses in a private array.",
+ "Add the methods `add(course)`, `findById(id)` and `total()`.",
+ "Add 3 courses, print them, and fix every type error before you show the trainer."],
+ ['con','Terminal',['$ tsc course.ts','$ node course.js','Courses: 3','1 · Full Stack · 3 months','2 · UI Design · 2 months','3 · Testing · 2 months','findById(2) → UI Design']]],
+/* ---- Angular ---- */
+/*28*/["Angular architecture & project setup (part 1)","What Angular is, the single page app idea, components + templates + services, installing Node.js and the Angular CLI.","Create and run your first Angular app",[
+ "Check `node -v`, then install the CLI: `npm install -g @angular/cli`.",
+ "Create the project: `ng new student-portal`.",
+ "Run `ng serve` and open `localhost:4200`.",
+ "Open the project in VS Code and find the app component's HTML file.",
+ "Replace its content with “Welcome to Student Portal” and watch the browser update."],
+ ['con','Terminal',['$ npm install -g @angular/cli','$ ng new student-portal','$ cd student-portal','$ ng serve','Application bundle generated','Local:  http://localhost:4200/']]],
+/*29*/["Angular architecture & project setup (part 2)","Folder structure (src, app, assets); how the app starts: index.html → main.ts → app component; a component is HTML + CSS + TS.","Trace how the app loads",[
+ "Open `index.html` and find the `<app-root>` tag.",
+ "Open `main.ts` and find which component it starts.",
+ "In the app component's TS file, add a `title` and a `batch` variable.",
+ "Show both in the HTML and style them in the component's CSS file.",
+ "Draw the loading flow in your notebook with the file names."],
+ ['flow','How the app loads',[['index.html','<app-root>'],['main.ts','starts the app'],['AppComponent','HTML + CSS + TS'],['Browser','shows the page']]]],
+/*30*/["Create routes & components (part 1)","ng generate component, the selector, and using one component inside another.","C1–C9 grid layout – nine components",[
+ "Create 9 components: `ng g c c1` up to `ng g c c9`.",
+ "Give each component its title text (C1 … C9) and its own background colour.",
+ "In the app component, place all 9 selectors: `<app-c1>` to `<app-c9>`.",
+ "Wrap them in a container and use CSS grid: 3 columns and 3 rows.",
+ "Check that the page shows a 3 × 3 grid like the drawing."],
+ ['grid9',0]],
+/*31*/["Create routes & components (part 2)","The routes array (path + component), router-outlet, routerLink, the default route and the not-found route.","C1–C9 grid layout – open each box with a route",[
+ "Add 9 routes in `app.routes.ts`: path `c1` opens the C1 component, and so on.",
+ "Create a Home component that holds the 3 × 3 grid and make it the default route.",
+ "Make every grid box a link with `routerLink`.",
+ "Put `<router-outlet>` in the app component so the clicked page shows.",
+ "Add a “Back to grid” link in every component and a “Page not found” route."],
+ ['grid9',1]],
+/*32*/["Data binding – one way (newspaper example)","Interpolation {{ }}, property binding [ ] and event binding ( ): data moves in one direction.","Newspaper page from component data",[
+ "Create a `newspaper` component and add a route for it.",
+ "In the TS file add variables: paperName, date, headline, story and imageUrl.",
+ "Show the text with `{{ }}` and the image with `[src]`.",
+ "Add a button with `(click)` that changes the headline.",
+ "Add a `[disabled]` binding so the button turns off after 3 clicks."],
+ ['news','localhost:4200/newspaper','{{ headline }}','b']],
+/*33*/["Data binding – two way","[(ngModel)] and FormsModule: the input and the variable always stay the same.","Live student ID card",[
+ "Import `FormsModule` in your component.",
+ "Add inputs for name, course and city with `[(ngModel)]`.",
+ "Beside the form, show an ID card that uses the same variables.",
+ "Type in the inputs and watch the card change at once.",
+ "Add a “Reset” button that clears the variables, and see the inputs clear too."],
+ ['form','localhost:4200/id-card','Type here',['Name|Meena','Course|Full Stack','City|Madurai'],'Reset',{t:'ID card (changes as you type)',l:['Meena','Full Stack','Madurai']}]],
+/*34*/["Directives (statements) – JS","*ngFor to repeat, *ngIf to show or hide, ngSwitch to choose (new Angular also has @for, @if and @switch).","5 images – pick one and show a message",[
+ "Keep 5 images in the assets folder and make an array of 5 objects (name, file, message).",
+ "Show all 5 images in a row with `*ngFor`.",
+ "When the user clicks an image, save it in a `selected` variable.",
+ "Use `*ngIf` to show the message of the picked image, or “Pick an image” when nothing is picked.",
+ "Use `ngSwitch` to show a different short line for each of the 5 choices."],
+ ['picker',0]],
+/*35*/["Directives (statements) – CSS","ngClass adds classes by condition; ngStyle sets styles from variables.","5 images – customise the colours",[
+ "Open yesterday's 5-image page.",
+ "Use `ngClass` to give the picked image a thick border and fade the others.",
+ "Add 4 colour buttons and save the picked colour in a variable.",
+ "Use `ngStyle` to set the message box background from that colour.",
+ "Add a text colour option too, so the user can fully customise the message."],
+ ['picker',1]],
+/*36*/["Models & interface (part 1)","Why we use models, the models folder, the Student interface and typed arrays.","Student model and student list",[
+ "Create `src/app/models/student.ts` with a `Student` interface (id, name, email, course, marks).",
+ "Create a `student-list` component.",
+ "Make a typed array `students: Student[]` with the same 5 students from SQL.",
+ "Show them in a simple list with `*ngFor`.",
+ "Remove a field from one student and read the error TypeScript gives you."],
+ ['con','models/student.ts',['export interface Student {','   id: number;','   name: string;','   email: string;','   course: string;','   marks: number;','}','students: Student[] = [ … ];'],'Code']],
+/*37*/["Models & interface (part 2)","Optional fields, one interface inside another (Course inside Student), sharing models between components.","Students with course details",[
+ "Create a `Course` interface (id, name, durationMonths).",
+ "Change `Student` so that `course` uses the `Course` interface, and make `phone` optional.",
+ "Update your student array to match the new model.",
+ "Show the name, course name and duration of each student.",
+ "Use the same models in a second component (`course-list`) without copying them."],
+ ['er',[['Student',['id: number','name: string','phone?: string','course: Course']],['Course',['id: number','name: string','durationMonths']]],['uses'],'One model can sit inside another'],'Model diagram'],
+/*38*/["Class","Class and interface compared; constructor, properties, methods and the new keyword.","Student class with methods",[
+ "Create a `StudentModel` class with id, name and marks in the constructor.",
+ "Add a method `grade()` that returns A, B, C or Fail.",
+ "Add a method `isPass()`.",
+ "In a component, create 5 objects with `new StudentModel(...)`.",
+ "Show name, grade and Pass or Fail on the page by calling the methods."],
+ ['web','localhost:4200/grades','Grades (from class methods)',['Name','Marks','grade()','isPass()'],[['Priya',91,'A','true'],['Ravi',82,'B','true'],['Meena',64,'C','true'],['Karthik',38,'Fail','false']]]],
+/*39*/["Observable & subscribe (part 1)","What an Observable is (data that arrives later), of(), subscribe(), next / error / complete, and services.","Student service that returns an Observable",[
+ "Create a service: `ng g s services/student`.",
+ "Move the student array into the service.",
+ "Add `getStudents()` that returns `of(this.students)`.",
+ "In the list component, inject the service and `subscribe` to get the data.",
+ "Add a `console.log` inside subscribe and one after it, and see which prints first."],
+ ['flow','Observable and subscribe',[['Service','getStudents()'],['Observable','stream of data'],['subscribe()','in the component'],['Page','shows the list']],'Nothing happens until someone subscribes']],
+/*40*/["Observable & subscribe (part 2)","Values over time with interval, Subject and BehaviorSubject, and why and how to unsubscribe.","Live class timer and notice",[
+ "Use `interval(1000)` and subscribe to show a running class timer on the page.",
+ "Save the subscription and call `unsubscribe()` in `ngOnDestroy`.",
+ "Go to another route and come back. Check that only one timer runs.",
+ "In a service, create a `BehaviorSubject` that holds a notice message.",
+ "Change the notice from a button and see every subscriber update."],
+ ['con','Console',['subscribe → timer started','tick 1','tick 2','tick 3','notice: "Test on Friday"','ngOnDestroy → unsubscribe','timer stopped']]],
+/*41*/["Data transfer between components – parent and child","@Input() sends data down; @Output() with EventEmitter sends an event up.","Student list (parent) and student card (child)",[
+ "Create a `student-card` child component with `@Input() student`.",
+ "In the parent list, loop the students and pass each one to `<app-student-card>`.",
+ "Add a “Select” button in the card with an `@Output() selected` event.",
+ "In the parent, catch the event and show “Selected: Ravi” at the top.",
+ "Highlight the selected card."],
+ ['pc']],
+/*42*/["Data transfer between components – folder to folder","A shared service keeps the data, so any component in any folder can send it or read it.","Folder A → folder B data transfer (shared service)",[
+ "Create two folders, `folder-a` and `folder-b`, with components C1 to C4 in each.",
+ "Create a shared service with a `BehaviorSubject`, a `send(data)` method and a `data$` Observable.",
+ "In folder A's C3, add an input and a “Send” button that calls `send()`.",
+ "In folder B's C1, subscribe to `data$` and show the value.",
+ "Do the same from folder A's C4 to folder B's C2, as in the drawing."],
+ ['folders']],
+/*43*/["Reactive forms","ReactiveFormsModule, FormGroup, FormControl, Validators and showing error messages.","Student registration form (reactive)",[
+ "Import `ReactiveFormsModule` and create a `FormGroup` with name, email, course and marks.",
+ "Connect the HTML form with `[formGroup]` and `formControlName`.",
+ "Add validators: name required, email format, marks between 0 and 100.",
+ "Show a red message under each wrong field after the user touches it.",
+ "Turn off the Save button until the form is valid, then print the form value on submit."],
+ ['form','localhost:4200/register','Register student',['Name|Ravi','Email|ravi@','Course|Full Stack ▾','Marks|82'],'Save',{t:'Form state',l:['INVALID','email: not valid','Save button is off']}]],
+/*44*/["Template driven forms","FormsModule, ngModel with a name, #f=\"ngForm\", required and minlength in the HTML; when to use which form type.","Course enquiry form (template driven)",[
+ "Create an `enquiry` component with inputs for name, phone, course and message.",
+ "Add `ngModel` and a `name` to each input, and `#f=\"ngForm\"` on the form.",
+ "Add `required` and `minlength` in the HTML and show the error text.",
+ "On submit, show the details in a card beside the form and reset the form.",
+ "Write 3 differences between reactive and template driven forms in your notebook."],
+ ['form','localhost:4200/enquiry','Course enquiry',['Name|Meena','Phone|98765 43210','Course|UI Design ▾','Message|Evening batch?'],'Send',{t:'Submitted',l:['Meena','UI Design','Evening batch?']}]],
+/*45*/["Table in frontend – create, update, delete (part 1)","Form on one side and table on the other; keep the data in an array; add a row from the form.","Form + table side by side – create",[
+ "Create a `students` page with two columns: the form on the left, the table on the right.",
+ "Build the form (name, email, course, marks) with reactive forms.",
+ "Show the students array in the table with `*ngFor`.",
+ "On Save, push the form value into the array with a new id and reset the form.",
+ "Show “No students yet” when the table is empty."],
+ ['split','localhost:4200/students','Add student',['Name','Email','Course ▾','Marks'],'Save',['#','Name','Course','Marks'],[[1,'Ravi','Full Stack',82],[2,'Priya','UI Design',91],[3,'Arun','Full Stack',78]],-1,'Save → a new row appears in the table',0]],
+/*46*/["Table in frontend – create, update, delete (part 2)","Edit fills the form, Update changes the same row, Delete removes the row after a confirm step.","Form + table side by side with create, update, delete",[
+ "Add Edit and Delete buttons in every table row.",
+ "On Edit, fill the form with that student's data and change the button text to “Update”.",
+ "On Update, change the same row in the array (find it by id).",
+ "On Delete, ask “Are you sure?” on the page and then remove the row.",
+ "If time allows, add a search box above the table that filters by name."],
+ ['split','localhost:4200/students','Edit student',['=Priya','=priya@mail.com','=UI Design ▾','=91'],'Update',['Name','Marks','Action'],[['Ravi',82,'Edit · Delete'],['Priya',91,'Edit · Delete'],['Arun',78,'Edit · Delete']],1,'Edit fills the form · Delete removes the row',1]],
+/*47*/["Angular – revision + test","Recap quiz on components, routes, binding, directives, models, Observables and forms. Then one page built alone.","Courses page with form and table (build alone)",[
+ "Answer the recap quiz (20 minutes).",
+ "Create a `Course` model and a `courses` route.",
+ "Build a form (name, duration, fee) with validation.",
+ "Show the courses in a table with create, update and delete.",
+ "Keep the data in a service so it stays when you change routes."],
+ ['split','localhost:4200/courses','Add course',['Name','Duration (months)','Fee'],'Save',['Course','Months','Action'],[['Full Stack',3,'Edit · Delete'],['UI Design',2,'Edit · Delete'],['Testing',2,'Edit · Delete']],-1,'The data lives in a service',0]],
+/* ---- Node.js ---- */
+/*48*/["HTTP & client introduction (part 1)","Client and server, request and response, parts of a URL, methods (GET, POST, PUT, DELETE) and status codes (200, 201, 400, 404, 500).","Watch real requests in the browser",[
+ "Open any website, press F12 and open the Network tab.",
+ "Reload the page and click one request. Note its method, URL and status code.",
+ "Find one request that returns JSON and look at the response.",
+ "Fill a table in your notebook: 5 requests with method, status and what they did.",
+ "Draw the flow: Angular app (client) → Node server → database, and back."],
+ ['flow','Request and response',[['Client','browser / Angular'],['Server','Node.js'],['Database','MySQL']],'request  →        ←  response (status + data)']],
+/*49*/["HTTP & client introduction (part 2)","Node's http module, creating a server, sending text and JSON; two clients: the browser and Postman.","Your first Node server",[
+ "Check `node -v` and create `server.js`.",
+ "Create a server with `http.createServer` on port 3000 that replies “Hello from Node”.",
+ "Run `node server.js` and open `localhost:3000` in the browser.",
+ "Return a JSON list of 3 students when the URL is `/students`.",
+ "Send the same request from Postman and look at the status and the headers."],
+ ['pm','GET','/students',null,'200 OK',['[','   { "id": 1, "name": "Ravi" },','   { "id": 2, "name": "Priya" },','   { "id": 3, "name": "Arun" }',']']]],
+/*50*/["Basic project setup","npm init, package.json, installing Express, folder structure, nodemon, .env and .gitignore.","Set up the student-api project",[
+ "Create a `student-api` folder and run `npm init -y`.",
+ "Install `express` and `dotenv`, and `nodemon` as a dev tool.",
+ "Create the folders `routes`, `controllers` and `config`; add `app.js` and `.env` (PORT=3000).",
+ "Start an Express app with one route `/` that returns `{ message: 'API is running' }`.",
+ "Add a `dev` script for nodemon and run `npm run dev`."],
+ ['tree','Project folder',[[0,'student-api',1],[1,'config',1],[1,'controllers',1],[1,'routes',1],[1,'app.js'],[1,'.env'],[1,'package.json']]]],
+/*51*/["How to connect database (part 1)","The database driver (mysql2), host, user, password and database name, and running a test query.","Connect Node to the training database",[
+ "Install `mysql2`.",
+ "Create `config/db.js` and write the connection details of your `training` database.",
+ "Connect and print “Database connected” in the terminal.",
+ "Run `SELECT * FROM students` from Node and print the rows.",
+ "Type a wrong password on purpose, read the error, then fix it."],
+ ['con','Terminal',['$ npm run dev','Server running on port 3000','Database connected','> SELECT * FROM students','[ { id: 1, name: "Ravi", marks: 82 },','  { id: 2, name: "Priya", marks: 91 } ]']]],
+/*52*/["How to connect database (part 2)","Connection pool, keeping passwords in .env, one db.js used everywhere, handling connection errors.","A safe, reusable database connection",[
+ "Move the host, user, password and database name into `.env`.",
+ "Change `db.js` to use a connection pool and export it.",
+ "Create a route `/db-check` that runs `SELECT 1` and returns `{ db: 'ok' }`.",
+ "Stop MySQL, call the route, and return a clear error message with status 500.",
+ "Make sure `.env` is listed in `.gitignore`."],
+ ['flow','One connection file for the whole app',[['.env','DB_HOST, DB_USER'],['config/db.js','creates the pool'],['Routes','use the pool'],['MySQL','training']]]],
+/*53*/["Routes","Express Router, GET and POST routes, route params (:id), one route file per feature, express.json().","Student routes with sample data",[
+ "Create `routes/student.routes.js` with an Express Router.",
+ "Add `GET /students` that returns a sample array.",
+ "Add `GET /students/:id` that returns one student, or 404.",
+ "Add `POST /students` that reads `req.body` and sends it back with status 201.",
+ "Connect the router in `app.js` and test all three in Postman."],
+ ['pm','GET','/students/2',null,'200 OK',['{','   "id": 2,','   "name": "Priya",','   "marks": 91','}']]],
+/*54*/["How to create tables in Node","Running CREATE TABLE IF NOT EXISTS from Node; a setup file that runs when the server starts.","Create the students and courses tables from code",[
+ "Create `config/initDb.js`.",
+ "Write `CREATE TABLE IF NOT EXISTS` for `courses` and `students` (with the foreign key).",
+ "Call this file once when the server starts and log “Tables ready”.",
+ "Drop the tables in Workbench, restart the server and check that they come back.",
+ "Insert the 3 courses from Node when the courses table is empty."],
+ ['grid','students (created by Node)',['column','type','key'],[['id','INT','PK, auto'],['name','VARCHAR(60)',''],['email','VARCHAR(100)','UNIQUE'],['course_id','INT','FK → courses'],['marks','INT','']],'Terminal: Tables ready',1],'Database table'],
+/*55*/["CRUD – create & read","POST saves a row and GET reads rows; ? placeholders keep queries safe; status 201 and 404.","Save and read students from the database",[
+ "Change `POST /students` to INSERT the body into the database using `?` placeholders.",
+ "Return the new student with its id and status 201.",
+ "Change `GET /students` to read all rows from the database.",
+ "Change `GET /students/:id` to read one row. Return 404 when it is not found.",
+ "Add 5 students from Postman and read them back."],
+ ['pm','POST','/students',['{ "name": "Meena", "email": "meena@mail.com",','   "course_id": 1, "marks": 64 }'],'201 Created',['{ "id": 4, "name": "Meena",','   "email": "meena@mail.com",','   "course_id": 1, "marks": 64 }']]],
+/*56*/["CRUD – search query","Query strings (req.query), LIKE with %, and searching more than one column.","Search students by name",[
+ "Read `search` from `req.query` in `GET /students`.",
+ "When search is given, add `WHERE name LIKE ?` with `%text%`.",
+ "Make it match the email column too.",
+ "Return an empty array (not an error) when nothing matches.",
+ "Test in Postman: `?search=ra`, `?search=mail` and `?search=zzz`."],
+ ['pm','GET','/students?search=ra',null,'200 OK',['[','   { "id": 1, "name": "Ravi" },','   { "id": 7, "name": "Saranya" }',']']]],
+/*57*/["GET query – limit & paging","LIMIT and OFFSET, page and limit in the query string, and sending the total count.","Show students page by page",[
+ "Read `page` and `limit` from the query. Use 1 and 10 when they are missing.",
+ "Work out the offset: (page − 1) × limit.",
+ "Add `LIMIT ? OFFSET ?` to the query.",
+ "Run a second query for the total count and return `{ data, page, limit, total }`.",
+ "Test with 12 students: `?page=1&limit=5`, then page 2 and page 3."],
+ ['pm','GET','/students?page=2&limit=5',null,'200 OK',['{ "page": 2, "limit": 5, "total": 12,','   "data": [','      { "id": 6, "name": "Divya" },','      { "id": 7, "name": "Saranya" },','      … 5 students in all ] }']]],
+/*58*/["GET query – sort & order","ORDER BY, sort and order in the query string, and allowing only known column names.","Sort the student list",[
+ "Read `sort` (the column) and `order` (asc or desc) from the query.",
+ "Keep a list of allowed columns: id, name and marks.",
+ "When `sort` is not in the list, use `id`.",
+ "Add `ORDER BY` to the query and keep search and paging working with it.",
+ "Test: `?sort=marks&order=desc&limit=3` should return the top 3 students."],
+ ['pm','GET','/students?sort=marks&order=desc',null,'200 OK',['[','   { "name": "Priya", "marks": 91 },','   { "name": "Ravi", "marks": 82 },','   { "name": "Arun", "marks": 78 }',']']]],
+/*59*/["PUT & delete","PUT /students/:id updates a row and DELETE /students/:id removes it; checking the affected rows; 404.","Update and delete students",[
+ "Add `PUT /students/:id` that updates name, email, course_id and marks.",
+ "Return 404 when no row was changed, else return the updated student.",
+ "Add `DELETE /students/:id` and return `{ message: 'Student deleted' }`.",
+ "Return 404 when the id does not exist.",
+ "In Postman: create a student, update the marks, delete the student, then try to GET it."],
+ ['pm','PUT','/students/4',['{ "name": "Meena", "marks": 72 }'],'200 OK',['{ "id": 4, "name": "Meena", "marks": 72 }','','DELETE /students/4','→ { "message": "Student deleted" }']]],
+/*60*/["Soft delete","Hard delete and soft delete compared; an is_deleted flag and a deleted_at time; hiding deleted rows in every GET.","Soft delete students",[
+ "Add `is_deleted` (default 0) and `deleted_at` columns to the students table.",
+ "Change DELETE so that it runs an UPDATE: `is_deleted = 1` and `deleted_at = NOW()`.",
+ "Add `WHERE is_deleted = 0` to every GET query.",
+ "Add `PUT /students/:id/restore` to bring a student back.",
+ "Delete a student in Postman, check that the row is still in Workbench, then restore it."],
+ ['grid','students',['id','name','is_deleted','deleted_at'],[[1,'Ravi',0,'NULL'],[2,'Priya',0,'NULL'],[3,'Arun',1,'2026-03-02 10:15']],'The row stays in the table. GET hides it.',1],'Database table'],
+/*61*/["Logger (part 1)","Why logs matter, what middleware is, logging the method, URL, status and time taken.","Write your own request logger",[
+ "Create `middleware/logger.js` with a function `(req, res, next)`.",
+ "Print the time, method and URL for every request, then call `next()`.",
+ "Use `res.on('finish')` to also print the status code and the time taken in ms.",
+ "Add it in `app.js` before the routes.",
+ "Call 5 different APIs from Postman and read the logs."],
+ ['con','Terminal',['10:02:11  GET /students  →  200  (12 ms)','10:02:19  POST /students  →  201  (30 ms)','10:02:40  GET /students/99  →  404  (5 ms)','10:03:02  PUT /students/4  →  200  (21 ms)','10:03:30  DELETE /students/4  →  200  (18 ms)']]],
+/*62*/["Logger (part 2)","Log levels (info, warn, error), saving logs to a file with winston, logging errors in one place.","Save logs to files",[
+ "Install `winston` and create `config/logger.js`.",
+ "Send logs to the terminal and to `logs/app.log`.",
+ "Send only errors to `logs/error.log`.",
+ "Replace your `console.log` lines with `logger.info` and `logger.error`.",
+ "Add an error-handling middleware that logs the error and returns status 500."],
+ ['con','logs/app.log',['info:  Server started on port 3000','info:  GET /students 200 12 ms','warn:  GET /students/99 404','!error:  POST /students – Duplicate email','info:  PUT /students/4 200 20 ms'],'Log file']],
+/*63*/["Push notification (part 1)","What a push notification is, the service worker, asking permission, the subscription and VAPID keys (web-push).","Ask permission and save a subscription",[
+ "Install `web-push` and create the VAPID keys. Keep them in `.env`.",
+ "Create a small `public/index.html` with an “Allow notifications” button and a `sw.js` service worker.",
+ "On click, ask permission and subscribe using the public key.",
+ "Send the subscription to `POST /subscribe` and save it in a `subscriptions` table.",
+ "Check the saved row in Workbench."],
+ ['flow','How push works',[['Browser','Allow? → Yes'],['sw.js','service worker'],['Node server','saves it'],['Push service','delivers message']]]],
+/*64*/["Push notification (part 2)","Sending a push with webpush.sendNotification, showing it in the service worker, sending it when something happens.","Notify when a new student joins",[
+ "Add a `push` listener in `sw.js` that shows a notification with a title and a body.",
+ "Create `POST /notify` that sends a test message to all saved subscriptions.",
+ "Call it from Postman and see the notification appear.",
+ "After a successful `POST /students`, send “New student joined: name”.",
+ "Remove subscriptions that fail (expired) from the table."],
+ ['phone','Node.js server','after POST /students','Student Portal',['New student joined:','Meena']]],
+/*65*/["How to handle date time in Node.js (part 1)","The Date object, ISO format, UTC and IST (+5:30), and the created_at and updated_at columns.","Add created and updated time to students",[
+ "In a test file, print `new Date()`, `.toISOString()` and `.getTime()` and compare them.",
+ "Add `created_at` and `updated_at` columns to the students table.",
+ "Set `created_at` on POST and `updated_at` on PUT.",
+ "Create a student in Postman and compare the saved time with your clock.",
+ "Write down the difference you see between UTC and IST."],
+ ['con','Console',['> new Date().toISOString()','"2026-03-02T04:45:10.000Z"     ← UTC','','Clock on the wall:','10:15:10 AM     ← IST','','IST = UTC + 5 hours 30 minutes']]],
+/*66*/["How to handle date time in Node.js (part 2)","Showing dates in IST (Asia/Kolkata), the DD-MM-YYYY format, and filtering by a date range.","IST dates and a date filter",[
+ "Write a helper `toIST(date)` using `toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })`.",
+ "Use it so every API response shows `created_at` in IST.",
+ "Add `from` and `to` query options to `GET /students`.",
+ "Add `WHERE created_at BETWEEN ? AND ?` when both are given.",
+ "Test: students who joined this week, and a range with no students."],
+ ['pm','GET','/students?from=2026-03-01&to=2026-03-07',null,'200 OK',['[ { "name": "Meena",','     "created_at": "02-03-2026, 10:15 am" },','   { "name": "Karthik",','     "created_at": "05-03-2026, 6:40 pm" } ]']]],
+/*67*/["Input validation (part 1)","Never trust input: required fields, type, length, email format, number range; status 400 with clear messages.","Check student data by hand",[
+ "In `POST /students`, check that name and email are present.",
+ "Check the name length (3 to 60), the email format and marks between 0 and 100.",
+ "Collect all the problems in an `errors` array.",
+ "When there are errors, return status 400 with the list and do not save.",
+ "Send 4 bad requests from Postman and check that each message is easy to understand."],
+ ['pm','POST','/students',['{ "name": "Ra", "email": "ravi@", "marks": 140 }'],'400 Bad Request',['{ "errors": [','   "Name needs at least 3 letters",','   "Email is not valid",','   "Marks must be 0 to 100" ] }']]],
+/*68*/["Input validation (part 2)","Validation as middleware with express-validator; the same rules for POST and PUT; checking :id and query values.","Reusable validation rules",[
+ "Install `express-validator` and create `validators/student.validator.js`.",
+ "Write the rules for name, email, course_id and marks.",
+ "Add one middleware that returns 400 with all the messages.",
+ "Use the same rules on POST and PUT, and delete yesterday's hand-written checks.",
+ "Validate `:id` (must be a number) and `limit` (1 to 50) too."],
+ ['flow','Validation runs before the route',[['Request','POST /students'],['Validator','checks the rules'],['Route','saves to the DB'],['Response','201 Created']],'When a rule fails → 400 with the error messages']],
+/*69*/["How to use Postman","Collections and folders, environment variables ({{baseUrl}}), saving examples, and running a whole collection.","Build the Student API collection",[
+ "Create a collection “Student API” with the folders Students, Courses and Notifications.",
+ "Create an environment with `baseUrl = http://localhost:3000` and use `{{baseUrl}}` in every request.",
+ "Save one request for every API you built, with a sample body.",
+ "Save a success example and an error example for POST /students.",
+ "Run the full collection with the Runner and export it to share with your batch."],
+ ['tree','Postman collection',[[0,'Student API',1],[1,'Students',1],[2,'GET  {{baseUrl}}/students'],[2,'POST  {{baseUrl}}/students'],[2,'PUT  {{baseUrl}}/students/:id'],[2,'DELETE  {{baseUrl}}/students/:id'],[1,'Courses',1],[1,'Notifications',1]],'Postman collection']],
+/*70*/["Node.js – revision + test","Recap quiz on HTTP, routes, CRUD, query options, soft delete, logger, date time and validation. Then one API built alone.","Courses API (build alone)",[
+ "Answer the recap quiz (20 minutes).",
+ "Create `routes/course.routes.js` with create, read, update and soft delete.",
+ "Add search by name, limit and sort to `GET /courses`.",
+ "Add validation: name required, duration 1 to 12 months.",
+ "Add the requests to your Postman collection and show the trainer a full run."],
+ ['pm','GET','/courses?search=full&limit=5',null,'200 OK',['{ "total": 1,','   "data": [','      { "id": 1, "name": "Full Stack",','         "duration": 3 } ] }']]],
+/* ---- NestJS ---- */
+/*71*/["How to convert Node.js → NestJS (part 1)","Why NestJS, nest new, module + controller + service; an Express route file becomes a controller and the logic becomes a service.","Start the NestJS version of student-api",[
+ "Install the Nest CLI and run `nest new student-api-nest`.",
+ "Run `npm run start:dev` and open `localhost:3000`.",
+ "Create the students feature: `nest g module students`, then the controller and the service.",
+ "Return a sample student array from `GET /students`.",
+ "Fill a two-column table in your notebook: Express file → NestJS file."],
+ ['map','Same work, new places',[['routes/student.routes.js','students.controller.ts'],['logic inside the routes','students.service.ts'],['app.js','main.ts + app.module.ts'],['config/db.js','database module']],['Node.js (Express)','NestJS']]],
+/*72*/["How to convert Node.js → NestJS (part 2)","Decorators: @Controller, @Get, @Post, @Put, @Delete, @Param, @Query and @Body.","Convert every student route",[
+ "Open your Express routes on one side and the Nest controller on the other.",
+ "Convert GET all, GET by id, POST, PUT and DELETE using decorators.",
+ "Move the logic into `students.service.ts` (use an array for today).",
+ "Read `search`, `page` and `limit` with `@Query`.",
+ "Run your Postman collection against the Nest app and fix what fails."],
+ ['con','students.controller.ts',['@Controller("students")','export class StudentsController {','   @Get()           findAll(@Query() q) { … }','   @Get(":id")    findOne(@Param("id") id) { … }','   @Post()          create(@Body() body) { … }','   @Put(":id")    update( … ) { … }','   @Delete(":id")   remove( … ) { … }','}'],'Code']],
+/*73*/["How database connects (part 1)","TypeORM, the TypeOrmModule.forRoot settings, .env values, and the idea that one entity is one table.","Connect NestJS to the training database",[
+ "Install `@nestjs/typeorm`, `typeorm` and `mysql2`.",
+ "Add `TypeOrmModule.forRoot` in `app.module.ts` with your database details from `.env`.",
+ "Create `student.entity.ts` with the same columns as your students table.",
+ "Start the app and check that there is no connection error in the terminal.",
+ "Compare the entity with the `CREATE TABLE` you wrote in SQL, line by line."],
+ ['map','One entity = one table',[['@Entity()  Student','students table'],['@PrimaryGeneratedColumn()  id','id  INT  PK, auto'],['@Column()  name','name  VARCHAR'],['@Column()  marks','marks  INT']],['student.entity.ts','MySQL']]],
+/*74*/["How database connects (part 2)","TypeOrmModule.forFeature, injecting a Repository in the service, find, findOneBy, save and update.","Student CRUD with the real database",[
+ "Register the Student entity with `TypeOrmModule.forFeature` in the students module.",
+ "Inject `Repository<Student>` in the service.",
+ "Replace the array code with `find()`, `findOneBy({ id })`, `save()` and `update()`.",
+ "Throw `NotFoundException` when a student id does not exist.",
+ "Create, read, update and delete a student from Postman and check the table."],
+ ['flow','From the request to the table',[['Controller','@Get()'],['Service','findAll()'],['Repository','find()'],['MySQL','students']]]],
+/*75*/["How code runs in NestJS (part 1)","main.ts → AppModule → feature modules; controller → service → repository; dependency injection.","Trace one request through the app",[
+ "Add a `console.log` in `main.ts`, the controller, the service and after the database call.",
+ "Call `GET /students` and write down the order of the logs.",
+ "Remove the service from the module's `providers` and read the error Nest gives.",
+ "Put it back and explain to your partner what “inject” means.",
+ "Draw the flow in your notebook with the file names."],
+ ['flow','Start-up, then one request',[['main.ts','starts the app'],['AppModule','loads the modules'],['Controller','gets the request'],['Service','does the work'],['Repository','talks to the DB'],['Response','JSON goes back']]]],
+/*76*/["How code runs in NestJS (part 2)","What runs before the controller: middleware (logger) and pipes (validation with a DTO), and how errors become responses.","Add a logger and validation the NestJS way",[
+ "Create a logger middleware that prints the method, URL and time, and apply it to all routes.",
+ "Install `class-validator` and `class-transformer`, and turn on `ValidationPipe` in `main.ts`.",
+ "Create `CreateStudentDto` with rules: name length, email format, marks 0 to 100.",
+ "Send a bad request and compare the 400 response with your Express one.",
+ "Draw the order: middleware → pipe → controller → service → response."],
+ ['flow','What runs for every request',[['Middleware','logger'],['Pipe','checks the DTO'],['Controller','route method'],['Service','database work']],'Bad data stops at the pipe → 400']],
+/*77*/["Sign Up & Sign In","A users table, saving the password as a hash with bcrypt (never as plain text), and checking the password on sign in.","Sign up and sign in APIs",[
+ "Create an `auth` module and a `User` entity (id, name, email, password).",
+ "Build `POST /auth/signup`: check that the email is new, hash the password with `bcrypt` and save the user.",
+ "Build `POST /auth/signin`: find the user by email and check the password with `bcrypt.compare`.",
+ "Return 401 with “Wrong email or password” when the check fails.",
+ "Open the users table in Workbench and check that no plain password is saved. Never send the password back in a response."],
+ ['pm','POST','/auth/signup',['{ "name": "Meena", "email": "meena@mail.com",','   "password": "Meena@123" }'],'201 Created',['{ "id": 1, "name": "Meena",','   "email": "meena@mail.com" }','','In the table:  password = $2b$10$N9qo8uLO…']],null,'add'],
+/*78*/["JWT authentication","What a token is, the three parts of a JWT, signing it with a secret from .env, the expiry time, and giving the token back on sign in.","Give a JWT token on sign in",[
+ "Install `@nestjs/jwt` and register `JwtModule` with a secret and an expiry time from `.env`.",
+ "After a correct sign in, make a token that holds the user id and email with `jwtService.sign`.",
+ "Return `{ access_token }` from `POST /auth/signin`.",
+ "Decode the token (for example on jwt.io) and read what is inside. Anyone can read it, so never put a password in it.",
+ "Save the token in a Postman variable. You will use it tomorrow."],
+ ['pm','POST','/auth/signin',['{ "email": "meena@mail.com",','   "password": "Meena@123" }'],'200 OK',['{ "access_token":','      "eyJhbGciOiJIUzI1NiIsInR5cCI6…" }','','Wrong password  →  401 Unauthorized']],null,'add'],
+/*79*/["AuthGuard","A guard runs before the controller: it reads the Bearer token from the header, checks it, and lets the request in or returns 401.","Protect the student routes",[
+ "Create an `AuthGuard` that reads the `Authorization: Bearer token` header.",
+ "Check the token with `jwtService.verifyAsync` and put the user on `request.user`.",
+ "Add `@UseGuards(AuthGuard)` to the students controller.",
+ "In Postman, call `GET /students` without a token (401) and with the token (200).",
+ "Add `GET /auth/me` that returns the signed-in user from `request.user`."],
+ ['flow','The guard stands before the controller',[['Request','Bearer token'],['AuthGuard','checks the token'],['Controller','route method'],['Response','200 + data']],'No token or a wrong token  →  401 Unauthorized'],null,'add'],
+/*80*/["Swagger & Email","Swagger builds a live API document page from your code; sending an email from NestJS with an SMTP account (nodemailer).","API docs page and a welcome email",[
+ "Install `@nestjs/swagger` and set it up in `main.ts` so that the docs open at `/api`.",
+ "Add `@ApiTags` and `@ApiProperty` so the auth and students APIs show with their fields.",
+ "Add `addBearerAuth()` and try a protected API from the Swagger page with your token.",
+ "Install `nodemailer`, keep the SMTP details in `.env`, and write a `MailService` with `sendWelcome(email, name)`.",
+ "Call it after a successful sign up and check the inbox."],
+ ['web','localhost:3000/api','Student API – Swagger',['Method','Path','Needs token'],[['POST','/auth/signup','no'],['POST','/auth/signin','no'],['GET','/students','yes'],['POST','/students','yes']],'Email after sign up:  “Welcome, Meena!”'],'Swagger page','add'],
+/*81*/["Project (part 1)","Plan a small NestJS project before coding: the modules, the entities and the API list.","NestJS project – courses and students",[
+ "List the APIs for courses and students in a table (method, URL, what it does).",
+ "Create a `courses` module with an entity, a controller and a service.",
+ "Link Student to Course with `@ManyToOne` (course_id).",
+ "Build create, read, update and delete for courses.",
+ "Return each student with the course name in `GET /students`."],
+ ['er',[['Course',['id','name','duration','students[ ]']],['Student',['id','name','email','marks','course']]],['1 — N'],'@OneToMany on Course · @ManyToOne on Student'],'Entity diagram'],
+/*82*/["Project (part 2)","Bring the Node.js features into NestJS: search, limit, sort, order, soft delete and IST dates.","NestJS project – finish and test",[
+ "Add search, page, limit, sort and order to `GET /students`.",
+ "Add soft delete with `@DeleteDateColumn` and `softDelete()`.",
+ "Add `@CreateDateColumn` and `@UpdateDateColumn`, and show the dates in IST.",
+ "Protect the routes with the AuthGuard and check them on the Swagger page.",
+ "Update your Postman collection, run all of it and fix every failing request."],
+ ['pm','GET','/students?search=a&sort=marks&limit=3',null,'200 OK',['{ "total": 4, "page": 1, "limit": 3,','   "data": [','      { "name": "Priya", "marks": 91,','         "course": "UI Design",','         "created_at": "02-03-2026, 10:15 am" },','      … ] }']]],
+/*83*/["NestJS – revision + test","Recap quiz on modules, controllers, services, entities, the request flow, sign in, JWT and guards. Then one module built alone.","Trainers module (build alone)",[
+ "Answer the recap quiz (20 minutes).",
+ "Create a `trainers` module with an entity, a controller and a service.",
+ "Add a DTO with validation (name, email, experience in years).",
+ "Build create, read with search, update and soft delete.",
+ "Protect it with the AuthGuard, test it in Postman and explain the request flow to the trainer."],
+ ['tree','src/trainers',[[0,'trainers',1],[1,'dto',1],[2,'create-trainer.dto.ts'],[1,'trainer.entity.ts'],[1,'trainers.controller.ts'],[1,'trainers.service.ts'],[1,'trainers.module.ts']]]]
+];
+
+/* ============ final project: one evaluation card with no guided steps. [item, 1 = not taught in class] ============ */
+const PROJ={
+  fe:[['Angular-boilerplate',0],['Sign Up',1],['Sign In',1],['Interceptor',1],['Logger',1],['Multilingual',1],['HTTP Loader',1],['PrimeNG',1],['Push Notification',0],['AuthGuard',1],['Lazy Loading',1]],
+  be:[['Sign Up',0],['Sign In',0],['TypeORM',0],['Logger',0],['Email',0],['Push Notification',0],['Swagger',0],['JWT authentication',0],['AuthGuard',0]]
+};
+function projCard(s){
+  const li=a=>a.map(x=>`<li>${E(x[0])}${x[1]?'<span class="new">new</span>':''}</li>`).join('');
+  let chips='';for(let d=s[2];d<=s[3];d++)chips+=`<label class="done" for="done-${d}"><input type="checkbox" id="done-${d}" data-d="${d}"> Day ${d}</label>`;
+  const sk=G.flow('Sign in flow',[['Sign Up','new user + email'],['Sign In','email + password'],['JWT token','comes from backend'],['Interceptor','adds token to calls'],['AuthGuard','front + back check'],['Pages','lazy loaded']]).out('Sketch of the sign in flow in the final project');
+  return `<article class="day proj" id="day-${s[2]}"><div class="info">
+<div class="meta"><span class="dn">Days ${s[2]}–${s[3]}</span><span class="sj">Final project · Weeks 14–15</span><span class="tag rev">Evaluation</span></div>
+<h3>Final project (evaluation)</h3>
+<p class="key"><b>Rule:</b> One project, built alone, with no guided steps and no daily topic. The backend items were taught in class. The frontend items marked new were not: students learn those on their own and implement all of them.</p>
+<p class="time"><b>${(s[3]-s[2]+1)*3} h</b> = ${s[3]-s[2]+1} days × 3 h of project work. Day ${s[3]} is the deadline day.</p>
+<div class="must"><div><h4>Frontend – must implement</h4><ul class="req">${li(PROJ.fe)}</ul></div><div><h4>Backend – must implement</h4><ul class="req">${li(PROJ.be)}</ul></div></div>
+<p class="legend"><span class="new">new</span>not taught in class</p>
+<h4>Days done</h4><div class="chips">${chips}</div>
+</div><figure class="draw"><figcaption>Days ${s[2]}–${s[3]} · Flow boxes</figcaption><div class="frame">${sk}</div></figure></article>`;
+}
+
+/* topics that run over two days (6 hours) are shown as ONE card. Key = first day, value = the card title.
+   Every "(part 1)" + "(part 2)" pair is added automatically; the pairs below have two different day titles. */
+const TWO={8:'DOM – add / change content, change style & input values',10:'Conditional statements',16:'CRUD',20:'Data model',32:'Data binding – one way and two way',34:'Directives (statements) – CSS & JS',41:'Data transfer between components',55:'CRUD – create & read, search query',57:'GET query – limit, sort, order'};
+D.forEach((x,i)=>{if(x[0].includes('(part 1)'))TWO[i+1]=x[0].replace(' (part 1)','')});
+
+/* ============ page ============ */
+const fmt=s=>E(s).replace(/`([^`]+)`/g,'<code>$1</code>');
+function sketch(d){const s=D[d-1][4];return G[s[0]](...s.slice(1)).out('Sketch of the task: '+D[d-1][2])}
+function capOf(d){const x=D[d-1];return x[5]||CAP[x[4][0]]}
+
+function boot(){
+  const $=s=>document.querySelector(s);
+  $('#bar').innerHTML=SUBJ.map(s=>{const n=s[3]-s[2]+1;return `<a href="#${s[0]}" style="--sc:var(--${s[4]});--d:${n}" title="${E(s[1])}: Days ${s[2]}–${s[3]}" aria-label="${E(s[1])}, ${n} days"><span>${n}</span></a>`}).join('');
+  $('#subnav').innerHTML=SUBJ.map(s=>`<a href="#${s[0]}" data-s="${s[0]}" style="--sc:var(--${s[4]})"><i></i>${E(s[1])} <small>${s[2]}–${s[3]}</small></a>`).join('');
+  $('#main').innerHTML=SUBJ.map((s,si)=>{
+    const n=s[3]-s[2]+1;let h=`<section class="sub" id="${s[0]}" style="--sc:var(--${s[4]})"><header class="sh"><h2>${E(s[1])}</h2><p class="sm"><b>Days ${s[2]}–${s[3]}</b><span>${n} days</span><span>${n*3} hours</span><span class="cnt" id="c-${s[0]}">0 of ${n} done</span></p></header><div class="days">`;
+    if(si==7)return h+projCard(s)+'</div></section>';
+    const wk=d=>Math.ceil(d/6);
+    const body=(d,rev)=>{const x=D[d-1];return `<p class="key"><b>${rev?'Revise':'Teach'}:</b> ${E(x[1])}</p>
+<p class="time"><b>3 h</b> = <span><i class="sq"></i>70 min ${rev?'recap quiz':'topic + live demo'}</span> + <span><i class="sq b"></i>110 min ${rev?'solo task':'task'}</span></p>
+<p class="task"><span>Task</span>${E(x[2])}</p>
+<h4>How to do the task</h4><ol>${x[3].map(t=>`<li>${fmt(t)}</li>`).join('')}</ol>`};
+    const fig=d=>`<figure class="draw"><figcaption>Day ${d} · ${E(capOf(d))}</figcaption><div class="frame">${sketch(d)}</div></figure>`;
+    const tick=d=>`<label class="done" for="done-${d}"><input type="checkbox" id="done-${d}" data-d="${d}"> Done</label>`;
+    for(let d=s[2];d<=s[3];d++){
+      const rev=si<7&&d==s[3],tag=rev?['Revision + test','rev']:si==0||D[d-1][6]=='add'?['Added','add']:['From notes','note'];
+      if(TWO[d]){ /* one card for a two-day topic: shared heading, then one row per day */
+        const e=d+1,parts=D[d-1][0].includes('(part 1)');
+        h+=`<article class="day pair" id="day-${d}"><header class="ph">
+<div class="meta"><span class="dn">Days ${d}–${e}</span><span class="sj">${E(s[1])} · Week ${wk(d)}${wk(e)>wk(d)?'–'+wk(e):''}</span><span class="tag ${tag[1]}">${tag[0]}</span><span class="tag two">2 days · 6 h</span></div>
+<h3>${E(TWO[d])}</h3></header>`+[d,e].map((p,i)=>`<div class="part"${i?` id="day-${p}"`:''} data-d="${p}"><div class="info">
+<div class="meta"><span class="dn">Day ${p}</span><span class="sj">Part ${i+1} of 2 · 3 h</span>${tick(p)}</div>
+${parts?'':`<p class="pt">${E(D[p-1][0])}</p>`}
+${body(p,false)}
+</div>${fig(p)}</div>`).join('')+'</article>';
+        d=e;continue;
+      }
+      h+=`<article class="day" id="day-${d}" data-d="${d}"><div class="info">
+<div class="meta"><span class="dn">Day ${d}</span><span class="sj">${E(s[1])} · Week ${wk(d)}</span><span class="tag ${tag[1]}">${tag[0]}</span>${tick(d)}</div>
+<h3>${E(D[d-1][0])}</h3>
+${body(d,rev)}
+</div>${fig(d)}</article>`;
+    }
+    return h+'</div></section>'}).join('');
+
+  /* done ticks, kept per batch in this browser */
+  let st={m:[],e:[]},batch='m';
+  try{const v=JSON.parse(localStorage.getItem('fs90-done')||'{}');if(Array.isArray(v.m))st.m=v.m;if(Array.isArray(v.e))st.e=v.e;if(localStorage.getItem('fs90-batch')==='e')batch='e'}catch(e){}
+  const save=()=>{try{localStorage.setItem('fs90-done',JSON.stringify(st));localStorage.setItem('fs90-batch',batch)}catch(e){}};
+  function paint(){
+    const set=new Set(st[batch]);
+    document.querySelectorAll('input[data-d]').forEach(i=>{const on=set.has(+i.dataset.d),c=i.closest('.day[data-d],.part[data-d]');i.checked=on;i.parentNode.classList.toggle('on',on);if(c)c.classList.toggle('is-done',on)});
+    SUBJ.forEach(s=>{let c=0;for(let d=s[2];d<=s[3];d++)if(set.has(d))c++;$('#c-'+s[0]).textContent=c+' of '+(s[3]-s[2]+1)+' done'});
+    $('#pcount').innerHTML=(batch=='m'?'Morning':'Evening')+' batch: <b>'+set.size+'</b> of 90 days done';
+    $('#pfill').style.width=(set.size/90*100)+'%';
+    $('#bm').setAttribute('aria-pressed',batch=='m');$('#be').setAttribute('aria-pressed',batch=='e');
+  }
+  document.addEventListener('change',e=>{const i=e.target;if(!i.matches||!i.matches('input[data-d]'))return;
+    const d=+i.dataset.d,set=new Set(st[batch]);e.target.checked?set.add(d):set.delete(d);st[batch]=[...set];save();paint()});
+  $('#bm').addEventListener('click',()=>{batch='m';save();paint()});
+  $('#be').addEventListener('click',()=>{batch='e';save();paint()});
+  paint();
+
+  /* highlight the subject button for the section on screen */
+  if('IntersectionObserver' in window){
+    const links=[...document.querySelectorAll('#subnav a')];
+    const io=new IntersectionObserver(es=>es.forEach(en=>{if(!en.isIntersecting)return;
+      links.forEach(a=>{const on=a.dataset.s===en.target.id;a.classList.toggle('on',on);if(on&&a.parentNode.scrollWidth>a.parentNode.clientWidth)a.parentNode.scrollTo({left:a.offsetLeft-a.parentNode.offsetLeft-16})})}),{rootMargin:'-15% 0px -75% 0px'});
+    document.querySelectorAll('.sub').forEach(s=>io.observe(s));
+  }
+}
+if(typeof document!=='undefined')boot();
+</script>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year">2026</span> Sakthivel · Freelance Full Stack Developer &amp; Full Stack Course Trainer, Chennai</p>
+      <ul class="footer-links" aria-label="More from this site">
+        <li><a href="index.html"><i class="fas fa-house" aria-hidden="true"></i> Portfolio home</a></li>
+        <li><a href="index.html#course"><i class="fas fa-chalkboard-user" aria-hidden="true"></i> Register for the full stack course</a></li>
+        <li><a href="https://teal-twilight-9546d8.netlify.app/sql/data-types" target="_blank" rel="noopener"><i class="fas fa-graduation-cap" aria-hidden="true"></i> Full stack tutorial <i class="fas fa-arrow-up-right-from-square fa-xs" aria-hidden="true"></i></a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <a class="to-top" id="toTop" href="#top" aria-label="Back to top"><i class="fas fa-arrow-up" aria-hidden="true"></i></a>
+
+  <script src="assets/js/site.js" defer></script>
+</body>
+</html>
